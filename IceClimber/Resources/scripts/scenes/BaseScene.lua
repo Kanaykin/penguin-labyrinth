@@ -27,7 +27,7 @@ function BaseScene:init(sceneMan, backgroundImageName)
 		local bg = CCSprite:create(backgroundImageName);
 		local imageSize = bg:getContentSize();
 		bg:setPosition(visibleSize.width / 2, visibleSize.height / 2);
-		bg:setScaleX(visibleSize.width / imageSize.width)
+		bg:setScaleX(visibleSize.width / imageSize.width);
 		bg:setScaleY(visibleSize.height / imageSize.height);
 
 		if bg ~= nil then

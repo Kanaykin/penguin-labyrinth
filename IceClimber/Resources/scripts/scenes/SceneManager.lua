@@ -24,6 +24,21 @@ function SceneManager:getCurrentScene()
 end
 
 ---------------------------------
+function SceneManager:runPrevScene()
+	if self:getCurrentScene() ~= nil then
+		self:getCurrentScene():destroy();
+	end
+	
+	self.mCurrentSceneId = self.mCurrentSceneId - 1;
+	if self.mCurrentSceneId <= 0 then
+		self.mCurrentSceneId = 0;
+	end
+
+	self:getCurrentScene():init(self);
+	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
+end
+
+---------------------------------
 function SceneManager:runNextScene()
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
