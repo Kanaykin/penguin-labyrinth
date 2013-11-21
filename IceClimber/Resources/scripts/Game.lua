@@ -1,4 +1,6 @@
 require "SceneManager"
+require "GameConfigs"
+require "Location"
 
 --[[
 It is main class for game.
@@ -6,6 +8,13 @@ It is main class for game.
 Game =  inheritsFrom(nil)
 Game.mSceneMan = nil
 Game.mGameTime = 0
+Game.mLocations = {}
+
+
+---------------------------------
+function Game:getLocations()
+	return self.mLocations;
+end
 
 ---------------------------------
 function Game:tick(dt)
@@ -14,10 +23,23 @@ function Game:tick(dt)
 end
 
 ---------------------------------
+function Game:createLocation()
+	for i, location in ipairs(gLocations) do
+		local locat = Location:create();
+		locat:init(location);
+		self.mLocations[location.id] = locat;
+	end
+end
+
+
+---------------------------------
 function Game:init()
-		-- create scene manager
+	-- create scene manager
 	self.mSceneMan = SceneManager:create();
-	self.mSceneMan:init();
+	self.mSceneMan:init(self);
+
+	-- create locations
+	self:createLocation();
 
 	local g_game = self;
 	

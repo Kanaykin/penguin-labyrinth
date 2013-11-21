@@ -19,12 +19,13 @@ function getPosition(object, pos)
 		parentPos = CCPointMake(0, 0);
 	else
 		parentSize = parent:getContentSize();
-		parentPos = parent:getPosition();
+		local xPos, yPos = parent:getPosition();
+		parentPos = CCPointMake(xPos, yPos);
 	end
 	local objSize = object:getContentSize();
 	-- compute pos
-	local X = parentSize.width * pos.relX + parentPos.x + pos.absX;-- + objSize.width / 2.0;
-	local Y = parentSize.height * pos.relY + parentPos.y + pos.absY;
+	local X = parentSize.width * pos.relX + pos.absX;-- + objSize.width / 2.0;
+	local Y = parentSize.height * pos.relY + pos.absY;
 
 	return CCPointMake(X, Y);
 end

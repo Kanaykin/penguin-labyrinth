@@ -1,6 +1,7 @@
 require "BaseScene"
 require "ScrollView"
 require "AlignmentHelper"
+require "GameConfigs"
 
 local LOADSCEENIMAGE = "choseLevel.png"
 
@@ -12,13 +13,30 @@ ChooseLevel.mScrollView = nil;
 
 --------------------------------
 function ChooseLevel:createLocationImages()
+	local locations = self.mSceneManager.mGame:getLocations();
+	for i, location in pairs(locations) do
+		local locationImage = CCSprite:create(location:getImage());
+		self.mScrollView:addChild(locationImage);
+		setPosition(locationImage, location:getPosition());
+		-- if location is locked
+		print("isOpened ", location:isOpened());
+		if not location:isOpened() then
+			local lock = CCSprite:create("lock.png");
+			locationImage:addChild(lock);
+			setPosition(lock, Coord(0.5, 0.5, 0, 0));
+			lock:setScaleX(2);
+			lock:setScaleY(2);
+		end 
+	end
 end
 
 --------------------------------
 function ChooseLevel:initScene()
 	self.mScrollView = ScrollView:create();
-	self.mScrollView:init(CCSizeMake(3, 1), {LOADSCEENIMAGE, LOADSCEENIMAGE});
+	self.mScrollView:init(CCSizeMake(2.5, 1), {LOADSCEENIMAGE, LOADSCEENIMAGE, LOADSCEENIMAGE, LOADSCEENIMAGE});
 	self.mSceneGame:addChild(self.mScrollView.mScroll);
+
+	self:createLocationImages();
 
 	--parallax
 	local parallax = CCParallaxNode:create();
@@ -39,7 +57,6 @@ function ChooseLevel:initScene()
 		position = position + delta;
 	end
 
-	self:createLocationImages();
 end
 
 --------------------------------

@@ -17,7 +17,7 @@ function ScrollView:init(sizeScale, images)
 	self.mScroll = CCScrollView:create(CCSizeMake(visibleSize.width, visibleSize.height), scrollviewlayer);
 	self.mScroll:setBounceable(false);
 	self.mScroll:setZoomScale(3.0, false);
-
+	
 	local textureOffset = 0;
 	-- add images to view scroll
 	for i, imageName in ipairs(images) do

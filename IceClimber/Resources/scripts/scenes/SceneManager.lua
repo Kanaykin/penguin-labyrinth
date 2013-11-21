@@ -9,10 +9,8 @@ The game contain three base scenes: start, choosing level and level
 --]]
 SceneManager =  inheritsFrom(nil)
 SceneManager.mScenes = {};
---SceneManager.mLoadingScene = nil; -- loading screen
---SceneManager.mStartScene = nil; -- start scene
---SceneManager.mChooseLevelScene = nil; -- scene for choosing of level
 SceneManager.mCurrentSceneId = nil; -- current scene
+SceneManager.mGame = nil;
 
 ---------------------------------
 function SceneManager:addLevel(scene)
@@ -62,7 +60,9 @@ function SceneManager:tick(dt)
 end
 
 ---------------------------------
-function SceneManager:init()
+function SceneManager:init(game)
+	self.mGame = game;
+
 	-- loading scene initialize
 	self.mScenes[0] = LoadingScene:create();
 	
