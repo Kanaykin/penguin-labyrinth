@@ -112,13 +112,19 @@
 		A569832B181974F600738775 /* BaseScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5698327181974F600738775 /* BaseScene.lua */; };
 		A569832C181974F600738775 /* StartScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5698328181974F600738775 /* StartScene.lua */; };
 		A5698331181AC6A300738775 /* farm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5698330181AC6A300738775 /* farm.jpg */; };
+		A57158DC18487B5100945721 /* Dialog.lua in Resources */ = {isa = PBXBuildFile; fileRef = A57158DB18487B5100945721 /* Dialog.lua */; };
+		A57158E0184A18F300945721 /* status_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158DF184A18F300945721 /* status_frame.png */; };
+		A57158E3184A1D5400945721 /* close_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158E1184A1D5400945721 /* close_button_pressed.png */; };
+		A57158E4184A1D5400945721 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158E2184A1D5400945721 /* close_button.png */; };
+		A57158E7184B67ED00945721 /* ChooseLevel.lua in Resources */ = {isa = PBXBuildFile; fileRef = A57158E6184B67ED00945721 /* ChooseLevel.lua */; };
+		A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A58924791818521F005765D2 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = A58924781818521F005765D2 /* main.lua */; };
 		A5C274EC181EA96D00412432 /* Game.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274EB181EA96D00412432 /* Game.lua */; };
 		A5C274F1181FF57100412432 /* land.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C274F0181FF57100412432 /* land.png */; };
 		A5C274F7182040C100412432 /* menu1.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C274F6182040C100412432 /* menu1.png */; };
 		A5C274F9182040FD00412432 /* menu2.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C274F8182040FD00412432 /* menu2.png */; };
-		A5C274FB1820CA9B00412432 /* ChooseLevel.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274FA1820CA9B00412432 /* ChooseLevel.lua */; };
+		A5C274FB1820CA9B00412432 /* ChooseLocation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274FA1820CA9B00412432 /* ChooseLocation.lua */; };
 		A5C274FF1821012B00412432 /* Loading.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C274FD1821012B00412432 /* Loading.png */; };
 		A5C275001821012B00412432 /* StartScene.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C274FE1821012B00412432 /* StartScene.png */; };
 		A5C275081822E2CB00412432 /* choseLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C275071822E2CB00412432 /* choseLevel.png */; };
@@ -343,6 +349,12 @@
 		A5698327181974F600738775 /* BaseScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaseScene.lua; sourceTree = "<group>"; };
 		A5698328181974F600738775 /* StartScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StartScene.lua; sourceTree = "<group>"; };
 		A5698330181AC6A300738775 /* farm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = farm.jpg; sourceTree = "<group>"; };
+		A57158DB18487B5100945721 /* Dialog.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dialog.lua; sourceTree = "<group>"; };
+		A57158DF184A18F300945721 /* status_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_frame.png; sourceTree = "<group>"; };
+		A57158E1184A1D5400945721 /* close_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button_pressed.png; sourceTree = "<group>"; };
+		A57158E2184A1D5400945721 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
+		A57158E6184B67ED00945721 /* ChooseLevel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLevel.lua; sourceTree = "<group>"; };
+		A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg; sourceTree = "<group>"; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A58924781818521F005765D2 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
@@ -350,7 +362,7 @@
 		A5C274F0181FF57100412432 /* land.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = land.png; sourceTree = "<group>"; };
 		A5C274F6182040C100412432 /* menu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu1.png; sourceTree = "<group>"; };
 		A5C274F8182040FD00412432 /* menu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu2.png; sourceTree = "<group>"; };
-		A5C274FA1820CA9B00412432 /* ChooseLevel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLevel.lua; sourceTree = "<group>"; };
+		A5C274FA1820CA9B00412432 /* ChooseLocation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLocation.lua; sourceTree = "<group>"; };
 		A5C274FD1821012B00412432 /* Loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Loading.png; sourceTree = "<group>"; };
 		A5C274FE1821012B00412432 /* StartScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartScene.png; sourceTree = "<group>"; };
 		A5C275071822E2CB00412432 /* choseLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choseLevel.png; sourceTree = "<group>"; };
@@ -736,6 +748,7 @@
 		A555193F182EB2E30033BB45 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				A57158DB18487B5100945721 /* Dialog.lua */,
 				A5551940182EB2E30033BB45 /* ScrollView.lua */,
 			);
 			path = gui;
@@ -833,9 +846,10 @@
 		A5698325181974F600738775 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A57158E6184B67ED00945721 /* ChooseLevel.lua */,
 				A5129F6E183DCC16004B5DBF /* Location.lua */,
 				A5129F611839DAA3004B5DBF /* GameConfigs.lua */,
-				A5C274FA1820CA9B00412432 /* ChooseLevel.lua */,
+				A5C274FA1820CA9B00412432 /* ChooseLocation.lua */,
 				A5DDF211181AF6850031AE92 /* LoadingScene.lua */,
 				A5698326181974F600738775 /* SceneManager.lua */,
 				A5698327181974F600738775 /* BaseScene.lua */,
@@ -847,6 +861,10 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */,
+				A57158E1184A1D5400945721 /* close_button_pressed.png */,
+				A57158E2184A1D5400945721 /* close_button.png */,
+				A57158DF184A18F300945721 /* status_frame.png */,
 				A5129F73183E7BD5004B5DBF /* lock.png */,
 				A5129F631839DB68004B5DBF /* earth.png */,
 				A5129F641839DB68004B5DBF /* mars.png */,
@@ -991,11 +1009,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57158E4184A1D5400945721 /* close_button.png in Resources */,
 				A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */,
 				A5C274FF1821012B00412432 /* Loading.png in Resources */,
 				A5C275081822E2CB00412432 /* choseLevel.png in Resources */,
 				A569832B181974F600738775 /* BaseScene.lua in Resources */,
 				A5129F74183E7BD5004B5DBF /* lock.png in Resources */,
+				A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */,
 				A5C274EC181EA96D00412432 /* Game.lua in Resources */,
 				A5129F671839DB68004B5DBF /* earth.png in Resources */,
 				A5C274F1181FF57100412432 /* land.png in Resources */,
@@ -1009,8 +1029,9 @@
 				A55519461832A8B20033BB45 /* grass.png in Resources */,
 				A5129F6F183DCC16004B5DBF /* Location.lua in Resources */,
 				A5C275001821012B00412432 /* StartScene.png in Resources */,
+				A57158E7184B67ED00945721 /* ChooseLevel.lua in Resources */,
 				A5C2750C18238D0300412432 /* back_normal.png in Resources */,
-				A5C274FB1820CA9B00412432 /* ChooseLevel.lua in Resources */,
+				A5C274FB1820CA9B00412432 /* ChooseLocation.lua in Resources */,
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5C274F9182040FD00412432 /* menu2.png in Resources */,
 				A5129F5F1838D337004B5DBF /* cloud1.png in Resources */,
@@ -1018,11 +1039,14 @@
 				A5129F621839DAA3004B5DBF /* GameConfigs.lua in Resources */,
 				A56023631811C384005719B1 /* InfoPlist.strings in Resources */,
 				A569832A181974F600738775 /* SceneManager.lua in Resources */,
+				A57158DC18487B5100945721 /* Dialog.lua in Resources */,
+				A57158E3184A1D5400945721 /* close_button_pressed.png in Resources */,
 				A5129F6A1839DB68004B5DBF /* venus.png in Resources */,
 				A560236B1811C384005719B1 /* Images.xcassets in Resources */,
 				A569832C181974F600738775 /* StartScene.lua in Resources */,
 				A5129F681839DB68004B5DBF /* mars.png in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
+				A57158E0184A18F300945721 /* status_frame.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

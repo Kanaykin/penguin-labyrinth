@@ -1,6 +1,7 @@
 require "BaseScene"
 require "LoadingScene"
 require "StartScene"
+require "ChooseLocation"
 require "ChooseLevel"
 
 --[[
@@ -11,6 +12,13 @@ SceneManager =  inheritsFrom(nil)
 SceneManager.mScenes = {};
 SceneManager.mCurrentSceneId = nil; -- current scene
 SceneManager.mGame = nil;
+
+SCENE_TYPE_ID = {
+	LOADING_SCENE = 0;
+	START_SCENE = 1;
+	CHOOSE_LOCATION = 2;
+	CHOOSE_LEVEL = 3;
+};
 
 ---------------------------------
 function SceneManager:addLevel(scene)
@@ -25,6 +33,7 @@ end
 function SceneManager:runPrevScene()
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
+		CCDirector:sharedDirector():popScene();
 	end
 	
 	self.mCurrentSceneId = self.mCurrentSceneId - 1;
@@ -40,6 +49,7 @@ end
 function SceneManager:runNextScene()
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
+		CCDirector:sharedDirector():popScene();
 	end
 	
 	if self.mCurrentSceneId == nil then
@@ -48,6 +58,7 @@ function SceneManager:runNextScene()
 		self.mCurrentSceneId = self.mCurrentSceneId + 1;
 	end
 
+	print("mCurrentSceneId ", self.mCurrentSceneId);
 	self:getCurrentScene():init(self);
 	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
 end
@@ -63,14 +74,22 @@ end
 function SceneManager:init(game)
 	self.mGame = game;
 
+	-- add fake scene
+	local fakeScene = CCScene:create();
+	CCDirector:sharedDirector():pushScene(fakeScene);
+
 	-- loading scene initialize
-	self.mScenes[0] = LoadingScene:create();
+	self.mScenes[SCENE_TYPE_ID.LOADING_SCENE] = LoadingScene:create();
 	
 	-- start scene initialize
-	self.mScenes[1] = StartScene:create();
+	self.mScenes[SCENE_TYPE_ID.START_SCENE] = StartScene:create();
 	
-	-- choosing level scene initialize
-	self.mScenes[2] = ChooseLevel:create();
+	-- choice location scene initialize
+	self.mScenes[SCENE_TYPE_ID.CHOOSE_LOCATION] = ChooseLocation:create();
+
+	-- choice level scene initialize
+	self.mScenes[SCENE_TYPE_ID.CHOOSE_LEVEL] = ChooseLevel:create();
+
 	
 	self:runNextScene();
 end

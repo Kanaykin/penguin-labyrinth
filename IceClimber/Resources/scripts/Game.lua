@@ -26,7 +26,7 @@ end
 function Game:createLocation()
 	for i, location in ipairs(gLocations) do
 		local locat = Location:create();
-		locat:init(location);
+		locat:init(location, self);
 		self.mLocations[location.id] = locat;
 	end
 end

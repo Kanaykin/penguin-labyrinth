@@ -1,62 +1,22 @@
 require "BaseScene"
-require "ScrollView"
-require "AlignmentHelper"
-require "GameConfigs"
 
-local LOADSCEENIMAGE = "choseLevel.png"
-
---[[
-start scene - loading screen
-]]
 ChooseLevel = inheritsFrom(BaseScene)
-ChooseLevel.mScrollView = nil;
 
 --------------------------------
-function ChooseLevel:createLocationImages()
-	local locations = self.mSceneManager.mGame:getLocations();
-	for i, location in pairs(locations) do
-		local locationImage = CCSprite:create(location:getImage());
-		self.mScrollView:addChild(locationImage);
-		setPosition(locationImage, location:getPosition());
-		-- if location is locked
-		print("isOpened ", location:isOpened());
-		if not location:isOpened() then
-			local lock = CCSprite:create("lock.png");
-			locationImage:addChild(lock);
-			setPosition(lock, Coord(0.5, 0.5, 0, 0));
-			lock:setScaleX(2);
-			lock:setScaleY(2);
-		end 
-	end
+function ChooseLevel:init(sceneMan)
+	print("ChooseLevel:init ");
+	self:superClass().init(self, sceneMan, "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg");
+
+	self:initGui();
+
+	self:initScene();
 end
 
 --------------------------------
 function ChooseLevel:initScene()
-	self.mScrollView = ScrollView:create();
-	self.mScrollView:init(CCSizeMake(2.5, 1), {LOADSCEENIMAGE, LOADSCEENIMAGE, LOADSCEENIMAGE, LOADSCEENIMAGE});
-	self.mSceneGame:addChild(self.mScrollView.mScroll);
-
-	self:createLocationImages();
-
-	--parallax
-	local parallax = CCParallaxNode:create();
-	self.mScrollView:addChild(parallax);
-
-	local count = 5;
-	local delta = 2 / (count + 1);
-	local position = 0;
-	for i=1,count do
-		-- grass images
-		local pos = Coord(position, 0, 50, 50);
-		local grass = CCSprite:create("grass.png");
-		parallax:addChild(grass, 1, CCPointMake(0.4, 1.0), getPosition(grass, pos));
-		-- cloud images
-		local posCloud = Coord(position, 0.8, 50, 50);
-		local cloud = CCSprite:create("cloud1.png");
-		parallax:addChild(cloud, 1, CCPointMake(0.4, 1.0), getPosition(cloud, posCloud));
-		position = position + delta;
-	end
-
+	local reader = CCBReader:new();
+	local node = reader:load("ChoiceLevel");
+	print("ChooseLevel:initScene ", node);
 end
 
 --------------------------------
@@ -82,15 +42,4 @@ function ChooseLevel:initGui()
     local menuTools = CCMenu:createWithItem(menuToolsItem);
     
     self.mLayerMenu:addChild(menuTools);
-end
-
---------------------------------
-function ChooseLevel:init(sceneMan)
-	self:superClass().init(self, sceneMan, nil);
-
-	-- init scene
-	self:initScene();
-
-	-- init gui
-	self:initGui();
 end
