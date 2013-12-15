@@ -7,24 +7,42 @@ function ChooseLevel:init(sceneMan)
 	print("ChooseLevel:init ");
 	self:superClass().init(self, sceneMan, "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg");
 
-	self:initGui();
-
 	self:initScene();
+
+	self:initGui();
 end
 
 --------------------------------
 function ChooseLevel:initScene()
-	local reader = CCBReader:new();
-	local node = reader:load("ChoiceLevel");
-	print("ChooseLevel:initScene ", node);
+	local ccpproxy = CCBProxy:create();
+	local reader = ccpproxy:createCCBReader();
+	local node = ccpproxy:readCCBFromFile("MainScene", reader, false);
+
+	local child = node:getChildByTag(2);
+	print("child ", child);
+
+	local animator = reader:getAnimationManager();
+	for i = 1,4 do
+		local nameFrame = "0:frame"..i;
+		local function temp(val1)
+			print("print ", val1);
+		end
+		local callFunc = CCCallFunc:create(temp);
+		animator:setCallFuncForLuaCallbackNamed(callFunc, nameFrame);
+	end
+	if animator ~= nil then
+		--animator:runAnimationsForSequenceNamed("Default Timeline");
+	end 
+	child:stopAllActions();
+	print("ChooseLevel:initScene ", node:getUserObject());
+	self.mSceneGame:addChild(node);
 end
 
 --------------------------------
 function ChooseLevel:initGui()
 	local visibleSize = CCDirector:sharedDirector():getVisibleSize();
     
-    self.mLayerMenu = CCLayer:create();
-	self.mSceneGame:addChild(self.mLayerMenu);
+    self:createGuiLayer();
 
 	-- play button
 	local menuToolsItem = CCMenuItemImage:create("back_normal.png", "back_pressed.png");
@@ -41,5 +59,5 @@ function ChooseLevel:initGui()
 
     local menuTools = CCMenu:createWithItem(menuToolsItem);
     
-    self.mLayerMenu:addChild(menuTools);
+    self.mGuiLayer:addChild(menuTools);
 end

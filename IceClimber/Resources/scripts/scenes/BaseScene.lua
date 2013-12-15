@@ -2,8 +2,35 @@ require "Inheritance"
 
 BaseScene = inheritsFrom(nil)
 BaseScene.mSceneGame = nil -- cocos csene
-BaseScene.mSceneLayer = nil -- cocos scene layer
+
+BaseScene.mBackgroundLayer = nil -- background scene layer
+BaseScene.mGameObjectLayer = nil -- game object scene layer
+BaseScene.mGuiLayer = nil -- gui scene layer
+
 BaseScene.mSceneManager = nil -- parent of scene
+local LAYER_ORDER = {
+	BACKGROUND = 0,
+	ANIMATION = 1,
+	MENU = 2	
+};
+
+---------------------------------
+function BaseScene:createBackgroundLayer()
+	self.mBackgroundLayer = CCLayer:create();
+	self.mSceneGame:addChild(self.mBackgroundLayer, LAYER_ORDER.BACKGROUND);
+end
+
+---------------------------------
+function BaseScene:createGameObjectLayer()
+	self.mGameObjectLayer = CCLayer:create();
+	self.mSceneGame:addChild(self.mGameObjectLayer, LAYER_ORDER.ANIMATION);
+end
+
+---------------------------------
+function BaseScene:createGuiLayer()
+	self.mGuiLayer = CCLayer:create();
+	self.mSceneGame:addChild(self.mGuiLayer, LAYER_ORDER.MENU);
+end
 
 ---------------------------------
 function BaseScene:destroy()
@@ -18,9 +45,8 @@ function BaseScene:init(sceneMan, backgroundImageName)
 	self.mSceneGame = CCScene:create();
 	self.mSceneGame:retain();
 
-	self.mSceneLayer = CCLayer:create();
-	self.mSceneGame:addChild(self.mSceneLayer);
-
+	self:createBackgroundLayer();
+	
 	if backgroundImageName ~= nil then
 		local visibleSize = CCDirector:sharedDirector():getVisibleSize();
     
@@ -31,7 +57,7 @@ function BaseScene:init(sceneMan, backgroundImageName)
 		bg:setScaleY(visibleSize.height / imageSize.height);
 
 		if bg ~= nil then
-			self.mSceneLayer:addChild(bg);
+			self.mBackgroundLayer:addChild(bg);
 		end
 	end
 

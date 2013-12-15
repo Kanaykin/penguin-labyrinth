@@ -71,8 +71,7 @@ end
 function ChooseLocation:initGui()
 	local visibleSize = CCDirector:sharedDirector():getVisibleSize();
     
-    self.mLayerMenu = CCLayer:create();
-	self.mSceneGame:addChild(self.mLayerMenu);
+    self:createGuiLayer();
 
 	-- play button
 	local menuToolsItem = CCMenuItemImage:create("back_normal.png", "back_pressed.png");
@@ -89,7 +88,7 @@ function ChooseLocation:initGui()
 
     local menuTools = CCMenu:createWithItem(menuToolsItem);
     
-    self.mLayerMenu:addChild(menuTools);
+    self.mGuiLayer:addChild(menuTools);
 end
 
 --------------------------------

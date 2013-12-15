@@ -5,7 +5,6 @@ local LOADSCEENIMAGE = "StartScene.png"
 start scene - loading screen
 --]]
 StartScene = inheritsFrom(BaseScene)
-StartScene.mLayerMenu = nil; 
 
 --------------------------------
 function StartScene:init(sceneMan)
@@ -18,8 +17,8 @@ end
 
 --------------------------------
 function StartScene:createMenuElements()
-	self.mLayerMenu = CCLayer:create();
-	self.mSceneGame:addChild(self.mLayerMenu);
+	
+	self:createGuiLayer();
 
 	-- play button
 	local menuToolsItem = CCMenuItemImage:create("menu1.png", "menu2.png");
@@ -35,7 +34,7 @@ function StartScene:createMenuElements()
     menuToolsItem:registerScriptTapHandler(onPlayGamePressed);
     local menuTools = CCMenu:createWithItem(menuToolsItem);
     
-    self.mLayerMenu:addChild(menuTools);
+    self.mGuiLayer:addChild(menuTools);
 end
 
 ---------------------------------
