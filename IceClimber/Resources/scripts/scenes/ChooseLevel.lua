@@ -19,22 +19,42 @@ function ChooseLevel:initScene()
 	local node = ccpproxy:readCCBFromFile("MainScene", reader, false);
 
 	local child = node:getChildByTag(2);
-	print("child ", child);
+	--tolua.cast(child:getUserData(), "CCBAnimationManager"):runAnimationsForSequenceNamed("StarAnim");
 
 	local animator = reader:getAnimationManager();
-	for i = 1,4 do
+	local arrayAnimator = reader:getAnimationManagersForNodes();
+	arrayAnimator:retain();
+
+	print("array ", arrayAnimator:count());
+
+	for i = 1,6 do
 		local nameFrame = "0:frame"..i;
-		local function temp(val1)
-			print("print ", val1);
+
+		self.count = 0;
+		local scene = self;
+		--------------------------------------
+		local function temp()
+			print("temp ", arrayAnimator)
+			tolua.cast(arrayAnimator:objectAtIndex(scene.count), "CCBAnimationManager"):runAnimationsForSequenceNamed("StarAnim");
+
+			scene.count = scene.count + 1;
 		end
+		--------------------------------------
+
 		local callFunc = CCCallFunc:create(temp);
 		animator:setCallFuncForLuaCallbackNamed(callFunc, nameFrame);
 	end
-	if animator ~= nil then
-		--animator:runAnimationsForSequenceNamed("Default Timeline");
-	end 
-	child:stopAllActions();
-	print("ChooseLevel:initScene ", node:getUserObject());
+
+	--------------------------------------
+	local function finish()
+		print("finish ")
+	end
+	--------------------------------------
+	local callFinishFunc = CCCallFunc:create(finish);
+	animator:setCallFuncForLuaCallbackNamed(callFinishFunc, "0:finish");
+
+	animator:runAnimationsForSequenceNamed("Default Timeline");
+
 	self.mSceneGame:addChild(node);
 end
 
