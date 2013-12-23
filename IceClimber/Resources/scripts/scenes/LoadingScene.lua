@@ -15,8 +15,8 @@ function LoadingScene:destroy()
 end
 
 --------------------------------
-function LoadingScene:init(sceneMan)
-	self:superClass().init(self, sceneMan, LOADSCEENIMAGE);
+function LoadingScene:init(sceneMan, params)
+	self:superClass().init(self, sceneMan, {background = LOADSCEENIMAGE});
 	print("LoadingScene:init");
 
 	local LoadingScene = self;

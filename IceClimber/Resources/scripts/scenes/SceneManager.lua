@@ -30,7 +30,7 @@ function SceneManager:getCurrentScene()
 end
 
 ---------------------------------
-function SceneManager:runPrevScene()
+function SceneManager:runPrevScene(params)
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
 		CCDirector:sharedDirector():popScene();
@@ -46,7 +46,7 @@ function SceneManager:runPrevScene()
 end
 
 ---------------------------------
-function SceneManager:runNextScene()
+function SceneManager:runNextScene(params)
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
 		CCDirector:sharedDirector():popScene();

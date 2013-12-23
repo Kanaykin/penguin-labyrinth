@@ -7,8 +7,8 @@ start scene - loading screen
 StartScene = inheritsFrom(BaseScene)
 
 --------------------------------
-function StartScene:init(sceneMan)
-	self:superClass().init(self, sceneMan, LOADSCEENIMAGE);
+function StartScene:init(sceneMan, params)
+	self:superClass().init(self, sceneMan, {background = LOADSCEENIMAGE});
 	print("StartScene:init");
 
 	-- create menu elements

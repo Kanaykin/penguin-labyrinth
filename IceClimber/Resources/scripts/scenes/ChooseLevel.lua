@@ -1,11 +1,12 @@
 require "BaseScene"
 
 ChooseLevel = inheritsFrom(BaseScene)
+local LOADSCEENIMAGE = "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg"
 
 --------------------------------
-function ChooseLevel:init(sceneMan)
+function ChooseLevel:init(sceneMan, params)
 	print("ChooseLevel:init ");
-	self:superClass().init(self, sceneMan, "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg");
+	self:superClass().init(self, sceneMan, {background = LOADSCEENIMAGE});
 
 	self:initScene();
 
@@ -19,6 +20,12 @@ function ChooseLevel:initScene()
 	local node = ccpproxy:readCCBFromFile("MainScene", reader, false);
 
 	local child = node:getChildByTag(2);
+	local star = child:getChildByTag(23);
+	local star2 = child:getChildByTag(22);
+	local dummy = child:getChildByTag(100);
+	if star ~= nil then
+		--child:removeChild(star, false);
+	end
 	--tolua.cast(child:getUserData(), "CCBAnimationManager"):runAnimationsForSequenceNamed("StarAnim");
 
 	local animator = reader:getAnimationManager();
@@ -35,7 +42,15 @@ function ChooseLevel:initScene()
 		--------------------------------------
 		local function temp()
 			print("temp ", arrayAnimator)
-			tolua.cast(arrayAnimator:objectAtIndex(scene.count), "CCBAnimationManager"):runAnimationsForSequenceNamed("StarAnim");
+			local animManager = tolua.cast(arrayAnimator:objectAtIndex(scene.count), "CCBAnimationManager");
+			animManager:runAnimationsForSequenceNamed("StarAnim");
+			if scene.count == 1 then
+				animManager:moveAnimationsFromNode(star, dummy);
+				animManager:moveAnimationsFromNode(star2, dummy);
+				child:removeChild(star, false);
+				child:removeChild(star2, false);
+				--tolua.cast(arrayAnimator:objectAtIndex(scene.count - 1), "CCBAnimationManager"):runAnimationsForSequenceNamed("OneStar");
+			end
 
 			scene.count = scene.count + 1;
 		end

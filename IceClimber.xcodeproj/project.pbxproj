@@ -19,6 +19,7 @@
 		A5129F6A1839DB68004B5DBF /* venus.png in Resources */ = {isa = PBXBuildFile; fileRef = A5129F661839DB68004B5DBF /* venus.png */; };
 		A5129F6F183DCC16004B5DBF /* Location.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5129F6E183DCC16004B5DBF /* Location.lua */; };
 		A5129F74183E7BD5004B5DBF /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = A5129F73183E7BD5004B5DBF /* lock.png */; };
+		A52E9AB31867FE9200022188 /* Level.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52E9AB21867FE9200022188 /* Level.lua */; };
 		A5404C40181435DD004A027E /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404C3D181434E9004A027E /* libcocos2dx.a */; };
 		A5404C4618146175004A027E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5404C4518146175004A027E /* RootViewController.mm */; };
 		A5404C6E1816FC81004A027E /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5404C541816FC81004A027E /* CCBProxy.cpp */; };
@@ -126,6 +127,7 @@
 		A57158E4184A1D5400945721 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158E2184A1D5400945721 /* close_button.png */; };
 		A57158E7184B67ED00945721 /* ChooseLevel.lua in Resources */ = {isa = PBXBuildFile; fileRef = A57158E6184B67ED00945721 /* ChooseLevel.lua */; };
 		A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */; };
+		A577732E1862BC83004FEEA6 /* star_gold_ipad_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A58924791818521F005765D2 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = A58924781818521F005765D2 /* main.lua */; };
 		A5C274EC181EA96D00412432 /* Game.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274EB181EA96D00412432 /* Game.lua */; };
@@ -178,6 +180,7 @@
 		A5129F661839DB68004B5DBF /* venus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venus.png; sourceTree = "<group>"; };
 		A5129F6E183DCC16004B5DBF /* Location.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Location.lua; sourceTree = "<group>"; };
 		A5129F73183E7BD5004B5DBF /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		A52E9AB21867FE9200022188 /* Level.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Level.lua; sourceTree = "<group>"; };
 		A5404C38181434E9004A027E /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		A5404C4418146175004A027E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A5404C4518146175004A027E /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
@@ -371,6 +374,7 @@
 		A57158E2184A1D5400945721 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
 		A57158E6184B67ED00945721 /* ChooseLevel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLevel.lua; sourceTree = "<group>"; };
 		A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg; sourceTree = "<group>"; };
+		A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_gold_ipad_2.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/star_gold_ipad_2.png"; sourceTree = SOURCE_ROOT; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A58924781818521F005765D2 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
@@ -862,6 +866,7 @@
 		A5698325181974F600738775 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A52E9AB21867FE9200022188 /* Level.lua */,
 				A57158E6184B67ED00945721 /* ChooseLevel.lua */,
 				A5129F6E183DCC16004B5DBF /* Location.lua */,
 				A5129F611839DAA3004B5DBF /* GameConfigs.lua */,
@@ -877,6 +882,7 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */,
 				A568E005185C305F00C928E7 /* 2.png */,
 				A568E006185C305F00C928E7 /* 3.png */,
 				A568E003185C303600C928E7 /* star_blue_ipad_2.png */,
@@ -1033,6 +1039,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A577732E1862BC83004FEEA6 /* star_gold_ipad_2.png in Resources */,
 				A57158E4184A1D5400945721 /* close_button.png in Resources */,
 				A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */,
 				A5C274FF1821012B00412432 /* Loading.png in Resources */,
@@ -1065,6 +1072,7 @@
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5C274F9182040FD00412432 /* menu2.png in Resources */,
 				A5129F5F1838D337004B5DBF /* cloud1.png in Resources */,
+				A52E9AB31867FE9200022188 /* Level.lua in Resources */,
 				A55519481832B20A0033BB45 /* AlignmentHelper.lua in Resources */,
 				A5129F621839DAA3004B5DBF /* GameConfigs.lua in Resources */,
 				A56023631811C384005719B1 /* InfoPlist.strings in Resources */,

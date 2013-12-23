@@ -39,7 +39,11 @@ function BaseScene:destroy()
 end
 
 ---------------------------------
-function BaseScene:init(sceneMan, backgroundImageName)
+function BaseScene:init(sceneMan, params)
+	local  backgroundImageName = nil;
+	if type(params) == "table" then
+		backgroundImageName = params.background;
+	end
 	print("BaseScene:init ", backgroundImageName, self.mSceneManager);
 	self.mSceneManager = sceneMan;
 	self.mSceneGame = CCScene:create();

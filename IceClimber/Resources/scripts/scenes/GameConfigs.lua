@@ -5,7 +5,10 @@ gLocations = {
 		id = "mercury",
 		image = "mercury.png",
 		position = Coord(0.15, 0.5, 0, -87),
-		opened = true
+		opened = true,
+		levels = {
+
+		}
 	},
 	{
 		id = "venus",

@@ -19,13 +19,6 @@ function ChooseLocation:createLocationImages()
 		self.mScrollView:addClickableChild(locationImage, location, "onLocationPressed");
 		setPosition(locationImage, location:getPosition());
 		
-		--------------------
-		local function onLocationPressed()
-    		print(" onLocationPressed", location:getImage());
-    	end
-
-    	--locationImage:registerScriptTapHandler(onLocationPressed);
-		
 		-- if location is locked
 		if not location:isOpened() then
 			local lock = CCSprite:create("lock.png");
@@ -92,9 +85,9 @@ function ChooseLocation:initGui()
 end
 
 --------------------------------
-function ChooseLocation:init(sceneMan)
+function ChooseLocation:init(sceneMan, params)
 	print("ChooseLocation:init ");
-	self:superClass().init(self, sceneMan, nil);
+	self:superClass().init(self, sceneMan, params);
 
 	-- init scene
 	self:initScene();
