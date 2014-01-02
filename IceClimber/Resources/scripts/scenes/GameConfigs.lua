@@ -7,7 +7,25 @@ gLocations = {
 		position = Coord(0.15, 0.5, 0, -87),
 		opened = true,
 		levels = {
+			{
+				opened = true,
+				ccbFile = "level_1_1"
+			},
+			{
 
+			},
+			{
+				opened = true
+			},
+			{
+
+			},
+			{
+
+			},
+			{
+
+			}
 		}
 	},
 	{

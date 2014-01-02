@@ -3,6 +3,7 @@ require "LoadingScene"
 require "StartScene"
 require "ChooseLocation"
 require "ChooseLevel"
+require "LevelScene"
 
 --[[
 It is class for controlling of scenes.
@@ -18,11 +19,8 @@ SCENE_TYPE_ID = {
 	START_SCENE = 1;
 	CHOOSE_LOCATION = 2;
 	CHOOSE_LEVEL = 3;
+	LEVEL = 4;
 };
-
----------------------------------
-function SceneManager:addLevel(scene)
-end
 
 ---------------------------------
 function SceneManager:getCurrentScene()
@@ -31,10 +29,7 @@ end
 
 ---------------------------------
 function SceneManager:runPrevScene(params)
-	if self:getCurrentScene() ~= nil then
-		self:getCurrentScene():destroy();
-		CCDirector:sharedDirector():popScene();
-	end
+	self:destroyCurrentScene();
 	
 	self.mCurrentSceneId = self.mCurrentSceneId - 1;
 	if self.mCurrentSceneId <= 0 then
@@ -46,12 +41,17 @@ function SceneManager:runPrevScene(params)
 end
 
 ---------------------------------
-function SceneManager:runNextScene(params)
+function SceneManager:destroyCurrentScene()
 	if self:getCurrentScene() ~= nil then
 		self:getCurrentScene():destroy();
 		CCDirector:sharedDirector():popScene();
 	end
-	
+end
+
+---------------------------------
+function SceneManager:runNextScene(params)
+	self:destroyCurrentScene();
+
 	if self.mCurrentSceneId == nil then
 		self.mCurrentSceneId = 0;
 	else
@@ -59,7 +59,17 @@ function SceneManager:runNextScene(params)
 	end
 
 	print("mCurrentSceneId ", self.mCurrentSceneId);
-	self:getCurrentScene():init(self);
+	self:getCurrentScene():init(self, params);
+	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
+end
+
+---------------------------------
+function SceneManager:runLevelScene(params)
+	self:destroyCurrentScene();
+	self.mScenes[SCENE_TYPE_ID.LEVEL] = LevelScene:create();
+
+	self.mCurrentSceneId = SCENE_TYPE_ID.LEVEL;
+	self:getCurrentScene():init(self, params);
 	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
 end
 

@@ -100,8 +100,16 @@
 							<real>2</real>
 							<real>2</real>
 							<false/>
-							<integer>1</integer>
+							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -112,6 +120,8 @@
 						<string>LevelIcon.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -169,7 +179,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -270,7 +280,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -296,6 +306,14 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>3</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -363,7 +381,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -389,6 +407,14 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>4</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -456,7 +482,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -482,6 +508,14 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>5</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -549,7 +583,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -575,6 +609,14 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>6</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -666,8 +708,6 @@
 				<true/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -807,22 +847,6 @@
 							<integer>0</integer>
 						</array>
 					</dict>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>1.7000000476837158</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>finish</string>
-							<integer>0</integer>
-						</array>
-					</dict>
 				</array>
 				<key>type</key>
 				<integer>10</integer>
@@ -836,7 +860,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.7000000476837158</real>
+			<real>0.26666668057441711</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

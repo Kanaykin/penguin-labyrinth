@@ -1,11 +1,13 @@
 require "BaseScene"
 
 ChooseLevel = inheritsFrom(BaseScene)
+ChooseLevel.mCurLocation = nil;
 local LOADSCEENIMAGE = "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg"
 
 --------------------------------
 function ChooseLevel:init(sceneMan, params)
-	print("ChooseLevel:init ");
+	print("ChooseLevel:init ", params.location);
+	self.mCurLocation = params.location;
 	self:superClass().init(self, sceneMan, {background = LOADSCEENIMAGE});
 
 	self:initScene();
@@ -19,54 +21,19 @@ function ChooseLevel:initScene()
 	local reader = ccpproxy:createCCBReader();
 	local node = ccpproxy:readCCBFromFile("MainScene", reader, false);
 
-	local child = node:getChildByTag(2);
-	local star = child:getChildByTag(23);
-	local star2 = child:getChildByTag(22);
-	local dummy = child:getChildByTag(100);
-	if star ~= nil then
-		--child:removeChild(star, false);
-	end
-	--tolua.cast(child:getUserData(), "CCBAnimationManager"):runAnimationsForSequenceNamed("StarAnim");
-
 	local animator = reader:getAnimationManager();
 	local arrayAnimator = reader:getAnimationManagersForNodes();
-	arrayAnimator:retain();
+	
+	local minCount = (arrayAnimator:count() < #self.mCurLocation.mLevels) and arrayAnimator:count() or #self.mCurLocation.mLevels;
+	print("minCount ", minCount);
 
-	print("array ", arrayAnimator:count());
-
-	for i = 1,6 do
+	for i = 1, minCount do
 		local nameFrame = "0:frame"..i;
 
-		self.count = 0;
-		local scene = self;
-		--------------------------------------
-		local function temp()
-			print("temp ", arrayAnimator)
-			local animManager = tolua.cast(arrayAnimator:objectAtIndex(scene.count), "CCBAnimationManager");
-			animManager:runAnimationsForSequenceNamed("StarAnim");
-			if scene.count == 1 then
-				animManager:moveAnimationsFromNode(star, dummy);
-				animManager:moveAnimationsFromNode(star2, dummy);
-				child:removeChild(star, false);
-				child:removeChild(star2, false);
-				--tolua.cast(arrayAnimator:objectAtIndex(scene.count - 1), "CCBAnimationManager"):runAnimationsForSequenceNamed("OneStar");
-			end
-
-			scene.count = scene.count + 1;
-		end
-		--------------------------------------
-
-		local callFunc = CCCallFunc:create(temp);
-		animator:setCallFuncForLuaCallbackNamed(callFunc, nameFrame);
+		local animManager = tolua.cast(arrayAnimator:objectAtIndex(i - 1), "CCBAnimationManager");
+		local child = node:getChildByTag(i);
+		self.mCurLocation.mLevels[i]:initVisual(animator, animManager, nameFrame, child);
 	end
-
-	--------------------------------------
-	local function finish()
-		print("finish ")
-	end
-	--------------------------------------
-	local callFinishFunc = CCCallFunc:create(finish);
-	animator:setCallFuncForLuaCallbackNamed(callFinishFunc, "0:finish");
 
 	animator:runAnimationsForSequenceNamed("Default Timeline");
 

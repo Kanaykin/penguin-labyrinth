@@ -1,11 +1,14 @@
 require "Inheritance"
 require "Dialog"
+require "Level"
 
 Location = inheritsFrom(nil)
 Location.mVisualNode = nil; -- image
 Location.mOpened = false;
 Location.mData = nil; -- static data of locations
-Location.mGame = nil; 
+Location.mGame = nil;
+Location.mLevels = {};
+
 
 ---------------------------------
 function Location:onLocationPressed()
@@ -15,7 +18,7 @@ function Location:onLocationPressed()
 		dlg:show(self.mGame.mSceneMan:getCurrentScene());
 	else
 		print("show levels");
-		self.mGame.mSceneMan:runNextScene();
+		self.mGame.mSceneMan:runNextScene({location = self});
 	end
 end
 
@@ -35,6 +38,17 @@ function Location:getPosition()
 end
 
 ---------------------------------
+function Location:initLevels(locationData)
+	if type(locationData.levels) == "table" then
+		for i, levelData in ipairs(locationData.levels) do
+			local level = Level:create();
+			level:init(levelData, self);
+			table.insert(self.mLevels, level);
+		end
+	end
+end
+
+---------------------------------
 function Location:init(locationData, game)
 	self.mData = locationData;
 	self.mGame = game;
@@ -42,4 +56,6 @@ function Location:init(locationData, game)
 	if(locationData.opened ~= nil ) then
 		self.mOpened = locationData.opened; 
 	end
+
+	self:initLevels(locationData);
 end
