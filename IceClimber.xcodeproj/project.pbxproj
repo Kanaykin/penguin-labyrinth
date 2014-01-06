@@ -150,6 +150,12 @@
 		A5D6960518747F0100A16505 /* joystick_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960418747F0100A16505 /* joystick_button.png */; };
 		A5D696081875835800A16505 /* Vector.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D696071875835800A16505 /* Vector.lua */; };
 		A5D6960A18760A8B00A16505 /* brick_level11.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960918760A8B00A16505 /* brick_level11.png */; };
+		A5D6960D1876BF6900A16505 /* Field.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960C1876BF6900A16505 /* Field.lua */; };
+		A5D6960F1876FB2E00A16505 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960E1876FB2E00A16505 /* spider.png */; };
+		A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961018785A7E00A16505 /* BaseObject.lua */; };
+		A5D6961318785BCE00A16505 /* MovableObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961218785BCE00A16505 /* MovableObject.lua */; };
+		A5D6961518785DC900A16505 /* MobObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961418785DC900A16505 /* MobObject.lua */; };
+		A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961718793CDA00A16505 /* WavePathFinder.lua */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
 /* End PBXBuildFile section */
 
@@ -408,6 +414,12 @@
 		A5D6960418747F0100A16505 /* joystick_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joystick_button.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/joystick_button.png"; sourceTree = SOURCE_ROOT; };
 		A5D696071875835800A16505 /* Vector.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Vector.lua; path = math/Vector.lua; sourceTree = "<group>"; };
 		A5D6960918760A8B00A16505 /* brick_level11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brick_level11.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/brick_level11.png"; sourceTree = SOURCE_ROOT; };
+		A5D6960C1876BF6900A16505 /* Field.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Field.lua; path = game_objects/Field.lua; sourceTree = "<group>"; };
+		A5D6960E1876FB2E00A16505 /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spider.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/spider.png"; sourceTree = SOURCE_ROOT; };
+		A5D6961018785A7E00A16505 /* BaseObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BaseObject.lua; path = game_objects/BaseObject.lua; sourceTree = "<group>"; };
+		A5D6961218785BCE00A16505 /* MovableObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MovableObject.lua; path = game_objects/MovableObject.lua; sourceTree = "<group>"; };
+		A5D6961418785DC900A16505 /* MobObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MobObject.lua; path = game_objects/MobObject.lua; sourceTree = "<group>"; };
+		A5D6961718793CDA00A16505 /* WavePathFinder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = WavePathFinder.lua; path = algorithms/WavePathFinder.lua; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -904,6 +916,7 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6960E1876FB2E00A16505 /* spider.png */,
 				A5D6960918760A8B00A16505 /* brick_level11.png */,
 				A5D6960418747F0100A16505 /* joystick_button.png */,
 				A5D696001874764C00A16505 /* joystick_back.png */,
@@ -967,6 +980,8 @@
 		A58924771818521F005765D2 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6961618793CB600A16505 /* algorithms */,
+				A5D6960B1876BF5200A16505 /* game_objects */,
 				A5D696061875834200A16505 /* math */,
 				A555193F182EB2E30033BB45 /* gui */,
 				A5C274EB181EA96D00412432 /* Game.lua */,
@@ -983,6 +998,25 @@
 				A5D696071875835800A16505 /* Vector.lua */,
 			);
 			name = math;
+			sourceTree = "<group>";
+		};
+		A5D6960B1876BF5200A16505 /* game_objects */ = {
+			isa = PBXGroup;
+			children = (
+				A5D6961418785DC900A16505 /* MobObject.lua */,
+				A5D6961218785BCE00A16505 /* MovableObject.lua */,
+				A5D6961018785A7E00A16505 /* BaseObject.lua */,
+				A5D6960C1876BF6900A16505 /* Field.lua */,
+			);
+			name = game_objects;
+			sourceTree = "<group>";
+		};
+		A5D6961618793CB600A16505 /* algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				A5D6961718793CDA00A16505 /* WavePathFinder.lua */,
+			);
+			name = algorithms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1081,9 +1115,11 @@
 				A5D6960518747F0100A16505 /* joystick_button.png in Resources */,
 				A57158E4184A1D5400945721 /* close_button.png in Resources */,
 				A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */,
+				A5D6960F1876FB2E00A16505 /* spider.png in Resources */,
 				A5D695FB18742E9D00A16505 /* brick.png in Resources */,
 				A5D696011874764C00A16505 /* joystick_back.png in Resources */,
 				A5C274FF1821012B00412432 /* Loading.png in Resources */,
+				A5D6961518785DC900A16505 /* MobObject.lua in Resources */,
 				A5D695F7187427C000A16505 /* LevelScene.lua in Resources */,
 				A505EC2718582A790016BAAA /* clickme.png in Resources */,
 				A540BDC4186AA545005E5552 /* lock_level.png in Resources */,
@@ -1100,6 +1136,7 @@
 				A5129F671839DB68004B5DBF /* earth.png in Resources */,
 				A5C274F1181FF57100412432 /* land.png in Resources */,
 				A5698331181AC6A300738775 /* farm.jpg in Resources */,
+				A5D6961318785BCE00A16505 /* MovableObject.lua in Resources */,
 				A5129F691839DB68004B5DBF /* mercury.png in Resources */,
 				A58924791818521F005765D2 /* main.lua in Resources */,
 				A5551941182EB2E30033BB45 /* ScrollView.lua in Resources */,
@@ -1107,6 +1144,7 @@
 				A5C274F7182040C100412432 /* menu1.png in Resources */,
 				A568E004185C303600C928E7 /* star_blue_ipad_2.png in Resources */,
 				A5698329181974F600738775 /* Inheritance.lua in Resources */,
+				A5D6960D1876BF6900A16505 /* Field.lua in Resources */,
 				A55519461832A8B20033BB45 /* grass.png in Resources */,
 				A5129F6F183DCC16004B5DBF /* Location.lua in Resources */,
 				A5C275001821012B00412432 /* StartScene.png in Resources */,
@@ -1131,7 +1169,9 @@
 				A560236B1811C384005719B1 /* Images.xcassets in Resources */,
 				A505EC1A185045990016BAAA /* MainScene.ccbi in Resources */,
 				A569832C181974F600738775 /* StartScene.lua in Resources */,
+				A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */,
 				A5129F681839DB68004B5DBF /* mars.png in Resources */,
+				A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */,
 				A568E007185C305F00C928E7 /* 2.png in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
 				A57158E0184A18F300945721 /* status_frame.png in Resources */,
