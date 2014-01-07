@@ -1,12 +1,16 @@
 require "Inheritance"
 require "Vector"
 require "MobObject"
+require "PlayerObject"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
 Field.mSize = nil;
 
 Field.MOB_TAG = 100;
+Field.PLAYER_TAG = 101;
+Field.PLAYER_TAG2 = 102;
+Field.mPlayerObjects = nil;
 
 -- #FIXME: 
 local MAX_NUMBER = math.huge;
@@ -33,6 +37,11 @@ function PRINT_FIELD(array, size)
 end
 
 --------------------------------
+function Field:getCellSize()
+	return self.mCellSize;
+end
+
+--------------------------------
 function Field:getFreePoints()
 	return self.mFreePoints;
 end
@@ -53,7 +62,7 @@ end
 
 --------------------------------
 function Field:isBrick(brick)
-	return brick:getTag() ~= Field.MOB_TAG;
+	return brick:getTag() ~= Field.MOB_TAG and brick:getTag() ~= Field.PLAYER_TAG and brick:getTag() ~= Field.PLAYER_TAG2;
 end
 
 ---------------------------------
@@ -82,21 +91,36 @@ function Field:gridPosToReal(posDest)
 end
 
 --------------------------------
+function Field:getPlayerObjects()
+	return self.mPlayerObjects;
+end
+
+--------------------------------
+function Field:isFreePoint( point )
+	return self.mArray[COORD(point.x, point.y, self.mSize.x)] == 0;
+end
+
+--------------------------------
+function Field:positionToGrid(position)
+	local leftBottom = Vector.new(position.x - self.mLeftBottom.x, position.y - self.mLeftBottom.y);
+	return math.floor(leftBottom.x / self.mCellSize) + 1, math.floor(leftBottom.y / self.mCellSize) + 1;
+end
+
+--------------------------------
 function Field:getGridPosition(node)
 	local posX, posY = node:getPosition();
 	local anchor = node:getAnchorPoint();
 	local nodeSize = node:getContentSize();
 	
 	local leftBottom = Vector.new(posX - anchor.x * nodeSize.width, posY - anchor.y * nodeSize.height);
-	leftBottom.x = leftBottom.x - self.mLeftBottom.x;
-	leftBottom.y = leftBottom.y - self.mLeftBottom.y;
-	return math.floor(leftBottom.x / self.mCellSize) + 1, math.floor(leftBottom.y / self.mCellSize) + 1;
+	return self:positionToGrid(leftBottom);
 end
 
 --------------------------------
 function Field:init(fieldNode)
 	self.mObjects = {}
 	self.mFreePoints = {};
+	self.mPlayerObjects = {};
 
 	local children = fieldNode:getChildren();
 	local count = children:count();
@@ -155,6 +179,12 @@ function Field:init(fieldNode)
 			local mob = MobOject:create();
 			mob:init(self, brick);
 			table.insert(self.mObjects, mob);
+		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER_TAG2 then
+			print("it is player");
+			local player = PlayerOject:create();
+			player:init(self, brick, brick:getTag() == Field.PLAYER_TAG2);
+			table.insert(self.mObjects, player);
+			table.insert(self.mPlayerObjects, player);
 		end
 	end
 

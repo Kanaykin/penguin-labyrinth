@@ -16,6 +16,12 @@ function LevelScene:init(sceneMan, params)
 	self:initScene();
 
 	self:initGui();
+
+	-- set joystick to players
+	local players = self.mField:getPlayerObjects();
+	for i, player in ipairs(players) do
+		player:setJoystick(self.mJoystick);
+	end
 end
 
 --------------------------------

@@ -3,6 +3,14 @@ require "Vector"
 
 Joystick = inheritsFrom(nil)
 
+Joystick.BUTTONS = {
+	LEFT = 1,
+	RIGHT = 2,
+	TOP = 3,
+	BOTTOM = 4,
+	NONE = nil	
+};
+
 Joystick.BACKGROUND_TAG = 10;
 Joystick.BUTTON_TAG = 20;
 
@@ -10,20 +18,44 @@ Joystick.mCenter = nil;
 Joystick.mRadius = nil;
 Joystick.mDestPosition = nil;
 Joystick.mButton = nil;
+Joystick.mButtonPressed = Joystick.BUTTONS.NONE;
+
+--------------------------------
+function Joystick:getButtonPressed( )
+	return self.mButtonPressed;
+end
+
+--------------------------------
+function Joystick:findButtonPressed(res)
+	if math.abs(res.x) > math.abs(res.y) then
+		if res.x > 0 then
+			self.mButtonPressed = Joystick.BUTTONS.RIGHT;
+		else
+			self.mButtonPressed = Joystick.BUTTONS.LEFT;
+		end
+	else
+		if res.y > 0 then
+			self.mButtonPressed = Joystick.BUTTONS.TOP;
+		else
+			self.mButtonPressed = Joystick.BUTTONS.BOTTOM;
+		end
+	end
+end
 
 --------------------------------
 function Joystick:onTouchHandler(action, position)
 	if action == "began" or action == "moved" then
 		local res = (position - self.mCenter):normalize() * self.mRadius;
-		print("res x ", res.x, " y ", res.y);
 		-- compute position of button
 		if (position - self.mCenter):len() > self.mRadius then
 			self.mDestPosition = res + self.mCenter;
 		else
 			self.mDestPosition = position;
 		end
+		self:findButtonPressed(res);
 	else
 		self.mDestPosition = self.mCenter;
+		self.mButtonPressed = Joystick.BUTTONS.NONE;
 	end
 	self.mButton:setPosition(self.mDestPosition.x, self.mDestPosition.y);
 end

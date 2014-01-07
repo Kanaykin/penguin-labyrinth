@@ -156,6 +156,9 @@
 		A5D6961318785BCE00A16505 /* MovableObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961218785BCE00A16505 /* MovableObject.lua */; };
 		A5D6961518785DC900A16505 /* MobObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961418785DC900A16505 /* MobObject.lua */; };
 		A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961718793CDA00A16505 /* WavePathFinder.lua */; };
+		A5D6961B187AF01200A16505 /* penguin_girl.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D69619187AF01200A16505 /* penguin_girl.png */; };
+		A5D6961C187AF01200A16505 /* penguin.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961A187AF01200A16505 /* penguin.png */; };
+		A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961D187B137300A16505 /* PlayerObject.lua */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
 /* End PBXBuildFile section */
 
@@ -420,6 +423,9 @@
 		A5D6961218785BCE00A16505 /* MovableObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MovableObject.lua; path = game_objects/MovableObject.lua; sourceTree = "<group>"; };
 		A5D6961418785DC900A16505 /* MobObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MobObject.lua; path = game_objects/MobObject.lua; sourceTree = "<group>"; };
 		A5D6961718793CDA00A16505 /* WavePathFinder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = WavePathFinder.lua; path = algorithms/WavePathFinder.lua; sourceTree = "<group>"; };
+		A5D69619187AF01200A16505 /* penguin_girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = penguin_girl.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/penguin_girl.png"; sourceTree = SOURCE_ROOT; };
+		A5D6961A187AF01200A16505 /* penguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = penguin.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/penguin.png"; sourceTree = SOURCE_ROOT; };
+		A5D6961D187B137300A16505 /* PlayerObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PlayerObject.lua; path = game_objects/PlayerObject.lua; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -916,6 +922,8 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				A5D69619187AF01200A16505 /* penguin_girl.png */,
+				A5D6961A187AF01200A16505 /* penguin.png */,
 				A5D6960E1876FB2E00A16505 /* spider.png */,
 				A5D6960918760A8B00A16505 /* brick_level11.png */,
 				A5D6960418747F0100A16505 /* joystick_button.png */,
@@ -1003,6 +1011,7 @@
 		A5D6960B1876BF5200A16505 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6961D187B137300A16505 /* PlayerObject.lua */,
 				A5D6961418785DC900A16505 /* MobObject.lua */,
 				A5D6961218785BCE00A16505 /* MovableObject.lua */,
 				A5D6961018785A7E00A16505 /* BaseObject.lua */,
@@ -1128,6 +1137,7 @@
 				A5129F74183E7BD5004B5DBF /* lock.png in Resources */,
 				A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */,
 				A5D696031874766700A16505 /* Joystick.lua in Resources */,
+				A5D6961B187AF01200A16505 /* penguin_girl.png in Resources */,
 				A505EC2918582B360016BAAA /* ccbParticleFire.png in Resources */,
 				A5C274EC181EA96D00412432 /* Game.lua in Resources */,
 				A505EC2618582A790016BAAA /* clickme-down.png in Resources */,
@@ -1158,6 +1168,7 @@
 				A5D6960A18760A8B00A16505 /* brick_level11.png in Resources */,
 				A5129F5F1838D337004B5DBF /* cloud1.png in Resources */,
 				A5D695F918742E7000A16505 /* level_1_1.ccbi in Resources */,
+				A5D6961C187AF01200A16505 /* penguin.png in Resources */,
 				A52E9AB31867FE9200022188 /* Level.lua in Resources */,
 				A55519481832B20A0033BB45 /* AlignmentHelper.lua in Resources */,
 				A5129F621839DAA3004B5DBF /* GameConfigs.lua in Resources */,
@@ -1175,6 +1186,7 @@
 				A568E007185C305F00C928E7 /* 2.png in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
 				A57158E0184A18F300945721 /* status_frame.png in Resources */,
+				A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
