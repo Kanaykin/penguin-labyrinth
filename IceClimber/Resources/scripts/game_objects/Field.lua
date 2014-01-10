@@ -30,7 +30,8 @@ function PRINT_FIELD(array, size)
 	for j = 1, size.y + 1 do
 		local raw = "";
 		for i = 1, size.x + 1 do
-			raw = raw .. array[COORD(i, j, size.x)] .. " ";
+			print("COORD ", COORD(i, j, size.x))
+			raw = raw .. tostring(array[COORD(i, j, size.x)]) .. " ";
 		end
 		print(raw);
 	end
@@ -53,10 +54,13 @@ end
 
 --------------------------------
 function Field:cloneArray()
+	PRINT_FIELD(self.mArray, self.mSize);
 	local cloneArr = {};
 	for i, val in ipairs(self.mArray) do
+		print ("i ", i, "val ", val);
 		cloneArr[i] = val;
 	end
+	PRINT_FIELD(cloneArr, self.mSize);
 	return cloneArr;
 end
 
@@ -122,12 +126,15 @@ function Field:init(fieldNode)
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
 
+	--self.mCellSize = 22 * CCBReader:getResolutionScale();
+
 	local children = fieldNode:getChildren();
 	local count = children:count();
 	print("count ", count);
 	if count == 0 then
 		return;
 	end
+	
 	-- compute size of brick
 	local firstBrick = nil;
 	local sizeBrick = nil;

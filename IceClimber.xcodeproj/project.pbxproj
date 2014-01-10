@@ -97,7 +97,6 @@
 		A5404EA518170567004A027E /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5404EA218170567004A027E /* WebSocket.cpp */; };
 		A5404EA718170612004A027E /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404EA618170612004A027E /* libcurl.a */; };
 		A5404EAD18170701004A027E /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404EAC18170701004A027E /* libwebsockets.a */; };
-		A540BDC4186AA545005E5552 /* lock_level.png in Resources */ = {isa = PBXBuildFile; fileRef = A540BDC3186AA545005E5552 /* lock_level.png */; };
 		A5551941182EB2E30033BB45 /* ScrollView.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5551940182EB2E30033BB45 /* ScrollView.lua */; };
 		A55519461832A8B20033BB45 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = A55519451832A8B20033BB45 /* grass.png */; };
 		A55519481832B20A0033BB45 /* AlignmentHelper.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55519471832B20A0033BB45 /* AlignmentHelper.lua */; };
@@ -114,9 +113,6 @@
 		A560237C1811C384005719B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A560237A1811C384005719B1 /* InfoPlist.strings */; };
 		A560237E1811C384005719B1 /* IceClimberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A560237D1811C384005719B1 /* IceClimberTests.m */; };
 		A568DFFD185B80C100C928E7 /* LevelIcon.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A568DFFC185B80C100C928E7 /* LevelIcon.ccbi */; };
-		A568E004185C303600C928E7 /* star_blue_ipad_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A568E003185C303600C928E7 /* star_blue_ipad_2.png */; };
-		A568E007185C305F00C928E7 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A568E005185C305F00C928E7 /* 2.png */; };
-		A568E008185C305F00C928E7 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = A568E006185C305F00C928E7 /* 3.png */; };
 		A5698329181974F600738775 /* Inheritance.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5698324181974F600738775 /* Inheritance.lua */; };
 		A569832A181974F600738775 /* SceneManager.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5698326181974F600738775 /* SceneManager.lua */; };
 		A569832B181974F600738775 /* BaseScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5698327181974F600738775 /* BaseScene.lua */; };
@@ -128,7 +124,6 @@
 		A57158E4184A1D5400945721 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158E2184A1D5400945721 /* close_button.png */; };
 		A57158E7184B67ED00945721 /* ChooseLevel.lua in Resources */ = {isa = PBXBuildFile; fileRef = A57158E6184B67ED00945721 /* ChooseLevel.lua */; };
 		A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */; };
-		A577732E1862BC83004FEEA6 /* star_gold_ipad_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A58924791818521F005765D2 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = A58924781818521F005765D2 /* main.lua */; };
 		A5C274EC181EA96D00412432 /* Game.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274EB181EA96D00412432 /* Game.lua */; };
@@ -143,22 +138,17 @@
 		A5C2750D18238D0300412432 /* back_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C2750B18238D0300412432 /* back_pressed.png */; };
 		A5D695F7187427C000A16505 /* LevelScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D695F6187427C000A16505 /* LevelScene.lua */; };
 		A5D695F918742E7000A16505 /* level_1_1.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5D695F818742E7000A16505 /* level_1_1.ccbi */; };
-		A5D695FB18742E9D00A16505 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D695FA18742E9D00A16505 /* brick.png */; };
 		A5D695FF1874762B00A16505 /* joystick.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5D695FE1874762B00A16505 /* joystick.ccbi */; };
-		A5D696011874764C00A16505 /* joystick_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D696001874764C00A16505 /* joystick_back.png */; };
 		A5D696031874766700A16505 /* Joystick.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D696021874766700A16505 /* Joystick.lua */; };
-		A5D6960518747F0100A16505 /* joystick_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960418747F0100A16505 /* joystick_button.png */; };
 		A5D696081875835800A16505 /* Vector.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D696071875835800A16505 /* Vector.lua */; };
-		A5D6960A18760A8B00A16505 /* brick_level11.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960918760A8B00A16505 /* brick_level11.png */; };
 		A5D6960D1876BF6900A16505 /* Field.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960C1876BF6900A16505 /* Field.lua */; };
-		A5D6960F1876FB2E00A16505 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6960E1876FB2E00A16505 /* spider.png */; };
 		A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961018785A7E00A16505 /* BaseObject.lua */; };
 		A5D6961318785BCE00A16505 /* MovableObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961218785BCE00A16505 /* MovableObject.lua */; };
 		A5D6961518785DC900A16505 /* MobObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961418785DC900A16505 /* MobObject.lua */; };
 		A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961718793CDA00A16505 /* WavePathFinder.lua */; };
-		A5D6961B187AF01200A16505 /* penguin_girl.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D69619187AF01200A16505 /* penguin_girl.png */; };
-		A5D6961C187AF01200A16505 /* penguin.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961A187AF01200A16505 /* penguin.png */; };
 		A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961D187B137300A16505 /* PlayerObject.lua */; };
+		A5D69667187DD71200A16505 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A5D69666187DD71200A16505 /* resources-iphonehd */; };
+		A5D69669187DD72500A16505 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A5D69668187DD72500A16505 /* resources-iphone */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
 /* End PBXBuildFile section */
 
@@ -359,7 +349,6 @@
 		A5404EA618170612004A027E /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		A5404EAA18170701004A027E /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
 		A5404EAC18170701004A027E /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
-		A540BDC3186AA545005E5552 /* lock_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock_level.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/lock_level.png"; sourceTree = SOURCE_ROOT; };
 		A5551940182EB2E30033BB45 /* ScrollView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ScrollView.lua; sourceTree = "<group>"; };
 		A55519451832A8B20033BB45 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		A55519471832B20A0033BB45 /* AlignmentHelper.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AlignmentHelper.lua; sourceTree = "<group>"; };
@@ -380,9 +369,6 @@
 		A560237B1811C384005719B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A560237D1811C384005719B1 /* IceClimberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IceClimberTests.m; sourceTree = "<group>"; };
 		A568DFFC185B80C100C928E7 /* LevelIcon.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = LevelIcon.ccbi; path = "iceClimber/Published-iOS/LevelIcon.ccbi"; sourceTree = "<group>"; };
-		A568E003185C303600C928E7 /* star_blue_ipad_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_blue_ipad_2.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/star_blue_ipad_2.png"; sourceTree = SOURCE_ROOT; };
-		A568E005185C305F00C928E7 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/2.png"; sourceTree = SOURCE_ROOT; };
-		A568E006185C305F00C928E7 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/3.png"; sourceTree = SOURCE_ROOT; };
 		A5698324181974F600738775 /* Inheritance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inheritance.lua; sourceTree = "<group>"; };
 		A5698326181974F600738775 /* SceneManager.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SceneManager.lua; sourceTree = "<group>"; };
 		A5698327181974F600738775 /* BaseScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaseScene.lua; sourceTree = "<group>"; };
@@ -394,7 +380,6 @@
 		A57158E2184A1D5400945721 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
 		A57158E6184B67ED00945721 /* ChooseLevel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLevel.lua; sourceTree = "<group>"; };
 		A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg; sourceTree = "<group>"; };
-		A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_gold_ipad_2.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/star_gold_ipad_2.png"; sourceTree = SOURCE_ROOT; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A58924781818521F005765D2 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
@@ -410,22 +395,17 @@
 		A5C2750B18238D0300412432 /* back_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_pressed.png; sourceTree = "<group>"; };
 		A5D695F6187427C000A16505 /* LevelScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelScene.lua; sourceTree = "<group>"; };
 		A5D695F818742E7000A16505 /* level_1_1.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = level_1_1.ccbi; path = "iceClimber/Published-iOS/level_1_1.ccbi"; sourceTree = "<group>"; };
-		A5D695FA18742E9D00A16505 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brick.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/brick.png"; sourceTree = SOURCE_ROOT; };
 		A5D695FE1874762B00A16505 /* joystick.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = joystick.ccbi; path = "iceClimber/Published-iOS/joystick.ccbi"; sourceTree = "<group>"; };
-		A5D696001874764C00A16505 /* joystick_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joystick_back.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/joystick_back.png"; sourceTree = SOURCE_ROOT; };
 		A5D696021874766700A16505 /* Joystick.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Joystick.lua; sourceTree = "<group>"; };
-		A5D6960418747F0100A16505 /* joystick_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joystick_button.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/joystick_button.png"; sourceTree = SOURCE_ROOT; };
 		A5D696071875835800A16505 /* Vector.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Vector.lua; path = math/Vector.lua; sourceTree = "<group>"; };
-		A5D6960918760A8B00A16505 /* brick_level11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brick_level11.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/brick_level11.png"; sourceTree = SOURCE_ROOT; };
 		A5D6960C1876BF6900A16505 /* Field.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Field.lua; path = game_objects/Field.lua; sourceTree = "<group>"; };
-		A5D6960E1876FB2E00A16505 /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spider.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/spider.png"; sourceTree = SOURCE_ROOT; };
 		A5D6961018785A7E00A16505 /* BaseObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BaseObject.lua; path = game_objects/BaseObject.lua; sourceTree = "<group>"; };
 		A5D6961218785BCE00A16505 /* MovableObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MovableObject.lua; path = game_objects/MovableObject.lua; sourceTree = "<group>"; };
 		A5D6961418785DC900A16505 /* MobObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MobObject.lua; path = game_objects/MobObject.lua; sourceTree = "<group>"; };
 		A5D6961718793CDA00A16505 /* WavePathFinder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = WavePathFinder.lua; path = algorithms/WavePathFinder.lua; sourceTree = "<group>"; };
-		A5D69619187AF01200A16505 /* penguin_girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = penguin_girl.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/penguin_girl.png"; sourceTree = SOURCE_ROOT; };
-		A5D6961A187AF01200A16505 /* penguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = penguin.png; path = "IceClimber/Resources/iceClimber/Published-iOS/resources-iphonehd/penguin.png"; sourceTree = SOURCE_ROOT; };
 		A5D6961D187B137300A16505 /* PlayerObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PlayerObject.lua; path = game_objects/PlayerObject.lua; sourceTree = "<group>"; };
+		A5D69666187DD71200A16505 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphonehd"; path = "iceClimber/Published-iOS/resources-iphonehd"; sourceTree = "<group>"; };
+		A5D69668187DD72500A16505 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphone"; path = "iceClimber/Published-iOS/resources-iphone"; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -922,18 +902,6 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
-				A5D69619187AF01200A16505 /* penguin_girl.png */,
-				A5D6961A187AF01200A16505 /* penguin.png */,
-				A5D6960E1876FB2E00A16505 /* spider.png */,
-				A5D6960918760A8B00A16505 /* brick_level11.png */,
-				A5D6960418747F0100A16505 /* joystick_button.png */,
-				A5D696001874764C00A16505 /* joystick_back.png */,
-				A5D695FA18742E9D00A16505 /* brick.png */,
-				A540BDC3186AA545005E5552 /* lock_level.png */,
-				A577732D1862BC83004FEEA6 /* star_gold_ipad_2.png */,
-				A568E005185C305F00C928E7 /* 2.png */,
-				A568E006185C305F00C928E7 /* 3.png */,
-				A568E003185C303600C928E7 /* star_blue_ipad_2.png */,
 				A505EC2818582B360016BAAA /* ccbParticleFire.png */,
 				A505EC2418582A790016BAAA /* clickme-down.png */,
 				A505EC2518582A790016BAAA /* clickme.png */,
@@ -974,6 +942,8 @@
 		A58924761818521F005765D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5D69668187DD72500A16505 /* resources-iphone */,
+				A5D69666187DD71200A16505 /* resources-iphonehd */,
 				A5D695FE1874762B00A16505 /* joystick.ccbi */,
 				A5D695F818742E7000A16505 /* level_1_1.ccbi */,
 				A568DFFC185B80C100C928E7 /* LevelIcon.ccbi */,
@@ -1120,28 +1090,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A577732E1862BC83004FEEA6 /* star_gold_ipad_2.png in Resources */,
-				A5D6960518747F0100A16505 /* joystick_button.png in Resources */,
 				A57158E4184A1D5400945721 /* close_button.png in Resources */,
 				A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */,
-				A5D6960F1876FB2E00A16505 /* spider.png in Resources */,
-				A5D695FB18742E9D00A16505 /* brick.png in Resources */,
-				A5D696011874764C00A16505 /* joystick_back.png in Resources */,
 				A5C274FF1821012B00412432 /* Loading.png in Resources */,
 				A5D6961518785DC900A16505 /* MobObject.lua in Resources */,
 				A5D695F7187427C000A16505 /* LevelScene.lua in Resources */,
 				A505EC2718582A790016BAAA /* clickme.png in Resources */,
-				A540BDC4186AA545005E5552 /* lock_level.png in Resources */,
+				A5D69669187DD72500A16505 /* resources-iphone in Resources */,
 				A5C275081822E2CB00412432 /* choseLevel.png in Resources */,
 				A569832B181974F600738775 /* BaseScene.lua in Resources */,
 				A5129F74183E7BD5004B5DBF /* lock.png in Resources */,
 				A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */,
 				A5D696031874766700A16505 /* Joystick.lua in Resources */,
-				A5D6961B187AF01200A16505 /* penguin_girl.png in Resources */,
 				A505EC2918582B360016BAAA /* ccbParticleFire.png in Resources */,
 				A5C274EC181EA96D00412432 /* Game.lua in Resources */,
 				A505EC2618582A790016BAAA /* clickme-down.png in Resources */,
-				A568E008185C305F00C928E7 /* 3.png in Resources */,
 				A568DFFD185B80C100C928E7 /* LevelIcon.ccbi in Resources */,
 				A5129F671839DB68004B5DBF /* earth.png in Resources */,
 				A5C274F1181FF57100412432 /* land.png in Resources */,
@@ -1152,7 +1115,6 @@
 				A5551941182EB2E30033BB45 /* ScrollView.lua in Resources */,
 				A5C2750D18238D0300412432 /* back_pressed.png in Resources */,
 				A5C274F7182040C100412432 /* menu1.png in Resources */,
-				A568E004185C303600C928E7 /* star_blue_ipad_2.png in Resources */,
 				A5698329181974F600738775 /* Inheritance.lua in Resources */,
 				A5D6960D1876BF6900A16505 /* Field.lua in Resources */,
 				A55519461832A8B20033BB45 /* grass.png in Resources */,
@@ -1163,12 +1125,11 @@
 				A5C2750C18238D0300412432 /* back_normal.png in Resources */,
 				A5C274FB1820CA9B00412432 /* ChooseLocation.lua in Resources */,
 				A5D696081875835800A16505 /* Vector.lua in Resources */,
+				A5D69667187DD71200A16505 /* resources-iphonehd in Resources */,
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5C274F9182040FD00412432 /* menu2.png in Resources */,
-				A5D6960A18760A8B00A16505 /* brick_level11.png in Resources */,
 				A5129F5F1838D337004B5DBF /* cloud1.png in Resources */,
 				A5D695F918742E7000A16505 /* level_1_1.ccbi in Resources */,
-				A5D6961C187AF01200A16505 /* penguin.png in Resources */,
 				A52E9AB31867FE9200022188 /* Level.lua in Resources */,
 				A55519481832B20A0033BB45 /* AlignmentHelper.lua in Resources */,
 				A5129F621839DAA3004B5DBF /* GameConfigs.lua in Resources */,
@@ -1183,7 +1144,6 @@
 				A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */,
 				A5129F681839DB68004B5DBF /* mars.png in Resources */,
 				A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */,
-				A568E007185C305F00C928E7 /* 2.png in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
 				A57158E0184A18F300945721 /* status_frame.png in Resources */,
 				A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */,

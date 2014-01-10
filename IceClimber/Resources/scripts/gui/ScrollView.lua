@@ -79,6 +79,10 @@ function ScrollView:init(sizeScale, images)
 	-- add images to view scroll
 	for i, imageName in ipairs(images) do
 		local sp1 = CCSprite:create(imageName);
+		print("sp1 ", sp1, " name ", imageName);
+		if not sp1 then 
+			break;
+		end
 		scrollviewlayer:addChild(sp1);
 		local imageSize = sp1:getContentSize();
 		local scale = visibleSize.height / imageSize.height;

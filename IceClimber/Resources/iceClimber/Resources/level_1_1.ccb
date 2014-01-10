@@ -97,6 +97,17 @@
 									<string>brick.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>flip</string>
+								<key>type</key>
+								<string>Flip</string>
+								<key>value</key>
+								<array>
+									<true/>
+									<true/>
+								</array>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -4706,6 +4717,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -8178,8 +8191,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -8282,6 +8293,18 @@
 							<real>20.833333969116211</real>
 							<real>20.3125</real>
 							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>364</real>
+							<real>254</real>
+							<integer>5</integer>
 						</array>
 					</dict>
 					<dict>
