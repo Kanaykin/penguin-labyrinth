@@ -7,9 +7,15 @@ Field = inheritsFrom(nil)
 Field.mArray = nil;
 Field.mSize = nil;
 
+Field.BRICK_TAG = -1;
+Field.DECOR_TAG = 0;
 Field.MOB_TAG = 100;
 Field.PLAYER_TAG = 101;
-Field.PLAYER_TAG2 = 102;
+Field.PLAYER2_TAG = 102;
+Field.LOVE_CAGE_TAG = 103;
+Field.WEB_TAG = 104;
+
+
 Field.mPlayerObjects = nil;
 
 -- #FIXME: 
@@ -30,7 +36,7 @@ function PRINT_FIELD(array, size)
 	for j = 1, size.y + 1 do
 		local raw = "";
 		for i = 1, size.x + 1 do
-			print("COORD ", COORD(i, j, size.x))
+			--print("COORD ", COORD(i, j, size.x))
 			raw = raw .. tostring(array[COORD(i, j, size.x)]) .. " ";
 		end
 		print(raw);
@@ -66,7 +72,7 @@ end
 
 --------------------------------
 function Field:isBrick(brick)
-	return brick:getTag() ~= Field.MOB_TAG and brick:getTag() ~= Field.PLAYER_TAG and brick:getTag() ~= Field.PLAYER_TAG2;
+	return brick:getTag() == Field.BRICK_TAG;
 end
 
 ---------------------------------
@@ -186,10 +192,10 @@ function Field:init(fieldNode)
 			local mob = MobOject:create();
 			mob:init(self, brick);
 			table.insert(self.mObjects, mob);
-		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER_TAG2 then
+		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER2_TAG then
 			print("it is player");
 			local player = PlayerOject:create();
-			player:init(self, brick, brick:getTag() == Field.PLAYER_TAG2);
+			player:init(self, brick, brick:getTag() == Field.PLAYER2_TAG);
 			table.insert(self.mObjects, player);
 			table.insert(self.mPlayerObjects, player);
 		end

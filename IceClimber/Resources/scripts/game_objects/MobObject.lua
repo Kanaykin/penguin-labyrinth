@@ -10,11 +10,31 @@ MobOject.mState = MobOject.IDLE;
 MobOject.mPath = nil;
 
 --------------------------------
+function MobOject:initAnimation()
+	print("MobOject:initAnimation");
+
+	local animation = CCAnimation:create();
+	print("animation ", animation);
+	animation:addSpriteFrameWithFileName("spider_frame1.png"); 
+	animation:addSpriteFrameWithFileName("spider_frame2.png"); 
+
+	animation:setDelayPerUnit(1 / 2);
+	animation:setRestoreOriginalFrame(true);
+
+	local action = CCAnimate:create(animation);
+	local repeatForever = CCRepeatForever:create(action);
+	self.mNode:runAction(repeatForever);
+end
+
+--------------------------------
 function MobOject:init(field, node)
 	print("MobOject:init(", node, ")");
 	MobOject:superClass().init(self, field, node);
 
 	self.mState = MobOject.IDLE;
+
+	-- create animation
+	self:initAnimation();
 end
 
 --------------------------------
@@ -47,7 +67,7 @@ function MobOject:tick(dt)
 		local destPoint = self:getDestPoint();
 		-- clone field
 		local cloneArray = self.mField:cloneArray();
-		print ("destPoint ", destPoint.x, "y ", destPoint.y);
+		--print ("destPoint ", destPoint.x, "y ", destPoint.y);
 		self.mState = MobOject.MOVING;
 		self.mPath = WavePathFinder.buildPath(self.mGridPosition, destPoint, cloneArray, self.mField.mSize);
 		table.remove(self.mPath, 1);

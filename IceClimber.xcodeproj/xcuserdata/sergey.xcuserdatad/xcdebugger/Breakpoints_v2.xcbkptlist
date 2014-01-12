@@ -118,114 +118,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../cocos2dx/sprite_nodes/CCAnimation.cpp"
-            timestampString = "408431626.602334"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "CCAnimationFrame::CCAnimationFrame()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cocos2d::CCAnimationFrame::CCAnimationFrame()"
-                  moduleName = "IceClimber"
-                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/cocos2dx/sprite_nodes/CCAnimation.cpp"
-                  timestampString = "411027303.653484"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "15">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cocos2d::CCAnimationFrame::CCAnimationFrame()"
-                  moduleName = "IceClimber"
-                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/cocos2dx/sprite_nodes/CCAnimation.cpp"
-                  timestampString = "411027303.653781"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "79">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../cocos2dx/sprite_nodes/CCAnimation.cpp"
-            timestampString = "408431634.620402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "CCAnimation::CCAnimation()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cocos2d::CCAnimation::CCAnimation()"
-                  moduleName = "IceClimber"
-                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/cocos2dx/sprite_nodes/CCAnimation.cpp"
-                  timestampString = "411027303.654025"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "15">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cocos2d::CCAnimation::CCAnimation()"
-                  moduleName = "IceClimber"
-                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/cocos2dx/sprite_nodes/CCAnimation.cpp"
-                  timestampString = "411027303.65424"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "93">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
-            timestampString = "408798342.270469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16025"
-            endingLineNumber = "16025"
-            landmarkName = "tolua_Cocos2d_CCNode_stopAllActions00(lua_State* tolua_S)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -347,6 +239,22 @@
             endingLineNumber = "159"
             landmarkName = "CCLayer::setTouchEnabled(bool enabled)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
+            timestampString = "411229494.716828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15987"
+            endingLineNumber = "15987"
+            landmarkName = "tolua_Cocos2d_CCNode_runAction00(lua_State* tolua_S)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
