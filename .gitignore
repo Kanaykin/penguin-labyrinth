@@ -7,4 +7,10 @@
 *.o
 *.so
 *.o.d
+*.sh
 
+# android assets
+IceClimber/proj.android/assets
+IceClimber/proj.android/obj
+IceClimber/proj.android/bin
+IceClimber/proj.android/gen

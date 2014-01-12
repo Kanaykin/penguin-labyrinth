@@ -1,0 +1,12 @@
+Prepare for build
+
+1. Install android sdk
+
+2. Install android ndk
+
+3. cd IceClimber/proj.android
+
+4. Copy user_config.sh.sample to user_config.sh and modify paths to android NDK and SDK
+
+5. Run build_native.sh
+

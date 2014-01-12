@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# path to Android SDK & NDK
+export ANDROID_SDK=~/android-sdks
+export NDK_ROOT=~/android-ndk-r8
+
+export TARGET_PLATFORM_ID=android-11
+

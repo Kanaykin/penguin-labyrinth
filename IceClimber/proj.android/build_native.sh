@@ -1,4 +1,8 @@
-APPNAME="TestLua"
+APPNAME="IceClimber"
+
+if [ -f "./user_config.sh" ]; then
+    source ./user_config.sh
+fi
 
 # options
 
@@ -27,6 +31,12 @@ exit 0
 ;;
 esac
 done
+
+# update project
+
+ANDROID_UPDATE_TOOL=$ANDROID_SDK/tools/android
+
+CURRENT_DIR=$PWD
 
 # read local.properties
 
@@ -67,6 +77,15 @@ echo "COCOS2DX_ROOT = $COCOS2DX_ROOT"
 echo "APP_ROOT = $APP_ROOT"
 echo "APP_ANDROID_ROOT = $APP_ANDROID_ROOT"
 
+# update project
+##############################
+cd $COCOS2DX_ROOT/cocos2dx/platform/android/java
+$ANDROID_SDK/tools/android update project -p . -s -t $TARGET_PLATFORM_ID
+cd $CURRENT_DIR
+
+$ANDROID_SDK/tools/android update project -p . -s -t $TARGET_PLATFORM_ID
+#############################
+
 # make sure assets is exist
 if [ -d "$APP_ANDROID_ROOT"/assets ]; then
     rm -rf "$APP_ANDROID_ROOT"/assets
@@ -74,40 +93,31 @@ fi
 
 mkdir "$APP_ANDROID_ROOT"/assets
 
-# copy resources
-for file in "$APP_ROOT"/../../Cpp/TestCpp/Resources/*
+# copy lua scripts
+echo "start lua scripts copying to assets ..."
+for line in $(find "$APP_ROOT"/Resources -name "*.lua"); 
 do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
+    cp $line "$APP_ANDROID_ROOT"/assets
+done
+echo "finished copying of lua scripts"
 
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
+COCOS_BUILDER_PUBLISH_FOLDER="$APP_ROOT"/Resources/iceClimber/Published-iOS
+
+devices=("iphone" "iphonehd")
+
+for i in "${devices[@]}";
+do
+    echo "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i"
+    if [ -d "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" ]; then
+	cp -r "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" "$APP_ANDROID_ROOT"/assets
+	echo "$i has copied to assets"
+    fi
 done
 
-# copy luaScript
-for file in "$APP_ROOT"/Resources/*
+echo "copy ccbi files to asset"
+for line in $(find "$APP_ROOT"/Resources -name "*.ccbi");
 do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
-
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
-done
-
-# copy common luaScript
-for file in "$APP_ROOT"/../../../scripting/lua/script/*
-do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
-
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
+    cp $line "$APP_ANDROID_ROOT"/assets
 done
 
 # remove test_image_rgba4444.pvr.gz
@@ -126,3 +136,5 @@ else
     "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt"
 fi
+
+ant debug
