@@ -120,6 +120,18 @@ do
     cp $line "$APP_ANDROID_ROOT"/assets
 done
 
+# copy textures
+for file in "$APP_ROOT"/Resources/textures/*
+do
+if [ -d "$file" ]; then
+    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
+fi
+    
+if [ -f "$file" ]; then
+    cp "$file" "$APP_ANDROID_ROOT"/assets
+fi
+done
+
 # remove test_image_rgba4444.pvr.gz
 rm -f "$APP_ANDROID_ROOT"/assets/Images/test_image_rgba4444.pvr.gz
 rm -f "$APP_ANDROID_ROOT"/assets/Images/test_1021x1024_rgba8888.pvr.gz

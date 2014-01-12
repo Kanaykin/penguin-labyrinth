@@ -60,8 +60,8 @@ function PlayerOject:playAnimation(button)
 	--print("PlayerOject:playAnimation ", button);
 	if self.mLastButtonPressed ~= button then
 		self.mLastButtonPressed = button;
+		self.mNode:stopAllActions();
 		if button == nil then
-			self.mNode:stopAllActions();
 			tolua.cast(self.mNode, "CCSprite"):setTexture(self.mTexture);
 		elseif self.mAnimations[self.mLastButtonPressed] then
 			self.mNode:runAction(self.mAnimations[self.mLastButtonPressed]);

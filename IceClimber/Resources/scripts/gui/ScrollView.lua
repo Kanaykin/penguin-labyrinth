@@ -48,6 +48,7 @@ function ScrollView:setClickable(clickable)
 	if clickable then
 		--------------------
 		local function onTouchHandler(action, var)
+			print("onTouchHandler ", action, "x = ", var[1], " y = ", var[2]);
     		scrollView:onTouchHandler(action, CCPointMake(var[1], var[2]));
     	end
 
