@@ -5,6 +5,7 @@ ScrollView.mScroll = nil;
 ScrollView.mClickableChildren = nil;
 -- private members. don't use it on the outside
 ScrollView.mIsMoved = false;
+ScrollView.mPointBegan = nil;
 
 ------------------------------
 function ScrollView:addChild(child)
@@ -31,8 +32,12 @@ function ScrollView:onTouchHandler(action, position)
 	local offset = self.mScroll:getContentOffset();
     if action == "began" then
     	self.mIsMoved = false;
+    	self.mPointBegan = Vector.new(position.x, position.y);
     elseif action == "moved" then
-    	self.mIsMoved = true;
+    	local newPos = Vector.new(position.x, position.y);
+    	if (newPos - self.mPointBegan).len() > 2 then
+    		self.mIsMoved = true;
+    	end
     elseif action == "ended" and not self.mIsMoved then
     	local locinfo = self:findChildByPoint(CCPointMake(position.x - offset.x, position.y - offset.y ));
     	if(locinfo ~= nil) then
@@ -47,12 +52,14 @@ function ScrollView:setClickable(clickable)
 	local scrollView = self;
 	if clickable then
 		--------------------
-		local function onTouchHandler(action, var)
-			print("onTouchHandler ", action, "x = ", var[1], " y = ", var[2]);
-    		scrollView:onTouchHandler(action, CCPointMake(var[1], var[2]));
+		local function onTouchHandler(action, var1, var2)
+			print("onTouchHandler ", action, "var1 ", var, "var2 ", var2);
+			print("onTouchHandler ", action, "x = ", var1, " y = ", var2);
+    		scrollView:onTouchHandler(action, CCPointMake(var1, var2));
+    		return true;
     	end
 
-    	scrollviewlayer:registerScriptTouchHandler(onTouchHandler, true, -1, false);
+    	scrollviewlayer:registerScriptTouchHandler(onTouchHandler, false, 1, false);
 	else
 		scrollviewlayer:unregisterScriptTouchHandler();
 	end
