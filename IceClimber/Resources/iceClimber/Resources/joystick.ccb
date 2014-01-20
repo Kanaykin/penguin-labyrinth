@@ -44,9 +44,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>50</real>
-							<integer>4</integer>
+							<real>64</real>
+							<real>64</real>
+							<integer>5</integer>
 						</array>
 					</dict>
 					<dict>
@@ -124,9 +124,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>50</real>
-							<integer>4</integer>
+							<real>64</real>
+							<real>64</real>
+							<integer>5</integer>
 						</array>
 					</dict>
 					<dict>
@@ -202,8 +202,8 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>128</real>
-					<real>128</real>
+					<real>148</real>
+					<real>148</real>
 					<integer>5</integer>
 				</array>
 			</dict>

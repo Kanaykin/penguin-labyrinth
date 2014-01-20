@@ -35,7 +35,7 @@ function ScrollView:onTouchHandler(action, position)
     	self.mPointBegan = Vector.new(position.x, position.y);
     elseif action == "moved" then
     	local newPos = Vector.new(position.x, position.y);
-    	if (newPos - self.mPointBegan).len() > 2 then
+    	if (newPos - self.mPointBegan):len() > 2 then
     		self.mIsMoved = true;
     	end
     elseif action == "ended" and not self.mIsMoved then

@@ -19,6 +19,8 @@
 		A5129F6A1839DB68004B5DBF /* venus.png in Resources */ = {isa = PBXBuildFile; fileRef = A5129F661839DB68004B5DBF /* venus.png */; };
 		A5129F6F183DCC16004B5DBF /* Location.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5129F6E183DCC16004B5DBF /* Location.lua */; };
 		A5129F74183E7BD5004B5DBF /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = A5129F73183E7BD5004B5DBF /* lock.png */; };
+		A52AA14A1884748300ED4718 /* SnareTrigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52AA1481884748300ED4718 /* SnareTrigger.lua */; };
+		A52AA14B1884748300ED4718 /* Trigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52AA1491884748300ED4718 /* Trigger.lua */; };
 		A52E9AB31867FE9200022188 /* Level.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52E9AB21867FE9200022188 /* Level.lua */; };
 		A5404C40181435DD004A027E /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404C3D181434E9004A027E /* libcocos2dx.a */; };
 		A5404C4618146175004A027E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5404C4518146175004A027E /* RootViewController.mm */; };
@@ -124,6 +126,7 @@
 		A57158E4184A1D5400945721 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A57158E2184A1D5400945721 /* close_button.png */; };
 		A57158E7184B67ED00945721 /* ChooseLevel.lua in Resources */ = {isa = PBXBuildFile; fileRef = A57158E6184B67ED00945721 /* ChooseLevel.lua */; };
 		A57158ED184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */; };
+		A58846291886515000E50DA3 /* Callback.lua in Resources */ = {isa = PBXBuildFile; fileRef = A58846281886515000E50DA3 /* Callback.lua */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A58924791818521F005765D2 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = A58924781818521F005765D2 /* main.lua */; };
 		A5C274EC181EA96D00412432 /* Game.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C274EB181EA96D00412432 /* Game.lua */; };
@@ -189,6 +192,8 @@
 		A5129F661839DB68004B5DBF /* venus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venus.png; sourceTree = "<group>"; };
 		A5129F6E183DCC16004B5DBF /* Location.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Location.lua; sourceTree = "<group>"; };
 		A5129F73183E7BD5004B5DBF /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		A52AA1481884748300ED4718 /* SnareTrigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SnareTrigger.lua; path = game_objects/SnareTrigger.lua; sourceTree = "<group>"; };
+		A52AA1491884748300ED4718 /* Trigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Trigger.lua; path = game_objects/Trigger.lua; sourceTree = "<group>"; };
 		A52E9AB21867FE9200022188 /* Level.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Level.lua; sourceTree = "<group>"; };
 		A5404C38181434E9004A027E /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		A5404C4418146175004A027E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -380,6 +385,7 @@
 		A57158E2184A1D5400945721 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
 		A57158E6184B67ED00945721 /* ChooseLevel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChooseLevel.lua; sourceTree = "<group>"; };
 		A57158EC184D0B3000945721 /* Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg; sourceTree = "<group>"; };
+		A58846281886515000E50DA3 /* Callback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Callback.lua; sourceTree = "<group>"; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A58924781818521F005765D2 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
@@ -876,6 +882,7 @@
 		A5698323181974F600738775 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				A58846281886515000E50DA3 /* Callback.lua */,
 				A55519471832B20A0033BB45 /* AlignmentHelper.lua */,
 				A5698324181974F600738775 /* Inheritance.lua */,
 			);
@@ -981,6 +988,8 @@
 		A5D6960B1876BF5200A16505 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A52AA1481884748300ED4718 /* SnareTrigger.lua */,
+				A52AA1491884748300ED4718 /* Trigger.lua */,
 				A5D6961D187B137300A16505 /* PlayerObject.lua */,
 				A5D6961418785DC900A16505 /* MobObject.lua */,
 				A5D6961218785BCE00A16505 /* MovableObject.lua */,
@@ -1091,6 +1100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A57158E4184A1D5400945721 /* close_button.png in Resources */,
+				A58846291886515000E50DA3 /* Callback.lua in Resources */,
 				A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */,
 				A5C274FF1821012B00412432 /* Loading.png in Resources */,
 				A5D6961518785DC900A16505 /* MobObject.lua in Resources */,
@@ -1113,6 +1123,7 @@
 				A5129F691839DB68004B5DBF /* mercury.png in Resources */,
 				A58924791818521F005765D2 /* main.lua in Resources */,
 				A5551941182EB2E30033BB45 /* ScrollView.lua in Resources */,
+				A52AA14A1884748300ED4718 /* SnareTrigger.lua in Resources */,
 				A5C2750D18238D0300412432 /* back_pressed.png in Resources */,
 				A5C274F7182040C100412432 /* menu1.png in Resources */,
 				A5698329181974F600738775 /* Inheritance.lua in Resources */,
@@ -1142,6 +1153,7 @@
 				A505EC1A185045990016BAAA /* MainScene.ccbi in Resources */,
 				A569832C181974F600738775 /* StartScene.lua in Resources */,
 				A5D6961818793CDA00A16505 /* WavePathFinder.lua in Resources */,
+				A52AA14B1884748300ED4718 /* Trigger.lua in Resources */,
 				A5129F681839DB68004B5DBF /* mars.png in Resources */,
 				A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,

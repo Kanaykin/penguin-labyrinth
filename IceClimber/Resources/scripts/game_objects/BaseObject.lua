@@ -10,6 +10,11 @@ function BaseObject:init(field, node)
 	self.mField = field;
 end
 
+---------------------------------
+function BaseObject:destroy()
+	
+end
+
 --------------------------------
 function BaseObject:tick(dt)
 

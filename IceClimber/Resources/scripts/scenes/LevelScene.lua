@@ -8,6 +8,17 @@ LevelScene.mField = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 
+
+---------------------------------
+function LevelScene:destroy()
+	print("LevelScene:destroy ");
+	LevelScene:superClass().destroy(self);
+
+	if self.mField then
+		self.mField:destroy();
+	end
+end
+
 --------------------------------
 function LevelScene:init(sceneMan, params)
 	print("LevelScene:init ");

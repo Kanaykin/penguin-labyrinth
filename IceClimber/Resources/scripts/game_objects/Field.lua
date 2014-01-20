@@ -2,6 +2,7 @@ require "Inheritance"
 require "Vector"
 require "MobObject"
 require "PlayerObject"
+require "SnareTrigger"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
@@ -43,6 +44,14 @@ function PRINT_FIELD(array, size)
 	end
 end
 
+
+---------------------------------
+function Field:destroy()
+	for i, obj in ipairs(self.mObjects) do
+		obj:destroy();
+	end
+end
+
 --------------------------------
 function Field:getCellSize()
 	return self.mCellSize;
@@ -63,7 +72,7 @@ function Field:cloneArray()
 	PRINT_FIELD(self.mArray, self.mSize);
 	local cloneArr = {};
 	for i, val in ipairs(self.mArray) do
-		print ("i ", i, "val ", val);
+		--print ("i ", i, "val ", val);
 		cloneArr[i] = val;
 	end
 	PRINT_FIELD(cloneArr, self.mSize);
@@ -124,6 +133,18 @@ function Field:getGridPosition(node)
 	
 	local leftBottom = Vector.new(posX - anchor.x * nodeSize.width, posY - anchor.y * nodeSize.height);
 	return self:positionToGrid(leftBottom);
+end
+
+--------------------------------
+function Field:onPlayerLeaveWeb(player)
+	print("onPlayerLeaveWeb ");
+end
+
+--------------------------------
+function Field:onPlayerEnterWeb(player, pos)
+	print("onPlayerEnterWeb ");
+	-- if player is primary then game over
+	player:enterTrap(pos);
 end
 
 --------------------------------
@@ -198,6 +219,11 @@ function Field:init(fieldNode)
 			player:init(self, brick, brick:getTag() == Field.PLAYER2_TAG);
 			table.insert(self.mObjects, player);
 			table.insert(self.mPlayerObjects, player);
+		elseif brick:getTag() == Field.WEB_TAG then
+			print("it is web");
+			local web = SnareTrigger:create();
+			web:init(self, brick, Callback.new(self, Field.onPlayerEnterWeb), Callback.new(self, Field.onPlayerLeaveWeb));
+			table.insert(self.mObjects, web);
 		end
 	end
 

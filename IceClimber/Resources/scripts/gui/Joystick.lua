@@ -19,6 +19,7 @@ Joystick.mRadius = nil;
 Joystick.mDestPosition = nil;
 Joystick.mButton = nil;
 Joystick.mButtonPressed = Joystick.BUTTONS.NONE;
+Joystick.mBBox = nil;
 
 --------------------------------
 function Joystick:getButtonPressed( )
@@ -44,6 +45,11 @@ end
 
 --------------------------------
 function Joystick:onTouchHandler(action, position)
+	-- check out of bound
+	if not self.mBBox:containsPoint(CCPointMake(position.x, position.y)) then
+		action = "cancelled"
+	end
+
 	if action == "began" or action == "moved" then
 		local res = (position - self.mCenter):normalize() * self.mRadius;
 		-- compute position of button
@@ -67,7 +73,8 @@ function Joystick:init(scene)
 	local node = ccpproxy:readCCBFromFile("joystick", reader, false);
 
 	scene.mGuiLayer:addChild(node);
-
+	self.mBBox = node:boundingBox();
+	
 	-- set touch enabled for joystick 
 	local function onTouchHandler(action, var)
 		self:onTouchHandler(action, Vector.new(var[1], var[2]));

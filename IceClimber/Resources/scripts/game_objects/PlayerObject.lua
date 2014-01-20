@@ -2,7 +2,7 @@ require "MovableObject"
 
 PlayerOject = inheritsFrom(MovableObject)
 PlayerOject.mJoystick = nil;
-PlayerOject.mVelocity = 1;
+PlayerOject.mVelocity = 40;
 PlayerOject.mReverse = Vector.new(1, 1);
 PlayerOject.mAnimations = nil;
 PlayerOject.mLastButtonPressed = nil;
@@ -11,6 +11,7 @@ PlayerOject.mNameTexture = "penguin";
 
 PlayerOject.MALE_PREFIX = "penguin";
 PlayerOject.FEMALE_PREFIX = "penguin_girl";
+PlayerOject.OBJECT_IN_TRAP = 5;
 
 DIRECTIONS = {
 		Vector.new(-1, 0),
@@ -24,8 +25,36 @@ ANIMATION_MALE = {
 		{name = "_right", frames = 2},
 		{name = "_up", frames = 2},
 		{name = "_down", frames = 2},
-		{name = nil, frames = 2}
+		{name = "_trap", frames = 2}
 	}
+
+---------------------------------
+function PlayerOject:destroy()
+	PlayerOject:superClass().destroy(self);
+
+	for i, animation in ipairs(self.mAnimations) do
+		animation:release();
+	end
+end
+
+---------------------------------
+function PlayerOject:enterTrap(pos)
+	print("PlayerOject:enterTrap");
+	self:playAnimation(nil);
+	if pos then
+		local posTo = Vector.new(self.mField:positionToGrid(pos));
+		self:moveTo(posTo);
+	else
+		self:playAnimation(PlayerOject.OBJECT_IN_TRAP);
+	end
+end
+
+--------------------------------
+function PlayerOject:onMoveFinished( )
+	PlayerOject:superClass().onMoveFinished(self);
+	self:playAnimation(PlayerOject.OBJECT_IN_TRAP);
+	self.mDelta = nil;
+end
 
 --------------------------------
 function PlayerOject:createAnimation(name, frames)
@@ -89,18 +118,18 @@ end
 --------------------------------
 function PlayerOject:collisionDetect(delta, newDir)
 	local currentPos = Vector.new(self.mNode:getPosition());
-	print("currentPos ", currentPos.x, " ", currentPos.y);
+	--print("currentPos ", currentPos.x, " ", currentPos.y);
 	local destPos = currentPos + delta * self.mField:getCellSize() / 2;
-	print("destPos ", destPos.x, " ", destPos.y);
+	--print("destPos ", destPos.x, " ", destPos.y);
 
 	local destGrid = Vector.new(self.mField:positionToGrid(destPos));
-	print("destGrid ", destGrid.x, " ", destGrid.y);
+	--print("destGrid ", destGrid.x, " ", destGrid.y);
 
 	if self.mField:isFreePoint(destGrid) then
 		local centerCell = self.mField:gridPosToReal(destGrid) + Vector.new(self.mField:getCellSize() / 2, self.mField:getCellSize() / 2);
 		local centerSelf = self.mField:gridPosToReal(Vector.new(self.mField:positionToGrid(currentPos))) + Vector.new(self.mField:getCellSize() / 2, self.mField:getCellSize() / 2);
-		print("centerCell ", centerCell.x, " ", centerCell.y);
-		print("centerSelf ", centerSelf.x, " ", centerSelf.y);
+		--print("centerCell ", centerCell.x, " ", centerCell.y);
+		--print("centerSelf ", centerSelf.x, " ", centerSelf.y);
 		local dir = centerCell - currentPos;
 		if (centerCell - centerSelf):len() <= 1 then
 			return true;
@@ -108,7 +137,7 @@ function PlayerOject:collisionDetect(delta, newDir)
 		dir:normalize();
 		newDir.x = dir.x;
 		newDir.y = dir.y;
-		print("newDir ", newDir.x, " ", newDir.y);
+		--print("newDir ", newDir.x, " ", newDir.y);
 		return true;
 	end
 	return false;
@@ -117,7 +146,8 @@ end
 --------------------------------
 function PlayerOject:tick(dt)
 	PlayerOject:superClass().tick(self, dt);
-	if self.mJoystick then 
+	if PlayerOject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
+	elseif self.mJoystick then 
 		local button = self.mJoystick:getButtonPressed();
 		self:playAnimation(button);
 		--print("button pressed ", );
@@ -129,7 +159,7 @@ function PlayerOject:tick(dt)
 			--local pos = self.mField:gridPosToReal(newGridPos);
 			local newDir = DIRECTIONS[button]:clone() * self.mReverse;
 			if self:collisionDetect(DIRECTIONS[button] * self.mReverse, newDir) then --self.mField:isFreePoint(newGridPos) then
-				curPosition = curPosition + newDir * self.mVelocity;
+				curPosition = curPosition + newDir * self.mVelocity * dt;
 
 				self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
 				self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));

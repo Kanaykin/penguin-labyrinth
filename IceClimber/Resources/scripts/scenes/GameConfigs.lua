@@ -15,7 +15,6 @@ gLocations = {
 
 			},
 			{
-				opened = true
 			},
 			{
 
