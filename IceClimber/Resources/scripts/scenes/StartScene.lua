@@ -26,8 +26,8 @@ function StartScene:createMenuElements()
 
     local startScene = self;
 
-    local function onPlayGamePressed()
-    	print("onPlayGame");
+    local function onPlayGamePressed(val, val2)
+    	print("onPlayGame ", val, val2);
     	startScene.mSceneManager:runNextScene();
     end
 

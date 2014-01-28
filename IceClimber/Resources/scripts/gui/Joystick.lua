@@ -12,6 +12,7 @@ Joystick.BUTTONS = {
 };
 
 Joystick.BACKGROUND_TAG = 10;
+Joystick.JOYSTICK_TAG = 15;
 Joystick.BUTTON_TAG = 20;
 
 Joystick.mCenter = nil;
@@ -67,12 +68,14 @@ function Joystick:onTouchHandler(action, position)
 end
 
 --------------------------------
-function Joystick:init(scene)
-	local ccpproxy = CCBProxy:create();
-	local reader = ccpproxy:createCCBReader();
-	local node = ccpproxy:readCCBFromFile("joystick", reader, false);
+function Joystick:init(guiLayer)
+	--local ccpproxy = CCBProxy:create();
+	--local reader = ccpproxy:createCCBReader();
+	--local node = ccpproxy:readCCBFromFile("joystick", reader, false);
+	local node  = guiLayer:getChildByTag(Joystick.JOYSTICK_TAG);
+	print(" Joystick:init ", node);
 
-	scene.mGuiLayer:addChild(node);
+	--scene.mGuiLayer:addChild(node);
 	self.mBBox = node:boundingBox();
 	
 	-- set touch enabled for joystick 

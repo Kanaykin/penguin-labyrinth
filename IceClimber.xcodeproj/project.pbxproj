@@ -21,7 +21,10 @@
 		A5129F74183E7BD5004B5DBF /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = A5129F73183E7BD5004B5DBF /* lock.png */; };
 		A52AA14A1884748300ED4718 /* SnareTrigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52AA1481884748300ED4718 /* SnareTrigger.lua */; };
 		A52AA14B1884748300ED4718 /* Trigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52AA1491884748300ED4718 /* Trigger.lua */; };
+		A52E7C9F18982C850006DA00 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A52E7C9D18982C850006DA00 /* resources-iphone */; };
+		A52E7CA018982C850006DA00 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A52E7C9E18982C850006DA00 /* resources-iphonehd */; };
 		A52E9AB31867FE9200022188 /* Level.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52E9AB21867FE9200022188 /* Level.lua */; };
+		A5333D7518919B2E0010F773 /* Level_UI_layer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5333D7418919B2D0010F773 /* Level_UI_layer.ccbi */; };
 		A5404C40181435DD004A027E /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404C3D181434E9004A027E /* libcocos2dx.a */; };
 		A5404C4618146175004A027E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5404C4518146175004A027E /* RootViewController.mm */; };
 		A5404C6E1816FC81004A027E /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5404C541816FC81004A027E /* CCBProxy.cpp */; };
@@ -153,6 +156,7 @@
 		A5D69667187DD71200A16505 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A5D69666187DD71200A16505 /* resources-iphonehd */; };
 		A5D69669187DD72500A16505 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A5D69668187DD72500A16505 /* resources-iphone */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
+		A5F32F941894365F000934D6 /* FightButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5F32F931894365F000934D6 /* FightButton.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,7 +198,10 @@
 		A5129F73183E7BD5004B5DBF /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		A52AA1481884748300ED4718 /* SnareTrigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SnareTrigger.lua; path = game_objects/SnareTrigger.lua; sourceTree = "<group>"; };
 		A52AA1491884748300ED4718 /* Trigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Trigger.lua; path = game_objects/Trigger.lua; sourceTree = "<group>"; };
+		A52E7C9D18982C850006DA00 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
+		A52E7C9E18982C850006DA00 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphonehd"; sourceTree = "<group>"; };
 		A52E9AB21867FE9200022188 /* Level.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Level.lua; sourceTree = "<group>"; };
+		A5333D7418919B2D0010F773 /* Level_UI_layer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = Level_UI_layer.ccbi; path = "iceClimber/Published-iOS/Level_UI_layer.ccbi"; sourceTree = "<group>"; };
 		A5404C38181434E9004A027E /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		A5404C4418146175004A027E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A5404C4518146175004A027E /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
@@ -413,6 +420,7 @@
 		A5D69666187DD71200A16505 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphonehd"; path = "iceClimber/Published-iOS/resources-iphonehd"; sourceTree = "<group>"; };
 		A5D69668187DD72500A16505 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphone"; path = "iceClimber/Published-iOS/resources-iphone"; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
+		A5F32F931894365F000934D6 /* FightButton.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FightButton.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -792,6 +800,7 @@
 		A555193F182EB2E30033BB45 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				A5F32F931894365F000934D6 /* FightButton.lua */,
 				A5D696021874766700A16505 /* Joystick.lua */,
 				A57158DB18487B5100945721 /* Dialog.lua */,
 				A5551940182EB2E30033BB45 /* ScrollView.lua */,
@@ -909,6 +918,8 @@
 		A569832F181AC6A300738775 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				A52E7C9D18982C850006DA00 /* resources-iphone */,
+				A52E7C9E18982C850006DA00 /* resources-iphonehd */,
 				A505EC2818582B360016BAAA /* ccbParticleFire.png */,
 				A505EC2418582A790016BAAA /* clickme-down.png */,
 				A505EC2518582A790016BAAA /* clickme.png */,
@@ -949,6 +960,7 @@
 		A58924761818521F005765D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5333D7418919B2D0010F773 /* Level_UI_layer.ccbi */,
 				A5D69668187DD72500A16505 /* resources-iphone */,
 				A5D69666187DD71200A16505 /* resources-iphonehd */,
 				A5D695FE1874762B00A16505 /* joystick.ccbi */,
@@ -1124,6 +1136,7 @@
 				A58924791818521F005765D2 /* main.lua in Resources */,
 				A5551941182EB2E30033BB45 /* ScrollView.lua in Resources */,
 				A52AA14A1884748300ED4718 /* SnareTrigger.lua in Resources */,
+				A5333D7518919B2E0010F773 /* Level_UI_layer.ccbi in Resources */,
 				A5C2750D18238D0300412432 /* back_pressed.png in Resources */,
 				A5C274F7182040C100412432 /* menu1.png in Resources */,
 				A5698329181974F600738775 /* Inheritance.lua in Resources */,
@@ -1139,6 +1152,7 @@
 				A5D69667187DD71200A16505 /* resources-iphonehd in Resources */,
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5C274F9182040FD00412432 /* menu2.png in Resources */,
+				A52E7CA018982C850006DA00 /* resources-iphonehd in Resources */,
 				A5129F5F1838D337004B5DBF /* cloud1.png in Resources */,
 				A5D695F918742E7000A16505 /* level_1_1.ccbi in Resources */,
 				A52E9AB31867FE9200022188 /* Level.lua in Resources */,
@@ -1157,6 +1171,8 @@
 				A5129F681839DB68004B5DBF /* mars.png in Resources */,
 				A5D6961118785A7E00A16505 /* BaseObject.lua in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
+				A5F32F941894365F000934D6 /* FightButton.lua in Resources */,
+				A52E7C9F18982C850006DA00 /* resources-iphone in Resources */,
 				A57158E0184A18F300945721 /* status_frame.png in Resources */,
 				A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */,
 			);

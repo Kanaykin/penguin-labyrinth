@@ -1,9 +1,11 @@
 require "BaseScene"
 require "Joystick"
 require "Field"
+require "FightButton"
 
 LevelScene = inheritsFrom(BaseScene)
 LevelScene.mJoystick = nil;
+LevelScene.mFightButton = nil;
 LevelScene.mField = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
@@ -60,6 +62,15 @@ end
 function LevelScene:initGui()
 	self:createGuiLayer();
 
+	local ccpproxy = CCBProxy:create();
+	local reader = ccpproxy:createCCBReader();
+	local node = ccpproxy:readCCBFromFile("Level_UI_layer", reader, false);
+
+	self.mGuiLayer:addChild(node);
+
 	self.mJoystick = Joystick:create();
-	self.mJoystick:init(self);
+	self.mJoystick:init(node);
+
+	self.mFightButton = FightButton:create();
+	self.mFightButton:init(node);
 end
