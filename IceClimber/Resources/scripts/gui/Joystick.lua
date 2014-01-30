@@ -1,7 +1,8 @@
 require "Inheritance"
 require "Vector"
+require "TouchWidget"
 
-Joystick = inheritsFrom(nil)
+Joystick = inheritsFrom(TouchWidget)
 
 Joystick.BUTTONS = {
 	LEFT = 1,
@@ -20,7 +21,6 @@ Joystick.mRadius = nil;
 Joystick.mDestPosition = nil;
 Joystick.mButton = nil;
 Joystick.mButtonPressed = Joystick.BUTTONS.NONE;
-Joystick.mBBox = nil;
 
 --------------------------------
 function Joystick:getButtonPressed( )
@@ -45,27 +45,49 @@ function Joystick:findButtonPressed(res)
 end
 
 --------------------------------
-function Joystick:onTouchHandler(action, position)
-	-- check out of bound
-	if not self.mBBox:containsPoint(CCPointMake(position.x, position.y)) then
-		action = "cancelled"
-	end
-
-	if action == "began" or action == "moved" then
-		local res = (position - self.mCenter):normalize() * self.mRadius;
-		-- compute position of button
-		if (position - self.mCenter):len() > self.mRadius then
-			self.mDestPosition = res + self.mCenter;
-		else
-			self.mDestPosition = position;
+function findContainPoint(box, arrayPoints)
+	for i, point in pairs(arrayPoints) do
+		if box:containsPoint(CCPointMake(point.x, point.y)) then
+			return i;
 		end
-		self:findButtonPressed(res);
-	else
-		self.mDestPosition = self.mCenter;
-		self.mButtonPressed = Joystick.BUTTONS.NONE;
 	end
+	return nil;
+end
+
+----------------------------------------
+function Joystick:updatePos(position)
+	print("Joystick:updatePos ");
+	local res = (position - self.mCenter):normalize() * self.mRadius;
+	-- compute position of button
+	if (position - self.mCenter):len() > self.mRadius then
+		self.mDestPosition = res + self.mCenter;
+	else
+		self.mDestPosition = position;
+	end
+	self:findButtonPressed(res);
 	self.mButton:setPosition(self.mDestPosition.x, self.mDestPosition.y);
 end
+
+----------------------------------------
+function Joystick:onTouchBegan(point)
+	print("Joystick:onTouchBegan ", point);
+	self:updatePos(point);
+end
+
+----------------------------------------
+function Joystick:onTouchMoved(point)
+	print("Joystick:onTouchMoved ");
+	self:updatePos(point);
+end
+
+----------------------------------------
+function Joystick:onTouchEnded(point)
+	print("Joystick:onTouchEnded ");
+	self.mDestPosition = self.mCenter;
+	self.mButtonPressed = Joystick.BUTTONS.NONE;
+	self.mButton:setPosition(self.mDestPosition.x, self.mDestPosition.y);
+end
+
 
 --------------------------------
 function Joystick:init(guiLayer)
@@ -76,11 +98,11 @@ function Joystick:init(guiLayer)
 	print(" Joystick:init ", node);
 
 	--scene.mGuiLayer:addChild(node);
-	self.mBBox = node:boundingBox();
+	self:superClass().init(self, node:boundingBox());
 	
 	-- set touch enabled for joystick 
 	local function onTouchHandler(action, var)
-		self:onTouchHandler(action, Vector.new(var[1], var[2]));
+		self:onTouchHandler(action, var);
     end
 
     local layer = tolua.cast(node, "CCLayer");

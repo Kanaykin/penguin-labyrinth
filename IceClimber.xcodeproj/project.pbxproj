@@ -155,6 +155,7 @@
 		A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D6961D187B137300A16505 /* PlayerObject.lua */; };
 		A5D69667187DD71200A16505 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A5D69666187DD71200A16505 /* resources-iphonehd */; };
 		A5D69669187DD72500A16505 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A5D69668187DD72500A16505 /* resources-iphone */; };
+		A5D7DCA3189AD19B00B55D7B /* TouchWidget.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D7DCA2189AD19B00B55D7B /* TouchWidget.lua */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
 		A5F32F941894365F000934D6 /* FightButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5F32F931894365F000934D6 /* FightButton.lua */; };
 /* End PBXBuildFile section */
@@ -419,6 +420,7 @@
 		A5D6961D187B137300A16505 /* PlayerObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PlayerObject.lua; path = game_objects/PlayerObject.lua; sourceTree = "<group>"; };
 		A5D69666187DD71200A16505 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphonehd"; path = "iceClimber/Published-iOS/resources-iphonehd"; sourceTree = "<group>"; };
 		A5D69668187DD72500A16505 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphone"; path = "iceClimber/Published-iOS/resources-iphone"; sourceTree = "<group>"; };
+		A5D7DCA2189AD19B00B55D7B /* TouchWidget.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TouchWidget.lua; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
 		A5F32F931894365F000934D6 /* FightButton.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FightButton.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -800,6 +802,7 @@
 		A555193F182EB2E30033BB45 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				A5D7DCA2189AD19B00B55D7B /* TouchWidget.lua */,
 				A5F32F931894365F000934D6 /* FightButton.lua */,
 				A5D696021874766700A16505 /* Joystick.lua */,
 				A57158DB18487B5100945721 /* Dialog.lua */,
@@ -1175,6 +1178,7 @@
 				A52E7C9F18982C850006DA00 /* resources-iphone in Resources */,
 				A57158E0184A18F300945721 /* status_frame.png in Resources */,
 				A5D6961E187B137300A16505 /* PlayerObject.lua in Resources */,
+				A5D7DCA3189AD19B00B55D7B /* TouchWidget.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

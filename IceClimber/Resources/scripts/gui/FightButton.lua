@@ -1,7 +1,8 @@
 require "Inheritance"
 require "Vector"
+require "TouchWidget"
 
-FightButton = inheritsFrom(nil)
+FightButton = inheritsFrom(TouchWidget)
 
 FightButton.BUTTON_TAG = 21;
 FightButton.mBBox = nil;
@@ -26,25 +27,21 @@ function FightButton:onUp()
 	self.mPressed = false;
 end
 
---------------------------------
-function FightButton:onTouchHandler(action, pos)
-	print("FightButton:onTouchHandler ", action);
-	if action == "began" or action == "moved" then
-		if self.mBBox:containsPoint(CCPointMake(pos.x, pos.y)) then
-			if not self.mPressed then
-				self:onDown();
-			end
-		else
-			if self.mPressed then
-				self:onUp();
-			end
-		end
+----------------------------------------
+function FightButton:onTouchBegan(point)
+	print("TouchWidget:onTouchBegan ");
+	self:onDown();
+end
 
-	elseif action == "ended" then
-		if self.mPressed then
-			self:onUp();
-		end
-	end
+----------------------------------------
+function FightButton:onTouchMoved(point)
+	print("TouchWidget:onTouchMoved ");
+end
+
+----------------------------------------
+function FightButton:onTouchEnded(point)
+	print("TouchWidget:onTouchEnded ");
+	self:onUp();
 end
 
 --------------------------------
@@ -56,12 +53,12 @@ function FightButton:init(guiLayer)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile("fight_button_map.plist");
 
-	self.mBBox = node:boundingBox();
-	print("box x", self.mBBox.origin.x, " y ", self.mBBox.origin.y);
+	self:superClass().init(self, node:boundingBox());
+
 	local parent = node:getParent();
 	
 	local function onTouchHandler(action, var)
-		self:onTouchHandler(action, Vector.new(var[1], var[2]));
+		return self:onTouchHandler(action, var);
     end
 
     local layer = tolua.cast(parent, "CCLayer");
