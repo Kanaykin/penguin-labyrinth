@@ -44,16 +44,6 @@ function Joystick:findButtonPressed(res)
 	end
 end
 
---------------------------------
-function findContainPoint(box, arrayPoints)
-	for i, point in pairs(arrayPoints) do
-		if box:containsPoint(CCPointMake(point.x, point.y)) then
-			return i;
-		end
-	end
-	return nil;
-end
-
 ----------------------------------------
 function Joystick:updatePos(position)
 	print("Joystick:updatePos ");

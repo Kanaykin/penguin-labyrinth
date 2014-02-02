@@ -10,6 +10,11 @@ FightButton.mButtonNode = nil;
 FightButton.mPressed = false;
 
 --------------------------------
+function FightButton:isPressed()
+	return self.mPressed;
+end
+
+--------------------------------
 function FightButton:onDown()
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	local frame = cache:spriteFrameByName("fire_button_pressed.png");

@@ -34,6 +34,7 @@ function LevelScene:init(sceneMan, params)
 	local players = self.mField:getPlayerObjects();
 	for i, player in ipairs(players) do
 		player:setJoystick(self.mJoystick);
+		player:setFightButton(self.mFightButton);
 	end
 end
 
