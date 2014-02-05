@@ -6,7 +6,7 @@ PlayerOject.mFightButton = nil;
 PlayerOject.mVelocity = 40;
 PlayerOject.mReverse = Vector.new(1, 1);
 PlayerOject.mAnimations = nil;
-PlayerOject.mFightAnimations = nil;
+PlayerOject.mFightButtonOffset = 5;
 PlayerOject.mLastButtonPressed = nil;
 PlayerOject.mTexture = nil;
 PlayerOject.mTextureSize = nil;
@@ -26,24 +26,23 @@ DIRECTIONS = {
 PlayerOject.mLastDir = 3;
 
 ANIMATION_MALE = {
-		{name = "_left", frames = 2, anchorFight = CCPointMake(0.75, 0.5), anchorFightFemale = CCPointMake(0.25, 0.5)},
-		{name = "_right", frames = 2, anchorFight = CCPointMake(0.25, 0.5), anchorFightFemale = CCPointMake(0.75, 0.5)},
-		{name = "_up", frames = 2, anchorFight = CCPointMake(0.45, 0.25), anchorFightFemale = CCPointMake(0.45, 0.25)},
-		{name = "_down", frames = 2, anchorFight = CCPointMake(0.48, 0.75), anchorFightFemale = CCPointMake(0.48, 0.75)},
-		{name = "_trap", frames = 2, anchorFight = CCPointMake(0.45, 0.25), anchorFightFemale = CCPointMake(0.45, 0.25)}
+		{name = "_left", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
+		{name = "_right", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
+		{name = "_up", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
+		{name = "_down", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
+		{name = "_trap", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
+		{name = "_fight_left", frames = 2, anchorFight = CCPointMake(0.75, 0.5), anchorFightFemale = CCPointMake(0.25, 0.5)},
+		{name = "_fight_right", frames = 2, anchorFight = CCPointMake(0.25, 0.5), anchorFightFemale = CCPointMake(0.75, 0.5)},
+		{name = "_fight_up", frames = 2, anchorFight = CCPointMake(0.45, 0.25), anchorFightFemale = CCPointMake(0.45, 0.25)},
+		{name = "_fight_down", frames = 2, anchorFight = CCPointMake(0.48, 0.75), anchorFightFemale = CCPointMake(0.48, 0.75)}
 	}
+
 
 ---------------------------------
 function PlayerOject:destroy()
 	PlayerOject:superClass().destroy(self);
 
 	for i, animation in ipairs(self.mAnimations) do
-		if animation then
-			animation:release();
-		end
-	end
-
-	for i, animation in ipairs(self.mFightAnimations) do
 		if animation then
 			animation:release();
 		end
@@ -89,17 +88,10 @@ end
 --------------------------------
 function PlayerOject:initAnimation()
 	self.mAnimations = {}
-	self.mFightAnimations = {}
 	for i, info in ipairs(ANIMATION_MALE) do
 		if info.name then
 			self.mAnimations[i] = self:createAnimation(info.name, info.frames);
 			self.mAnimations[i]:retain();
-			-- create fight animation
-			-- #FIXME:
-			if i ~= 5 then
-				self.mFightAnimations[i] = self:createAnimation("_fight" .. info.name, info.frames);
-				self.mFightAnimations[i]:retain();
-			end
 		end
 	end
 end
@@ -111,34 +103,15 @@ function PlayerOject:playAnimation(button)
 		self.mLastButtonPressed = button;
 		self.mNode:stopAllActions();
 		self.mNode:setAnchorPoint(CCPointMake(0.5, 0.5));
-		if button == nil then
-			--self.mNode:setContentSize(self.mTextureSize);
-			tolua.cast(self.mNode, "CCSprite"):setTexture(self.mTexture);
-			tolua.cast(self.mNode, "CCSprite"):setTextureRect(CCRectMake(0, 0, self.mTextureSize.width, self.mTextureSize.height));
-		elseif self.mAnimations[self.mLastButtonPressed] then
-			self.mNode:runAction(self.mAnimations[self.mLastButtonPressed]);
-		end
-	end
-end
-
---------------------------------
-function PlayerOject:playFightAnimation(button)
-	--print("PlayerOject:playAnimation ", button);
-	if self.mLastButtonPressed ~= button then
-		self.mLastButtonPressed = button;
-		self.mNode:stopAllActions();
-		self.mNode:setAnchorPoint(CCPointMake(0.45, 0.25));
-		if button == nil then
-			--self.mNode:setContentSize(self.mTextureSize);
-			tolua.cast(self.mNode, "CCSprite"):setTexture(self.mTexture);
-			tolua.cast(self.mNode, "CCSprite"):setTextureRect(CCRectMake(0, 0, self.mTextureSize.width, self.mTextureSize.height));
-		elseif self.mFightAnimations[self.mLastButtonPressed] then
+		tolua.cast(self.mNode, "CCSprite"):setTexture(self.mTexture);
+		tolua.cast(self.mNode, "CCSprite"):setTextureRect(CCRectMake(0, 0, self.mTextureSize.width, self.mTextureSize.height));
+		if button ~= nil and self.mAnimations[self.mLastButtonPressed] then
 			if self.mIsFemale then
 				self.mNode:setAnchorPoint(ANIMATION_MALE[self.mLastButtonPressed].anchorFightFemale);
 			else
 				self.mNode:setAnchorPoint(ANIMATION_MALE[self.mLastButtonPressed].anchorFight);
 			end
-			self.mNode:runAction(self.mFightAnimations[self.mLastButtonPressed]);
+			self.mNode:runAction(self.mAnimations[self.mLastButtonPressed]);
 		end
 	end
 end
@@ -201,7 +174,7 @@ function PlayerOject:fight()
 		return false;
 	end
 	if self.mFightButton:isPressed() then
-		self:playFightAnimation(self.mLastDir);
+		self:playAnimation(self.mLastDir + PlayerOject.mFightButtonOffset);
 		return true;
 	end
 	
