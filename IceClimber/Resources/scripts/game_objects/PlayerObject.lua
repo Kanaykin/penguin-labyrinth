@@ -1,4 +1,5 @@
 require "MovableObject"
+require "FightTrigger"
 
 PlayerOject = inheritsFrom(MovableObject)
 PlayerOject.mJoystick = nil;
@@ -12,6 +13,7 @@ PlayerOject.mTexture = nil;
 PlayerOject.mTextureSize = nil;
 PlayerOject.mNameTexture = "penguin";
 PlayerOject.mIsFemale = false;
+PlayerOject.mFightTrigger = nil;
 
 PlayerOject.MALE_PREFIX = "penguin";
 PlayerOject.FEMALE_PREFIX = "penguin_girl";
@@ -120,6 +122,9 @@ end
 function PlayerOject:init(field, node, needReverse)
 	PlayerOject:superClass().init(self, field, node);
 
+	self.mFightTrigger = FightTrigger:create();
+	self.mFightTrigger:init(field);
+
 	if needReverse then 
 		self.mReverse = Vector.new(-1, 1);
 		self.mNameTexture = PlayerOject.FEMALE_PREFIX;
@@ -175,8 +180,18 @@ function PlayerOject:fight()
 	end
 	if self.mFightButton:isPressed() then
 		self:playAnimation(self.mLastDir + PlayerOject.mFightButtonOffset);
+
+		self.mFightTrigger:setActivated(true);
+		local selfPosX, selfPosY = self.mNode:getPosition();
+		
+		local newDir = DIRECTIONS[self.mLastDir]:clone() * self.mReverse;
+
+		self.mFightTrigger.mNode:setPosition(CCPointMake(selfPosX + self.mField:getCellSize() * newDir.x, selfPosY + self.mField:getCellSize() * newDir.y));
+
 		return true;
 	end
+
+	self.mFightTrigger:setActivated(false);
 	
 	return false;
 end
@@ -211,6 +226,9 @@ end
 --------------------------------
 function PlayerOject:tick(dt)
 	PlayerOject:superClass().tick(self, dt);
+	
+	self.mFightTrigger:tick(dt);
+
 	if PlayerOject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
 		-- do nothing object is in trap
 	elseif not self:fight() then 

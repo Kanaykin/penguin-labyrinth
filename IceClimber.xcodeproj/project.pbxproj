@@ -156,6 +156,7 @@
 		A5D69667187DD71200A16505 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A5D69666187DD71200A16505 /* resources-iphonehd */; };
 		A5D69669187DD72500A16505 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A5D69668187DD72500A16505 /* resources-iphone */; };
 		A5D7DCA3189AD19B00B55D7B /* TouchWidget.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D7DCA2189AD19B00B55D7B /* TouchWidget.lua */; };
+		A5D7DCAC18A2C10C00B55D7B /* FightTrigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D7DCAB18A2C10C00B55D7B /* FightTrigger.lua */; };
 		A5DDF212181AF6850031AE92 /* LoadingScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DDF211181AF6850031AE92 /* LoadingScene.lua */; };
 		A5F32F941894365F000934D6 /* FightButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5F32F931894365F000934D6 /* FightButton.lua */; };
 /* End PBXBuildFile section */
@@ -421,6 +422,7 @@
 		A5D69666187DD71200A16505 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphonehd"; path = "iceClimber/Published-iOS/resources-iphonehd"; sourceTree = "<group>"; };
 		A5D69668187DD72500A16505 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "resources-iphone"; path = "iceClimber/Published-iOS/resources-iphone"; sourceTree = "<group>"; };
 		A5D7DCA2189AD19B00B55D7B /* TouchWidget.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TouchWidget.lua; sourceTree = "<group>"; };
+		A5D7DCAB18A2C10C00B55D7B /* FightTrigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FightTrigger.lua; path = game_objects/FightTrigger.lua; sourceTree = "<group>"; };
 		A5DDF211181AF6850031AE92 /* LoadingScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoadingScene.lua; sourceTree = "<group>"; };
 		A5F32F931894365F000934D6 /* FightButton.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FightButton.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1003,6 +1005,7 @@
 		A5D6960B1876BF5200A16505 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A5D7DCAB18A2C10C00B55D7B /* FightTrigger.lua */,
 				A52AA1481884748300ED4718 /* SnareTrigger.lua */,
 				A52AA1491884748300ED4718 /* Trigger.lua */,
 				A5D6961D187B137300A16505 /* PlayerObject.lua */,
@@ -1144,6 +1147,7 @@
 				A5C274F7182040C100412432 /* menu1.png in Resources */,
 				A5698329181974F600738775 /* Inheritance.lua in Resources */,
 				A5D6960D1876BF6900A16505 /* Field.lua in Resources */,
+				A5D7DCAC18A2C10C00B55D7B /* FightTrigger.lua in Resources */,
 				A55519461832A8B20033BB45 /* grass.png in Resources */,
 				A5129F6F183DCC16004B5DBF /* Location.lua in Resources */,
 				A5C275001821012B00412432 /* StartScene.png in Resources */,

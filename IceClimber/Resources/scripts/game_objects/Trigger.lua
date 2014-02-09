@@ -16,6 +16,7 @@ end
 
 ---------------------------------
 function Trigger:onEnter(player)
+	print("Trigger:onEnter");
 	if self.mEnterCallback then
 		self.mEnterCallback(player, Vector.new(self.mNode:getPosition()));
 		self.mContainedObj = player;
@@ -33,24 +34,35 @@ function Trigger:destroy()
 end
 
 --------------------------------
+function Trigger:getCollisionObjects()
+	return self.mField:getPlayerObjects();
+end
+
+--------------------------------
 function Trigger:tick(dt)
 	Trigger:superClass().tick(self, dt);
 
 	-- check bbox contain player or not
 	if self.mNode then 
 		if self.mContainedObj then
-			local pointX, pointY = self.mContainedObj.mNode:getPosition();
-			local contained = self.mNode:boundingBox():containsPoint(CCPointMake(pointX, pointY));
+			local contained = false;
+			if self.mContainedObj.mNode then
+				local pointX, pointY = self.mContainedObj.mNode:getPosition();
+				contained = self.mNode:boundingBox():containsPoint(CCPointMake(pointX, pointY));
+			end
 			if not contained and self.mLeaveCallback then
 				self.mLeaveCallback(player);
 				self.mContainedObj = nil;
 			end
 		else
-			local players = self.mField:getPlayerObjects();
+			local players = self:getCollisionObjects()
 			for i, player in ipairs(players) do
 				local pointX, pointY = player.mNode:getPosition();
+				--print("Trigger:tick obj x ", pointX, " y ", pointY);
+				--print("Trigger:tick x ", self.mNode:boundingBox().origin.x, " y ", self.mNode:boundingBox().origin.y );
 				local contained = self.mNode:boundingBox():containsPoint(CCPointMake(pointX, pointY));
-				if contained and self.mEnterCallback then
+				--print("contained ", contained);
+				if contained then
 					self:onEnter(player)
 				end
 			end

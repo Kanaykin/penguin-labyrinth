@@ -7,6 +7,8 @@ require "SnareTrigger"
 Field = inheritsFrom(nil)
 Field.mArray = nil;
 Field.mSize = nil;
+Field.mFieldNode = nil;
+Field.mEnemyObjects = nil;
 
 Field.BRICK_TAG = -1;
 Field.DECOR_TAG = 0;
@@ -115,6 +117,56 @@ function Field:getPlayerObjects()
 end
 
 --------------------------------
+function Field:findArrayIndex(array, object)
+	local index = nil;
+	for i, val in ipairs(array) do
+		if val == object then
+			index = i;
+			break;
+		end
+	end
+	return index;
+end
+
+--------------------------------
+function Field:removeObject(object)
+	print("Field:removeObject(", object, ")");
+	local index = self:findArrayIndex(self.mObjects, object);
+	if index then
+		table.remove(self.mObjects, index);
+	end
+	print("Field:removeObject ", index);
+end
+
+--------------------------------
+function Field:removeEnemy(enemy)
+	print("Field:removeEnemy(", enemy, ")");
+	local index = self:findArrayIndex(self.mEnemyObjects, enemy);
+	if index then
+		table.remove(self.mEnemyObjects, index);
+	end
+	print("Field:removeEnemy ", index);
+end
+
+--------------------------------
+function Field:onEnemyEnterTrigger(enemy)
+	print("Field:onEnemyEnterTrigger ", enemy);
+	
+	self:removeObject(enemy);
+	self:removeEnemy(enemy)
+	enemy:destroyNode();
+end
+
+--------------------------------
+function Field:onEnemyLeaveTrigger(enemy)
+end
+
+--------------------------------
+function Field:getEnemyObjects()
+	return self.mEnemyObjects;
+end
+
+--------------------------------
 function Field:isFreePoint( point )
 	return self.mArray[COORD(point.x, point.y, self.mSize.x)] == 0;
 end
@@ -148,10 +200,17 @@ function Field:onPlayerEnterWeb(player, pos)
 end
 
 --------------------------------
+function Field:getFieldNode()
+	return self.mFieldNode;
+end
+
+--------------------------------
 function Field:init(fieldNode)
 	self.mObjects = {}
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
+	self.mEnemyObjects = {};
+	self.mFieldNode = fieldNode;
 
 	--self.mCellSize = 22 * CCBReader:getResolutionScale();
 
@@ -213,6 +272,7 @@ function Field:init(fieldNode)
 			local mob = MobOject:create();
 			mob:init(self, brick);
 			table.insert(self.mObjects, mob);
+			table.insert(self.mEnemyObjects, mob);
 		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER2_TAG then
 			print("it is player");
 			local player = PlayerOject:create();
@@ -224,6 +284,7 @@ function Field:init(fieldNode)
 			local web = SnareTrigger:create();
 			web:init(self, brick, Callback.new(self, Field.onPlayerEnterWeb), Callback.new(self, Field.onPlayerLeaveWeb));
 			table.insert(self.mObjects, web);
+			table.insert(self.mEnemyObjects, web);
 		end
 	end
 
