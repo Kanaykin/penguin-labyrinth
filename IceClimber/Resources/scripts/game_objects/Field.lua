@@ -17,6 +17,7 @@ Field.PLAYER_TAG = 101;
 Field.PLAYER2_TAG = 102;
 Field.LOVE_CAGE_TAG = 103;
 Field.WEB_TAG = 104;
+Field.FINISH_TAG = 105;
 
 
 Field.mPlayerObjects = nil;

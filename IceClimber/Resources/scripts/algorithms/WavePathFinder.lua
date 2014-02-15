@@ -62,16 +62,20 @@ WavePathFinder = {
 			return;
 		end
 
+		local inserted = false;
 		for iDir, dir in ipairs(WavePathFinder.DIRECTIONS) do
 			local near = point + dir;
 			if WavePathFinder.isValidPoint(near, sizeArray) and array[COORD(near.x, near.y, sizeArray.x)] ~= 1
 				and array[COORD(near.x, near.y, sizeArray.x)] ~= 0 
 				and array[COORD(near.x, near.y, sizeArray.x)] < index then
 				table.insert(path, near);
+				inserted = true;
 				break;
 			end
 		end
-		WavePathFinder.findPath(path, array, sizeArray);
+		if inserted then
+			WavePathFinder.findPath(path, array, sizeArray);
+		end
 	end,
 
 	-----------------------------------
@@ -93,6 +97,7 @@ WavePathFinder = {
 
 	-----------------------------------
 	buildPath = function (pointFrom, pointTo, array, sizeArray)
+		print("buildPath ( pF.x ", pointFrom.x, " pF.y ", pointFrom.x, "pF.x ", pointTo.x, " pF.y ", pointTo.x);
 		local srcPoints = {pointFrom};
 		array[COORD(pointFrom.x, pointFrom.y, sizeArray.x)] = WavePathFinder.FIRST_INDEX;
 		WavePathFinder.fillArray(srcPoints, pointTo, array, sizeArray, WavePathFinder.FIRST_INDEX + 1);
