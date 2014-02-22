@@ -18,6 +18,10 @@ local SUPPORTED_RESOLUTION = {
 	{ size = CCSizeMake(1024 * 2, 768 * 2), scale = 2, searchPath = "resources-iphonehd"}
 }
 
+local RESOURCE_DIRECTORIES = {
+	"Published-iOS", "Maps"
+}
+
 local DESIGN_RESOLUTION_SIZE = CCSizeMake(480, 320);
 
 ---------------------------------
@@ -61,7 +65,11 @@ function Game:initResolution()
 		CCBReader:setResolutionScale(scale);
 		CCDirector:sharedDirector():setContentScaleFactor( (1 / scale) * resolutionInfo.scale);
 		local fileUtils = CCFileUtils:sharedFileUtils();
-		fileUtils:addSearchPath(resolutionInfo.searchPath);
+		-- add resource directories
+		for i, val in ipairs(RESOURCE_DIRECTORIES) do
+			fileUtils:addSearchPath(val);
+			fileUtils:addSearchPath(val.."/"..resolutionInfo.searchPath);
+		end
 	end
 end
 

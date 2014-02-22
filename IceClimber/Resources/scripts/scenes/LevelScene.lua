@@ -7,6 +7,7 @@ LevelScene = inheritsFrom(BaseScene)
 LevelScene.mJoystick = nil;
 LevelScene.mFightButton = nil;
 LevelScene.mField = nil;
+LevelScene.mData = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 
@@ -24,7 +25,8 @@ end
 --------------------------------
 function LevelScene:init(sceneMan, params)
 	print("LevelScene:init ");
-	LevelScene:superClass().init(self, sceneMan, {});
+	LevelScene:superClass().init(self, sceneMan, params);
+	self.mData = params;
 
 	self:initScene();
 
@@ -42,7 +44,7 @@ end
 function LevelScene:initScene()
 	local ccpproxy = CCBProxy:create();
 	local reader = ccpproxy:createCCBReader();
-	local node = ccpproxy:readCCBFromFile("level_1_1", reader, false);
+	local node = ccpproxy:readCCBFromFile(self.mData.ccbFile, reader, false);
 
 	self.mSceneGame:addChild(node);
 
@@ -50,7 +52,7 @@ function LevelScene:initScene()
 	local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
 
 	self.mField = Field:create();
-	self.mField:init(fieldNode);
+	self.mField:init(fieldNode, self.mData);
 end
 
 ---------------------------------

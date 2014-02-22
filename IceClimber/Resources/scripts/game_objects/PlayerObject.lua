@@ -1,23 +1,23 @@
 require "MovableObject"
 require "FightTrigger"
+require "EmptyAnimation"
+require "FramesAnimation"
 
-PlayerOject = inheritsFrom(MovableObject)
-PlayerOject.mJoystick = nil;
-PlayerOject.mFightButton = nil;
-PlayerOject.mVelocity = 40;
-PlayerOject.mReverse = Vector.new(1, 1);
-PlayerOject.mAnimations = nil;
-PlayerOject.mFightButtonOffset = 5;
-PlayerOject.mLastButtonPressed = nil;
-PlayerOject.mTexture = nil;
-PlayerOject.mTextureSize = nil;
-PlayerOject.mNameTexture = "penguin";
-PlayerOject.mIsFemale = false;
-PlayerOject.mFightTrigger = nil;
+PlayerObject = inheritsFrom(MovableObject)
+PlayerObject.mJoystick = nil;
+PlayerObject.mFightButton = nil;
+PlayerObject.mVelocity = 40;
+PlayerObject.mReverse = Vector.new(1, 1);
+PlayerObject.mAnimations = nil;
+PlayerObject.mFightButtonOffset = 5;
+PlayerObject.mLastButtonPressed = nil;
+PlayerObject.mNameTexture = "penguin";
+PlayerObject.mIsFemale = false;
+PlayerObject.mFightTrigger = nil;
 
-PlayerOject.MALE_PREFIX = "penguin";
-PlayerOject.FEMALE_PREFIX = "penguin_girl";
-PlayerOject.OBJECT_IN_TRAP = 5;
+PlayerObject.MALE_PREFIX = "penguin";
+PlayerObject.FEMALE_PREFIX = "penguin_girl";
+PlayerObject.OBJECT_IN_TRAP = 5;
 
 DIRECTIONS = {
 		Vector.new(-1, 0),
@@ -25,7 +25,7 @@ DIRECTIONS = {
 		Vector.new(0, 1),
 		Vector.new(0, -1)
 	}
-PlayerOject.mLastDir = 3;
+PlayerObject.mLastDir = 3;
 
 ANIMATION_MALE = {
 		{name = "_left", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
@@ -41,112 +41,94 @@ ANIMATION_MALE = {
 
 
 ---------------------------------
-function PlayerOject:destroy()
-	PlayerOject:superClass().destroy(self);
+function PlayerObject:destroy()
+	PlayerObject:superClass().destroy(self);
 
-	for i, animation in ipairs(self.mAnimations) do
+	for i, animation in pairs(self.mAnimations) do
 		if animation then
-			animation:release();
+			animation:destroy();
 		end
 	end
 end
 
 ---------------------------------
-function PlayerOject:enterTrap(pos)
-	print("PlayerOject:enterTrap");
+function PlayerObject:enterTrap(pos)
+	print("PlayerObject:enterTrap");
 	self:playAnimation(nil);
 	if pos then
 		local posTo = Vector.new(self.mField:positionToGrid(pos));
 		self:moveTo(posTo);
 	else
-		self:playAnimation(PlayerOject.OBJECT_IN_TRAP);
+		self:playAnimation(PlayerObject.OBJECT_IN_TRAP);
 	end
 end
 
 --------------------------------
-function PlayerOject:onMoveFinished( )
-	PlayerOject:superClass().onMoveFinished(self);
-	self:playAnimation(PlayerOject.OBJECT_IN_TRAP);
+function PlayerObject:onMoveFinished( )
+	PlayerObject:superClass().onMoveFinished(self);
+	self:playAnimation(PlayerObject.OBJECT_IN_TRAP);
 	self.mDelta = nil;
 end
 
 --------------------------------
-function PlayerOject:createAnimation(name, frames)
-	local animation = CCAnimation:create();
+function PlayerObject:initAnimation()
+	local texture = tolua.cast(self.mNode, "CCSprite"):getTexture();
 
-	for i = 1,frames do
-		local fullName = self.mNameTexture..name..tostring(i)..".png";
-		print("PlayerOject:createAnimation ", fullName);
-		animation:addSpriteFrameWithFileName(fullName);
-	end
-	animation:setDelayPerUnit(1 / 10);
-	animation:setRestoreOriginalFrame(true);
-
-	local action = CCAnimate:create(animation);
-	local repeatForever = CCRepeatForever:create(action);
-	return repeatForever;
-end
-
---------------------------------
-function PlayerOject:initAnimation()
 	self.mAnimations = {}
+	self.mAnimations[-1] = EmptyAnimation:create();
+	self.mAnimations[-1]:init(texture, self.mNode, self.mNode:getAnchorPoint());
+
+	-- create empty animation
 	for i, info in ipairs(ANIMATION_MALE) do
 		if info.name then
-			self.mAnimations[i] = self:createAnimation(info.name, info.frames);
-			self.mAnimations[i]:retain();
+			self.mAnimations[i] = FramesAnimation:create();
+			self.mAnimations[i]:init(self.mNameTexture..info.name, info.frames, self.mNode, texture,
+				self.mIsFemale and ANIMATION_MALE[i].anchorFightFemale or 
+				ANIMATION_MALE[i].anchorFight);
 		end
 	end
 end
 
 --------------------------------
-function PlayerOject:playAnimation(button)
-	--print("PlayerOject:playAnimation ", button);
+function PlayerObject:playAnimation(button)
+	print("PlayerObject:playAnimation ", self.mLastButtonPressed);
 	if self.mLastButtonPressed ~= button then
 		self.mLastButtonPressed = button;
+		print("PlayerObject:playAnimation2 ", self.mLastButtonPressed, " button ", button);
 		self.mNode:stopAllActions();
-		self.mNode:setAnchorPoint(CCPointMake(0.5, 0.5));
-		tolua.cast(self.mNode, "CCSprite"):setTexture(self.mTexture);
-		tolua.cast(self.mNode, "CCSprite"):setTextureRect(CCRectMake(0, 0, self.mTextureSize.width, self.mTextureSize.height));
-		if button ~= nil and self.mAnimations[self.mLastButtonPressed] then
-			if self.mIsFemale then
-				self.mNode:setAnchorPoint(ANIMATION_MALE[self.mLastButtonPressed].anchorFightFemale);
-			else
-				self.mNode:setAnchorPoint(ANIMATION_MALE[self.mLastButtonPressed].anchorFight);
-			end
-			self.mNode:runAction(self.mAnimations[self.mLastButtonPressed]);
-		end
+		button = (button == nil) and -1 or button;
+		self.mAnimations[button]:play();
 	end
 end
 
 --------------------------------
-function PlayerOject:init(field, node, needReverse)
-	PlayerOject:superClass().init(self, field, node);
+function PlayerObject:init(field, node, needReverse)
+	PlayerObject:superClass().init(self, field, node);
 
 	self.mFightTrigger = FightTrigger:create();
 	self.mFightTrigger:init(field);
 
 	if needReverse then 
 		self.mReverse = Vector.new(-1, 1);
-		self.mNameTexture = PlayerOject.FEMALE_PREFIX;
+		self.mNameTexture = PlayerObject.FEMALE_PREFIX;
 		self.mIsFemale = true;
 	end
-	self.mTexture = tolua.cast(self.mNode, "CCSprite"):getTexture();
-	self.mTextureSize = self.mNode:getContentSize();
 	self:initAnimation();
+	self:playAnimation(nil);
 end
 
 --------------------------------
-function PlayerOject:setFightButton(fightButton)
+function PlayerObject:setFightButton(fightButton)
 	self.mFightButton = fightButton;
 end
 
 --------------------------------
-function PlayerOject:setJoystick(joystick)
+function PlayerObject:setJoystick(joystick)
 	self.mJoystick = joystick;
 end
 
 --------------------------------
-function PlayerOject:collisionDetect(delta, newDir)
+function PlayerObject:collisionDetect(delta, newDir)
 	local currentPos = Vector.new(self.mNode:getPosition());
 	--print("currentPos ", currentPos.x, " ", currentPos.y);
 	local destPos = currentPos + delta * self.mField:getCellSize() / 2;
@@ -174,12 +156,12 @@ function PlayerOject:collisionDetect(delta, newDir)
 end
 
 --------------------------------
-function PlayerOject:fight()
+function PlayerObject:fight()
 	if not self.mFightButton then
 		return false;
 	end
 	if self.mFightButton:isPressed() then
-		self:playAnimation(self.mLastDir + PlayerOject.mFightButtonOffset);
+		self:playAnimation(self.mLastDir + PlayerObject.mFightButtonOffset);
 
 		self.mFightTrigger:setActivated(true);
 		local selfPosX, selfPosY = self.mNode:getPosition();
@@ -197,7 +179,7 @@ function PlayerOject:fight()
 end
 
 --------------------------------
-function PlayerOject:move(dt)
+function PlayerObject:move(dt)
 	if not self.mJoystick then
 		return;
 	end
@@ -224,12 +206,12 @@ function PlayerOject:move(dt)
 end
 
 --------------------------------
-function PlayerOject:tick(dt)
-	PlayerOject:superClass().tick(self, dt);
+function PlayerObject:tick(dt)
+	PlayerObject:superClass().tick(self, dt);
 	
 	self.mFightTrigger:tick(dt);
 
-	if PlayerOject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
+	if PlayerObject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
 		-- do nothing object is in trap
 	elseif not self:fight() then 
 		self:move(dt);

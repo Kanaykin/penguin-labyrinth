@@ -3,6 +3,7 @@ require "Vector"
 require "MobObject"
 require "PlayerObject"
 require "SnareTrigger"
+require "FoxObject"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
@@ -206,12 +207,19 @@ function Field:getFieldNode()
 end
 
 --------------------------------
-function Field:init(fieldNode)
+function Field:init(fieldNode, fieldData)
+
+	local objectType = _G[fieldData.playerType];
+
 	self.mObjects = {}
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
 	self.mEnemyObjects = {};
 	self.mFieldNode = fieldNode;
+
+	if not fieldNode then
+		return;
+	end
 
 	--self.mCellSize = 22 * CCBReader:getResolutionScale();
 
@@ -276,7 +284,7 @@ function Field:init(fieldNode)
 			table.insert(self.mEnemyObjects, mob);
 		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER2_TAG then
 			print("it is player");
-			local player = PlayerOject:create();
+			local player = objectType:create(); --PlayerObject:create();
 			player:init(self, brick, brick:getTag() == Field.PLAYER2_TAG);
 			table.insert(self.mObjects, player);
 			table.insert(self.mPlayerObjects, player);

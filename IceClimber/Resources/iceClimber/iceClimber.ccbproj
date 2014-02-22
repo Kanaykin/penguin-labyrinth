@@ -21,7 +21,7 @@
 	<key>generatedSpriteSheets</key>
 	<dict/>
 	<key>javascriptBased</key>
-	<false/>
+	<true/>
 	<key>javascriptMainCCB</key>
 	<string></string>
 	<key>needRepublish</key>
@@ -72,7 +72,15 @@
 	<array>
 		<dict>
 			<key>path</key>
-			<string>Resources</string>
+			<string>Resources/FoxTextures</string>
+		</dict>
+		<dict>
+			<key>path</key>
+			<string>Resources/textures</string>
+		</dict>
+		<dict>
+			<key>path</key>
+			<string>Resources/Common</string>
 		</dict>
 	</array>
 	<key>versionStr</key>

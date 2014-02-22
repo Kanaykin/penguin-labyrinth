@@ -9,10 +9,13 @@ gLocations = {
 		levels = {
 			{
 				opened = true,
-				ccbFile = "level_1_1"
+				ccbFile = "level_1_1",
+				playerType = "PlayerObject"
 			},
 			{
-
+				opened = true,
+				ccbFile = "Level1_2p1",
+				playerType = "FoxObject"
 			},
 			{
 			},

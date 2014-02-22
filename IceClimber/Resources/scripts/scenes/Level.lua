@@ -2,6 +2,8 @@ require "Inheritance"
 
 Level = inheritsFrom(nil)
 Level.mOpened = false;
+Level.mData = nil;
+
 Level.MENU_TAG = 100;
 Level.MENU_ITEM_TAG = 101;
 Level.DUMMY_TAG = 20;
@@ -40,7 +42,7 @@ end
 function Level:onLevelIconPressed()
 	print("onLevelIconPressed !!!");
 	if self:isOpened() then
-		self.mLocation.mGame.mSceneMan:runLevelScene({});
+		self.mLocation.mGame.mSceneMan:runLevelScene(self.mData);
 	end
 end
 
@@ -74,6 +76,7 @@ end
 ---------------------------------
 function Level:init(levelData, location)
 	self.mLocation = location;
+	self.mData = levelData;
 	if(levelData.opened ~= nil ) then
 		self.mOpened = levelData.opened; 
 	end
