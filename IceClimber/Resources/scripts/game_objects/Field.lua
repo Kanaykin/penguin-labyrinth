@@ -182,7 +182,7 @@ end
 --------------------------------
 function Field:getGridPosition(node)
 	local posX, posY = node:getPosition();
-	local anchor = node:getAnchorPoint();
+	local anchor = CCPointMake(0, 0);--node:getAnchorPoint();
 	local nodeSize = node:getContentSize();
 	
 	local leftBottom = Vector.new(posX - anchor.x * nodeSize.width, posY - anchor.y * nodeSize.height);
@@ -207,9 +207,11 @@ function Field:getFieldNode()
 end
 
 --------------------------------
-function Field:init(fieldNode, fieldData)
+function Field:init(fieldNode, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
+	print(" Game ", game);
+	self.mCellSize = fieldData.cellSize * game.mScale;
 
 	self.mObjects = {}
 	self.mFreePoints = {};
@@ -221,8 +223,6 @@ function Field:init(fieldNode, fieldData)
 		return;
 	end
 
-	--self.mCellSize = 22 * CCBReader:getResolutionScale();
-
 	local children = fieldNode:getChildren();
 	local count = children:count();
 	print("count ", count);
@@ -231,19 +231,11 @@ function Field:init(fieldNode, fieldData)
 	end
 	
 	-- compute size of brick
-	local firstBrick = nil;
-	local sizeBrick = nil;
 	local minValue = Vector.new(MAX_NUMBER, MAX_NUMBER);
 	local maxValue = Vector.new(MIN_NUMBER, MIN_NUMBER);
-	for i = 1, count do
+	--[[for i = 1, count do
 		local brick = tolua.cast(children:objectAtIndex(i - 1), "CCNode");
 		
-		if not firstBrick and self:isBrick(brick) then 
-			firstBrick = brick;
-			sizeBrick = firstBrick:getContentSize();
-			self.mCellSize = sizeBrick.width;
-		end
-
 		local posX, posY = brick:getPosition();
 		local anchor = brick:getAnchorPoint();
 		local brickSize = brick:getContentSize();
@@ -256,13 +248,22 @@ function Field:init(fieldNode, fieldData)
 		maxValue.y = math.max(maxValue.y, leftButtom.y);
 	end
 
-	maxValue.x = (maxValue.x - minValue.x) / sizeBrick.width;
-	maxValue.y = (maxValue.y - minValue.y) / sizeBrick.width;
+	print("maxValue x ", maxValue.x, " y ", maxValue.y);
+	print("minValue x ", minValue.x, " y ", minValue.y);
+
+	local newMinValue = Vector.new(fieldNode:getPosition());
+	print("newMinValue x ", newMinValue.x, " y ", newMinValue.y);
+	local newMaxValue = Vector.new(fieldNode:getPosition());]]
+	local contentSize = fieldNode:getContentSize();
+	print("newMaxValue x ", contentSize.width / self.mCellSize, " y ", contentSize.height / self.mCellSize);
+
+	maxValue.x = contentSize.width / self.mCellSize;--(maxValue.x - minValue.x) / self.mCellSize;
+	maxValue.y = contentSize.height / self.mCellSize;--(maxValue.y - minValue.y) / self.mCellSize;
 
 	print("maxValue x ", maxValue.x, " y ", maxValue.y);
 	self.mArray = {};
 	self.mSize = maxValue;
-	self.mLeftBottom = minValue;
+	self.mLeftBottom = Vector.new(0, 0);
 	-- fill zero 
 	for i = 1, maxValue.x + 1 do
 		for j = 1, maxValue.y + 1 do

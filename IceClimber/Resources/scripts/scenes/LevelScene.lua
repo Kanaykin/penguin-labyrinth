@@ -42,6 +42,13 @@ end
 
 --------------------------------
 function LevelScene:initScene()
+
+	if self.mData.tileMap then
+		local tileMap = CCTMXTiledMap:create(self.mData.tileMap);
+		print(" LevelScene:initScene tileMap ", tileMap);
+		self.mSceneGame:addChild(tileMap);
+	end
+	
 	local ccpproxy = CCBProxy:create();
 	local reader = ccpproxy:createCCBReader();
 	local node = ccpproxy:readCCBFromFile(self.mData.ccbFile, reader, false);
@@ -52,7 +59,7 @@ function LevelScene:initScene()
 	local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
 
 	self.mField = Field:create();
-	self.mField:init(fieldNode, self.mData);
+	self.mField:init(fieldNode, self.mData, self.mSceneManager.mGame);
 end
 
 ---------------------------------

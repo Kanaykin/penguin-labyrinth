@@ -8,6 +8,7 @@ It is main class for game.
 Game =  inheritsFrom(nil)
 Game.mSceneMan = nil
 Game.mGameTime = 0
+Game.mScale = 1
 Game.mLocations = {}
 
 local SUPPORTED_RESOLUTION = {
@@ -62,6 +63,7 @@ function Game:initResolution()
 		--CCDirector:sharedDirector():getOpenGLView():setDesignResolutionSize(resolutionInfo.size.width, resolutionInfo.size.height, 1);
 		local scale = math.min(visibleSize.width / DESIGN_RESOLUTION_SIZE.width, visibleSize.height / DESIGN_RESOLUTION_SIZE.height);
 		print("SCALE ", scale);
+		self.mScale = scale;
 		CCBReader:setResolutionScale(scale);
 		CCDirector:sharedDirector():setContentScaleFactor( (1 / scale) * resolutionInfo.scale);
 		local fileUtils = CCFileUtils:sharedFileUtils();

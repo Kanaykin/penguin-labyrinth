@@ -38,18 +38,30 @@ function PlistAnimation:init(plistName, node, anchor, texture)
 
    	self.mAnimation = CCAnimation:create();
 
+   	local arrayFrames = {};
    	local array = dictionary:allKeys();
    	for i = 1, array:count() do
    		local nameFrame = array:objectAtIndex(i - 1);
    		local nameStr = tolua.cast(nameFrame, "CCString"):getCString();
    		print("PlistAnimation nameFrame ", nameStr);
    		--self.mAnimation:addSpriteFrameWithFileName(nameStr);
-   		local frame = cache:spriteFrameByName(nameStr);
+   		--local frame = cache:spriteFrameByName(nameStr);
+   		--print("PlistAnimation frame ", frame);
+   		table.insert(arrayFrames, nameStr);
+   		--self.mAnimation:addSpriteFrame(frame);
+   	end
+
+   	table.sort( arrayFrames, function(x, y) 
+   		return y < x;
+   	end );
+
+   	for i, val in ipairs(arrayFrames) do
+   		local frame = cache:spriteFrameByName(val);
    		print("PlistAnimation frame ", frame);
    		self.mAnimation:addSpriteFrame(frame);
    	end
 
-   	self.mAnimation:setDelayPerUnit(1 / 5);
+   	self.mAnimation:setDelayPerUnit(1 / 10);
 	self.mAnimation:setRestoreOriginalFrame(true);
 
 	local action = CCAnimate:create(self.mAnimation);

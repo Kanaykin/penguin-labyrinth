@@ -4,10 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>FoxIdle001.png</key>
+            <key>fox__0017_Layer-20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{84,330},{80,88}}</string>
+                <string>{{166,412},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +17,10 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle002.png</key>
+            <key>fox__0018_Layer-19.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,420},{80,88}}</string>
+                <string>{{84,362},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +30,10 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle003.png</key>
+            <key>fox__0019_Layer-18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,330},{80,88}}</string>
+                <string>{{2,362},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +43,10 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle004.png</key>
+            <key>fox__0020_Layer-17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,248},{80,88}}</string>
+                <string>{{166,330},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,10 +56,36 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle005.png</key>
+            <key>fox__0021_Layer-16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,248},{80,88}}</string>
+                <string>{{84,272},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0022_Layer-15.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,272},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0023_Layer-14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,248},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,10 +95,36 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle006.png</key>
+            <key>fox__0024_Layer-13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,166},{80,88}}</string>
+                <string>{{84,182},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0025_Layer-12.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,182},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0026_Layer-11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,166},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -82,10 +134,23 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle007.png</key>
+            <key>fox__0027_Layer-10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,166},{80,88}}</string>
+                <string>{{84,272},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0028_Layer-9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,330},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,10 +160,36 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle008.png</key>
+            <key>fox__0029_Layer-8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,84},{80,88}}</string>
+                <string>{{2,362},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0030_Layer-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{84,92},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0031_Layer-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,84},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,10 +199,10 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle009.png</key>
+            <key>fox__0032_Layer-5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,84},{80,88}}</string>
+                <string>{{166,2},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -121,23 +212,49 @@
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle010.png</key>
+            <key>fox__0033_Layer-4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,2},{80,88}}</string>
+                <string>{{84,2},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{80,88}}</string>
                 <key>sourceSize</key>
                 <string>{80,88}</string>
             </dict>
-            <key>FoxIdle011.png</key>
+            <key>fox__0034_Layer-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,92},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0035_Layer-2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{80,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,88}}</string>
+                <key>sourceSize</key>
+                <string>{80,88}</string>
+            </dict>
+            <key>fox__0036_Layer-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,412},{80,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -157,7 +274,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ba2f6058e6074731dba2067c630cec42$</string>
+            <string>$TexturePacker:SmartUpdate:5d43ebdf238228e324ee6b27c97dcd3f$</string>
             <key>textureFileName</key>
             <string>FoxIdle1.png</string>
         </dict>

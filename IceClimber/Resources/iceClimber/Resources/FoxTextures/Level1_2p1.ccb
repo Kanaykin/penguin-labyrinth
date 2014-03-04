@@ -186,8 +186,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -211,7 +209,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>224</real>
+									<real>240</real>
 									<real>0.0</real>
 									<integer>5</integer>
 								</array>
@@ -223,7 +221,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.15000000596046448</real>
+									<real>0.5</real>
 									<real>0.0</real>
 								</array>
 							</dict>
@@ -283,7 +281,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>224</real>
+									<real>240</real>
 									<real>32</real>
 									<integer>5</integer>
 								</array>
@@ -295,7 +293,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.15000000596046448</real>
+									<real>0.5</real>
 									<real>0.0</real>
 								</array>
 							</dict>
@@ -355,7 +353,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>224</real>
+									<real>240</real>
 									<real>64</real>
 									<integer>5</integer>
 								</array>
@@ -367,7 +365,7 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.15000000596046448</real>
+									<real>0.5</real>
 									<real>0.0</real>
 								</array>
 							</dict>
@@ -418,13 +416,25 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>50</real>
+							<real>50</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.5</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -468,6 +478,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
