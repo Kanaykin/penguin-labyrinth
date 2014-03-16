@@ -15,7 +15,7 @@ gLocations = {
 			},
 			{
 				opened = true,
-				ccbFile = "Level1_2p1",
+				ccbFile = {"Level1_2p1", "Level1_2p2"},
 				playerType = "FoxObject",
 				tileMap = "Level1_2_map.tmx",
 				cellSize = 32

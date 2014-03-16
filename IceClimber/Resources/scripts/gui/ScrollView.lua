@@ -73,6 +73,36 @@ function ScrollView:addClickableChild(child, obj, callback)
 end
 
 ------------------------------
+function ScrollView:initLayers(layers)
+	local visibleSize = CCDirector:sharedDirector():getVisibleSize();
+	local scrollviewlayer = CCLayer:create();
+
+	-- compute size
+	local height = 0;
+	for i, layer in ipairs(layers) do
+		local layerSize = layer:getContentSize();
+		height = height + layerSize.height;
+	end
+
+	scrollviewlayer:setContentSize(CCSizeMake(visibleSize.width, height));
+
+	self.mScroll = CCScrollView:create(CCSizeMake(visibleSize.width, visibleSize.height), scrollviewlayer);
+	self.mScroll:setBounceable(false);
+	self.mScroll:setZoomScale(3.0, false);
+
+	local layersOffset = 0;
+	for i, layer in ipairs(layers) do
+		scrollviewlayer:addChild(layer);
+
+		local layerSize = layer:getContentSize();
+		print("ScrollView:initLayers height ", layerSize.height);
+		local posX, posY = layer:getPosition();
+		layer:setPosition(posX, posY + layersOffset);
+		layersOffset = layersOffset + layerSize.height;
+	end
+end
+
+------------------------------
 function ScrollView:init(sizeScale, images)
 	self.mClickableChildren = {};
 	local visibleSize = CCDirector:sharedDirector():getVisibleSize();

@@ -131,7 +131,8 @@ end
 function PlayerObject:collisionDetect(delta, newDir)
 	local currentPos = Vector.new(self.mNode:getPosition());
 	--print("currentPos ", currentPos.x, " ", currentPos.y);
-	local destPos = currentPos + delta * self.mField:getCellSize() / 2;
+	local anchor = self.mNode:getAnchorPoint();
+	local destPos = currentPos + delta * (self.mField:getCellSize() * 0.5)--[[Vector.new(anchor.x, anchor.y))]];
 	--print("destPos ", destPos.x, " ", destPos.y);
 
 	local destGrid = Vector.new(self.mField:positionToGrid(destPos));

@@ -11,6 +11,8 @@ LevelScene.mData = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 
+local LOADSCEENIMAGE = "choseLevel.png"
+
 
 ---------------------------------
 function LevelScene:destroy()
@@ -34,9 +36,11 @@ function LevelScene:init(sceneMan, params)
 
 	-- set joystick to players
 	local players = self.mField:getPlayerObjects();
-	for i, player in ipairs(players) do
-		player:setJoystick(self.mJoystick);
-		player:setFightButton(self.mFightButton);
+	if players then
+		for i, player in ipairs(players) do
+			player:setJoystick(self.mJoystick);
+			player:setFightButton(self.mFightButton);
+		end
 	end
 end
 
@@ -48,18 +52,38 @@ function LevelScene:initScene()
 		print(" LevelScene:initScene tileMap ", tileMap);
 		self.mSceneGame:addChild(tileMap);
 	end
-	
-	local ccpproxy = CCBProxy:create();
-	local reader = ccpproxy:createCCBReader();
-	local node = ccpproxy:readCCBFromFile(self.mData.ccbFile, reader, false);
 
-	self.mSceneGame:addChild(node);
+	if type(self.mData.ccbFile) == "string" then
+		local ccpproxy = CCBProxy:create();
+		local reader = ccpproxy:createCCBReader();
+		
+		local node = ccpproxy:readCCBFromFile(self.mData.ccbFile, reader, false);
 
-	-- create field
-	local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
+		self.mSceneGame:addChild(node);
 
-	self.mField = Field:create();
-	self.mField:init(fieldNode, self.mData, self.mSceneManager.mGame);
+		-- create field
+		local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
+
+		self.mField = Field:create();
+		self.mField:init({ fieldNode }, node, self.mData, self.mSceneManager.mGame);
+	elseif type(self.mData.ccbFile) == "table" then
+		local layers = {};
+		local nodes = {};
+		for i, fileName in ipairs(self.mData.ccbFile) do
+			local ccpproxy = CCBProxy:create();
+			local reader = ccpproxy:createCCBReader();
+			local node = ccpproxy:readCCBFromFile(fileName, reader, false);
+			table.insert(layers, node);
+			local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
+			table.insert(nodes, fieldNode);
+		end
+		self.mScrollView = ScrollView:create();
+		self.mScrollView:initLayers(layers);
+		
+		self.mSceneGame:addChild(self.mScrollView.mScroll);
+		self.mField = Field:create();
+		self.mField:init(nodes, self.mScrollView.mScroll, self.mData, self.mSceneManager.mGame);
+	end
 end
 
 ---------------------------------

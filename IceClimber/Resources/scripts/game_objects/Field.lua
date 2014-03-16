@@ -4,6 +4,7 @@ require "MobObject"
 require "PlayerObject"
 require "SnareTrigger"
 require "FoxObject"
+require "FieldNode"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
@@ -207,7 +208,7 @@ function Field:getFieldNode()
 end
 
 --------------------------------
-function Field:init(fieldNode, fieldData, game)
+function Field:init(fieldNode, layer, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
 	print(" Game ", game);
@@ -217,13 +218,14 @@ function Field:init(fieldNode, fieldData, game)
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
 	self.mEnemyObjects = {};
-	self.mFieldNode = fieldNode;
+	self.mFieldNode = FieldNode:create();
+	self.mFieldNode:init(fieldNode, layer);
 
-	if not fieldNode then
+	if not self.mFieldNode then
 		return;
 	end
 
-	local children = fieldNode:getChildren();
+	local children = self.mFieldNode:getChildren();
 	local count = children:count();
 	print("count ", count);
 	if count == 0 then
@@ -233,28 +235,8 @@ function Field:init(fieldNode, fieldData, game)
 	-- compute size of brick
 	local minValue = Vector.new(MAX_NUMBER, MAX_NUMBER);
 	local maxValue = Vector.new(MIN_NUMBER, MIN_NUMBER);
-	--[[for i = 1, count do
-		local brick = tolua.cast(children:objectAtIndex(i - 1), "CCNode");
-		
-		local posX, posY = brick:getPosition();
-		local anchor = brick:getAnchorPoint();
-		local brickSize = brick:getContentSize();
-		
-		local leftButtom = Vector.new(posX - anchor.x * brickSize.width, posY - anchor.y * brickSize.height);
-		
-		minValue.x = math.min(minValue.x, leftButtom.x);
-		minValue.y = math.min(minValue.y, leftButtom.y);
-		maxValue.x = math.max(maxValue.x, leftButtom.x);
-		maxValue.y = math.max(maxValue.y, leftButtom.y);
-	end
 
-	print("maxValue x ", maxValue.x, " y ", maxValue.y);
-	print("minValue x ", minValue.x, " y ", minValue.y);
-
-	local newMinValue = Vector.new(fieldNode:getPosition());
-	print("newMinValue x ", newMinValue.x, " y ", newMinValue.y);
-	local newMaxValue = Vector.new(fieldNode:getPosition());]]
-	local contentSize = fieldNode:getContentSize();
+	local contentSize = self.mFieldNode:getContentSize();
 	print("newMaxValue x ", contentSize.width / self.mCellSize, " y ", contentSize.height / self.mCellSize);
 
 	maxValue.x = contentSize.width / self.mCellSize;--(maxValue.x - minValue.x) / self.mCellSize;
