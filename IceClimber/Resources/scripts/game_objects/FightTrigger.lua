@@ -9,6 +9,7 @@ function FightTrigger:init(field)
 	node:setContentSize(CCSizeMake(field:getCellSize(), field:getCellSize()));
 	field:getFieldNode():addChild(node);
 
+	-- #FIXME: anchor point for fox scene
 	node:setAnchorPoint(CCPointMake(0.5, 0.5));
 
 	print("FightTrigger node ", node);

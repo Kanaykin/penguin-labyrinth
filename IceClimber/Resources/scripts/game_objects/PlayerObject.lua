@@ -52,10 +52,17 @@ function PlayerObject:destroy()
 end
 
 ---------------------------------
+function PlayerObject:leaveTrap(pos)
+	print("PlayerObject:leaveTrap");
+	self:playAnimation(nil);
+end
+
+---------------------------------
 function PlayerObject:enterTrap(pos)
-	print("PlayerObject:enterTrap");
+	
 	self:playAnimation(nil);
 	if pos then
+		print("PlayerObject:enterTrap x= ", pos.x, " y= ", pos.y);
 		local posTo = Vector.new(self.mField:positionToGrid(pos));
 		self:moveTo(posTo);
 	else

@@ -103,34 +103,42 @@ echo "finished copying of lua scripts"
 
 COCOS_BUILDER_PUBLISH_FOLDER="$APP_ROOT"/Resources/iceClimber/Published-iOS
 
+cp -rf "$COCOS_BUILDER_PUBLISH_FOLDER" "$APP_ANDROID_ROOT"/assets
+cp -rf "$APP_ROOT"/Resources/iceClimber/Resources/Maps "$APP_ANDROID_ROOT"/assets
+
 devices=("iphone" "iphonehd")
 
-for i in "${devices[@]}";
-do
-    echo "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i"
-    if [ -d "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" ]; then
-	cp -r "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" "$APP_ANDROID_ROOT"/assets
-	echo "$i has copied to assets"
-    fi
-done
+#for i in "${devices[@]}";
+#do
+#    echo "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i"
+#    if [ -d "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" ]; then
+#	cp -r "$COCOS_BUILDER_PUBLISH_FOLDER/resources-$i" "$APP_ANDROID_ROOT"/assets
+#	echo "$i has copied to assets"
+#    fi
+#done
 
 echo "copy ccbi files to asset"
-for line in $(find "$APP_ROOT"/Resources -name "*.ccbi");
-do
-    cp $line "$APP_ANDROID_ROOT"/assets
-done
+#for line in $(find "$APP_ROOT"/Resources -name "*.ccbi");
+#do
+#    cp $line "$APP_ANDROID_ROOT"/assets
+#done
+
+echo "start coping of textures"
 
 # copy textures
-for file in "$APP_ROOT"/Resources/textures/*
-do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
+#for file in "$APP_ROOT"/Resources/iceClimber/Resources/textures/*
+#do
+#echo "$file"
+#if [ -d "$file" ]; then
+#    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
+#    echo "$file has copied to assets"
+#fi
     
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
-done
+#if [ -f "$file" ]; then
+#    cp "$file" "$APP_ANDROID_ROOT"/assets
+#    echo "$file has copied to assets"
+#fi
+#done
 
 # remove test_image_rgba4444.pvr.gz
 rm -f "$APP_ANDROID_ROOT"/assets/Images/test_image_rgba4444.pvr.gz

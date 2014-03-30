@@ -34,12 +34,14 @@ end
 --------------------------------
 function MobOject:onPlayerEnter(player, pos)
 	print("MobOject.onPlayerEnter ", player.mNode:getTag());
-	player:enterTrap(nil);
+	self.mField:createSnareTrigger(Vector.new(player.mNode:getPosition()));
+	--player:enterTrap(nil);
 end
 
 --------------------------------
 function MobOject:onPlayerLeave(player)
 	print("MobOject.onPlayerLeave");
+	--player:leaveTrap(nil);
 end
 
 --------------------------------

@@ -10,6 +10,11 @@ function FoxObject:init(field, node, needReverse)
 end
 
 --------------------------------
+function FoxObject:move(dt)
+	FoxObject:superClass().move(self, dt);
+end
+
+--------------------------------
 function FoxObject:initAnimation()
 	local texture = tolua.cast(self.mNode, "CCSprite"):getTexture();
 

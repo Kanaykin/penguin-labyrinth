@@ -4,11 +4,11 @@ FieldNode = inheritsFrom(BaseScene)
 FieldNode.mNodes = nil;
 FieldNode.mSize = nil;
 FieldNode.mChildren = nil;
+FieldNode.mLayer = nil;
 
 --------------------------------
 function FieldNode:addChild(node)
-	-- FIXME:
-	self.mNodes[1]:addChild(node);
+	self.mLayer:addChild(node);
 end
 
 --------------------------------
@@ -52,6 +52,7 @@ function FieldNode:init(nodes, layer)
 	self.mSize = CCSizeMake(width, height);
 	local newLayer = CCLayer:create();
 	newLayer:setContentSize(self.mSize);
+	self.mLayer = newLayer;
 
 	layer:addChild(newLayer);
 	if #nodes ~= 0 then

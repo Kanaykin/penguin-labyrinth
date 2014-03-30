@@ -28,7 +28,7 @@ function Trigger:destroy()
 	Trigger:superClass().destroy(self);
 
 	if self.mLeaveCallback then
-		self.mLeaveCallback(player);
+		self.mLeaveCallback(self.mContainedObj);
 		self.mContainedObj = nil;
 	end
 end
@@ -51,7 +51,7 @@ function Trigger:tick(dt)
 				contained = self.mNode:boundingBox():containsPoint(CCPointMake(pointX, pointY));
 			end
 			if not contained and self.mLeaveCallback then
-				self.mLeaveCallback(player);
+				self.mLeaveCallback(self.mContainedObj);
 				self.mContainedObj = nil;
 			end
 		else

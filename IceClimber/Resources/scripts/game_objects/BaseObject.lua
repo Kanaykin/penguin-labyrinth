@@ -21,7 +21,7 @@ end
 
 ---------------------------------
 function BaseObject:destroy()
-	
+	self:destroyNode();
 end
 
 --------------------------------

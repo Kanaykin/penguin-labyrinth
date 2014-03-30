@@ -79,6 +79,7 @@ function LevelScene:initScene()
 		end
 		self.mScrollView = ScrollView:create();
 		self.mScrollView:initLayers(layers);
+		self.mScrollView:setTouchEnabled(false);
 		
 		self.mSceneGame:addChild(self.mScrollView.mScroll);
 		self.mField = Field:create();

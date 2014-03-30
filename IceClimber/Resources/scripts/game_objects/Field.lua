@@ -157,7 +157,7 @@ function Field:onEnemyEnterTrigger(enemy)
 	
 	self:removeObject(enemy);
 	self:removeEnemy(enemy)
-	enemy:destroyNode();
+	enemy:destroy();
 end
 
 --------------------------------
@@ -193,6 +193,7 @@ end
 --------------------------------
 function Field:onPlayerLeaveWeb(player)
 	print("onPlayerLeaveWeb ");
+	player:leaveTrap(nil);
 end
 
 --------------------------------
@@ -203,8 +204,32 @@ function Field:onPlayerEnterWeb(player, pos)
 end
 
 --------------------------------
+function Field:onPlayerEnterMob(player, pos)
+	print("onPlayerEnterMob ");
+	-- if player is primary then game over
+	player:enterTrap(nil);
+end
+
+--------------------------------
 function Field:getFieldNode()
 	return self.mFieldNode;
+end
+
+--------------------------------
+function Field:createSnareTrigger(pos)
+	print("Field:createSnareTrigger x= ", pos.x, " y= ", pos.y);
+	local node = CCNode:create();
+	node:setContentSize(CCSizeMake(self:getCellSize(), self:getCellSize()));
+	self:getFieldNode():addChild(node);
+
+	-- #FIXME: anchor point for fox scene
+	node:setAnchorPoint(CCPointMake(0.5, 0.5));
+	node:setPosition(CCPointMake(pos.x, pos.y));
+
+	local web = SnareTrigger:create();
+	web:init(self, node, Callback.new(self, Field.onPlayerEnterMob), Callback.new(self, Field.onPlayerLeaveWeb));
+	table.insert(self.mObjects, web);
+	table.insert(self.mEnemyObjects, web);
 end
 
 --------------------------------

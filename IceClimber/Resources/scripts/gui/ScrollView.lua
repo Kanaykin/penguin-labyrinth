@@ -47,6 +47,11 @@ function ScrollView:onTouchHandler(action, position)
 end
 
 ------------------------------
+function ScrollView:setTouchEnabled(enable)
+	self.mScroll:setTouchEnabled(enable);
+end
+
+------------------------------
 function ScrollView:setClickable(clickable)
 	local scrollviewlayer = self.mScroll:getContainer();
 	local scrollView = self;
@@ -63,6 +68,7 @@ function ScrollView:setClickable(clickable)
 	else
 		scrollviewlayer:unregisterScriptTouchHandler();
 	end
+	print("ScrollView:setClickable (", clickable);
 	scrollviewlayer:setTouchEnabled(clickable);
 end
 
