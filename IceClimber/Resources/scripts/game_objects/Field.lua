@@ -34,14 +34,14 @@ Field.mCellSize = nil;
 
 --------------------------------
 function COORD(x, y, width)
-	return x + (y - 1) * width;
+	return x + 1 + y * width;
 end
 
 --------------------------------
 function PRINT_FIELD(array, size)
-	for j = 1, size.y + 1 do
+	for j = 0, size.y do
 		local raw = "";
-		for i = 1, size.x + 1 do
+		for i = 0, size.x do
 			--print("COORD ", COORD(i, j, size.x))
 			raw = raw .. tostring(array[COORD(i, j, size.x)]) .. " ";
 		end
@@ -76,7 +76,7 @@ end
 function Field:cloneArray()
 	PRINT_FIELD(self.mArray, self.mSize);
 	local cloneArr = {};
-	for i, val in ipairs(self.mArray) do
+	for i, val in pairs(self.mArray) do
 		--print ("i ", i, "val ", val);
 		cloneArr[i] = val;
 	end
@@ -90,16 +90,33 @@ function Field:isBrick(brick)
 end
 
 ---------------------------------
+function Field:updateScrollPos()
+	local min = math.huge;
+	local max = -math.huge;
+	for i, val in ipairs(self.mPlayerObjects) do
+		local x, y = val.mNode:getPosition();
+		min = math.min(min, y);
+		max = math.max(max, y);
+	end
+	local visibleSize = CCDirector:sharedDirector():getVisibleSize();
+	local pos = max - visibleSize.height / 2;
+	pos = math.max(pos, 0);
+	--print ("Field:updateScrollPos ", pos); 
+	self.mFieldNode:setScrollPos(Vector.new(0, pos));
+end
+
+---------------------------------
 function Field:tick(dt)
 	for i, obj in ipairs(self.mObjects) do
 		obj:tick(dt);
 	end
+	self:updateScrollPos();
 end
 
 --------------------------------
 function Field:fillFreePoint()
-	for j = 1, self.mSize.y + 1 do
-		for i = 1, self.mSize.x + 1 do
+	for j = 0, self.mSize.y do
+		for i = 0, self.mSize.x do
 			if self.mArray[COORD(i, j, self.mSize.x)] == 0 then 
 				table.insert(self.mFreePoints, Vector.new(i, j));
 			end
@@ -233,6 +250,21 @@ function Field:createSnareTrigger(pos)
 end
 
 --------------------------------
+function Field:addArrayBorder()
+	print("Field:addArrayBorder ", self.mSize.x);
+
+	for j = 0, self.mSize.y do
+		self.mArray[COORD(0, j, self.mSize.x)] = 1;
+		self.mArray[COORD(self.mSize.x, j, self.mSize.x)] = 1;
+	end
+
+	for i = 0, self.mSize.x do
+		self.mArray[COORD(i, 0, self.mSize.x)] = 1;
+		self.mArray[COORD(i, self.mSize.y, self.mSize.x)] = 1;
+	end
+end
+
+--------------------------------
 function Field:init(fieldNode, layer, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
@@ -243,8 +275,9 @@ function Field:init(fieldNode, layer, fieldData, game)
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
 	self.mEnemyObjects = {};
+	self.mLeftBottom = Vector.new(0, 0);
 	self.mFieldNode = FieldNode:create();
-	self.mFieldNode:init(fieldNode, layer);
+	self.mFieldNode:init(fieldNode, layer, self);
 
 	if not self.mFieldNode then
 		return;
@@ -264,16 +297,15 @@ function Field:init(fieldNode, layer, fieldData, game)
 	local contentSize = self.mFieldNode:getContentSize();
 	print("newMaxValue x ", contentSize.width / self.mCellSize, " y ", contentSize.height / self.mCellSize);
 
-	maxValue.x = contentSize.width / self.mCellSize;--(maxValue.x - minValue.x) / self.mCellSize;
-	maxValue.y = contentSize.height / self.mCellSize;--(maxValue.y - minValue.y) / self.mCellSize;
+	maxValue.x = contentSize.width / self.mCellSize + 1;--(maxValue.x - minValue.x) / self.mCellSize;
+	maxValue.y = contentSize.height / self.mCellSize + 1;--(maxValue.y - minValue.y) / self.mCellSize;
 
 	print("maxValue x ", maxValue.x, " y ", maxValue.y);
 	self.mArray = {};
 	self.mSize = maxValue;
-	self.mLeftBottom = Vector.new(0, 0);
 	-- fill zero 
-	for i = 1, maxValue.x + 1 do
-		for j = 1, maxValue.y + 1 do
+	for i = 0, maxValue.x do
+		for j = 0, maxValue.y do
 			self.mArray[COORD(i, j, maxValue.x)] = 0;
 		end
 	end
@@ -304,6 +336,8 @@ function Field:init(fieldNode, layer, fieldData, game)
 			table.insert(self.mEnemyObjects, web);
 		end
 	end
+
+	self:addArrayBorder();
 
 	-- fill free point it is point where objects can move
 	self:fillFreePoint();

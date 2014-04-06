@@ -122,6 +122,7 @@ function PlayerObject:init(field, node, needReverse)
 	end
 	self:initAnimation();
 	self:playAnimation(nil);
+	self:updateOrder();
 end
 
 --------------------------------
@@ -187,6 +188,13 @@ function PlayerObject:fight()
 end
 
 --------------------------------
+function PlayerObject:updateOrder()
+	local parent = self.mNode:getParent();
+	parent:removeChild(self.mNode, false);
+	parent:addChild(self.mNode, -self.mGridPosition.y * 2);
+end
+
+--------------------------------
 function PlayerObject:move(dt)
 	if not self.mJoystick then
 		return;
@@ -209,6 +217,7 @@ function PlayerObject:move(dt)
 
 			self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
 			self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
+			self:updateOrder();
 		end
 	end
 end

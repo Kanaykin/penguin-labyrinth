@@ -22,9 +22,18 @@ function FieldNode:getChildren()
 end
 
 --------------------------------
-function FieldNode:init(nodes, layer)
+function FieldNode:setScrollPos(pos)
+	--print("FieldNode:setScrollPos ");
+	if self.mScrollView.setContentOffset then
+		self.mScrollView:setContentOffset(CCPointMake(0, -pos.y));
+	end
+end
+
+--------------------------------
+function FieldNode:init(nodes, layer, field)
 	self.mNodes = nodes;
 	self.mChildren = CCArray:create();
+	self.mScrollView = layer;
 
 	local height = 0;
 	local width = 0;
@@ -70,6 +79,10 @@ function FieldNode:init(nodes, layer)
 	for i = 1, count do
 		local child = tolua.cast(self.mChildren:objectAtIndex(i - 1), "CCNode");
 		child:getParent():removeChild(child, false);
-		newLayer:addChild(child);
+		local posGridX, posGridY = field:getGridPosition(child);
+		print("posGridY ", posGridY);
+		newLayer:addChild(child, -posGridY * 2);
+		
+		--child:setVertexZ(-posGridY);
 	end
 end
