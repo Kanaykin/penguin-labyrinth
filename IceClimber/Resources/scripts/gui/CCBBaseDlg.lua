@@ -24,7 +24,7 @@ end
 --------------------------------
 function CCBBaseDialog:doModal()
 	self:show();
-	self.mDialogManager:setModalDlg(self);
+	self.mDialogManager:activateModal(self);
 end
 
 --------------------------------

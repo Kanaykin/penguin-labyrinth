@@ -18,10 +18,11 @@ end
 function SettingsDlg:hidePanel()
 	function callback()
 		print("SettingsDlg:callback");
+		self.mDialogManager:deactivateModal(self);
 	end
 
 	local callFunc = CCCallFunc:create(callback);
-	self.mAnimator:setCallFuncForLuaCallbackNamed(callFunc, "1:finish");
+	self.mAnimator:setCallFuncForLuaCallbackNamed(callFunc, "0:finish");
 
 	self.mAnimator:runAnimationsForSequenceNamed("Hide");
 end
