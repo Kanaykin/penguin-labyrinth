@@ -11,6 +11,7 @@ Field.mArray = nil;
 Field.mSize = nil;
 Field.mFieldNode = nil;
 Field.mEnemyObjects = nil;
+Field.mFinishTrigger = nil;
 
 Field.BRICK_TAG = -1;
 Field.DECOR_TAG = 0;
@@ -106,11 +107,29 @@ function Field:updateScrollPos()
 end
 
 ---------------------------------
+function Field:checkFinishGame()
+	--print("Field:checkFinishGame ");
+	local allObjectInTrigger = true;
+	for i, trigger in ipairs(self.mFinishTrigger) do
+		local obj = trigger:getContainedObj();
+		--print("Field:checkFinishGame i ", i, " obj ", obj);
+		if not obj then
+			allObjectInTrigger = false;
+		end
+	end
+
+	if allObjectInTrigger then
+		print("Field:checkFinishGame WIN");
+	end
+end
+
+---------------------------------
 function Field:tick(dt)
 	for i, obj in ipairs(self.mObjects) do
 		obj:tick(dt);
 	end
 	self:updateScrollPos();
+	self:checkFinishGame();
 end
 
 --------------------------------
@@ -275,6 +294,7 @@ function Field:init(fieldNode, layer, fieldData, game)
 	self.mFreePoints = {};
 	self.mPlayerObjects = {};
 	self.mEnemyObjects = {};
+	self.mFinishTrigger = {};
 	self.mLeftBottom = Vector.new(0, 0);
 	self.mFieldNode = FieldNode:create();
 	self.mFieldNode:init(fieldNode, layer, self);
@@ -334,6 +354,12 @@ function Field:init(fieldNode, layer, fieldData, game)
 			web:init(self, brick, Callback.new(self, Field.onPlayerEnterWeb), Callback.new(self, Field.onPlayerLeaveWeb));
 			table.insert(self.mObjects, web);
 			table.insert(self.mEnemyObjects, web);
+		elseif brick:getTag() == Field.FINISH_TAG then
+			print("it is finish trigger");
+			local finish = Trigger:create();
+			finish:init(self, brick, nil, nil);
+			table.insert(self.mObjects, finish);
+			table.insert(self.mFinishTrigger, finish);
 		end
 	end
 

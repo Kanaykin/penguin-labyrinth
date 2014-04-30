@@ -82,6 +82,10 @@
 			<key>path</key>
 			<string>Resources/Common</string>
 		</dict>
+		<dict>
+			<key>path</key>
+			<string>Resources/gui</string>
+		</dict>
 	</array>
 	<key>versionStr</key>
 	<string>Version: 3.0-alpha5

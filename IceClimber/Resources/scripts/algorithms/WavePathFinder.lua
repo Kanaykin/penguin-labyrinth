@@ -101,7 +101,7 @@ WavePathFinder = {
 		local srcPoints = {pointFrom};
 		array[COORD(pointFrom.x, pointFrom.y, sizeArray.x)] = WavePathFinder.FIRST_INDEX;
 		WavePathFinder.fillArray(srcPoints, pointTo, array, sizeArray, WavePathFinder.FIRST_INDEX + 1);
-		PRINT_FIELD(array, sizeArray);
+		--PRINT_FIELD(array, sizeArray);
 		local path = {pointTo};
 		WavePathFinder.findPath(path, array, sizeArray);
 

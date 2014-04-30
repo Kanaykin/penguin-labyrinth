@@ -7,6 +7,11 @@ Trigger.mLeaveCallback = nil;
 Trigger.mContainedObj = nil;
 
 --------------------------------
+function Trigger:getContainedObj()
+	return self.mContainedObj;
+end
+
+--------------------------------
 function Trigger:init(field, node, enterCallback, leaveCallback)
 	Trigger:superClass().init(self, field, node);
 
@@ -19,8 +24,8 @@ function Trigger:onEnter(player)
 	print("Trigger:onEnter");
 	if self.mEnterCallback then
 		self.mEnterCallback(player, Vector.new(self.mNode:getPosition()));
-		self.mContainedObj = player;
 	end
+	self.mContainedObj = player;
 end
 
 ---------------------------------
@@ -29,8 +34,8 @@ function Trigger:destroy()
 
 	if self.mLeaveCallback then
 		self.mLeaveCallback(self.mContainedObj);
-		self.mContainedObj = nil;
 	end
+	self.mContainedObj = nil;
 end
 
 --------------------------------

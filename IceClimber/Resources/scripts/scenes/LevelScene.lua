@@ -2,14 +2,14 @@ require "BaseScene"
 require "Joystick"
 require "Field"
 require "FightButton"
+require "MainUI"
 
 LevelScene = inheritsFrom(BaseScene)
-LevelScene.mJoystick = nil;
-LevelScene.mFightButton = nil;
 LevelScene.mField = nil;
 LevelScene.mData = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
+LevelScene.mMainUI = nil;
 
 local LOADSCEENIMAGE = "choseLevel.png"
 
@@ -19,9 +19,14 @@ function LevelScene:destroy()
 	print("LevelScene:destroy ");
 	LevelScene:superClass().destroy(self);
 
+	if self.mMainUI then
+		self.mMainUI:destroy();
+	end
+
 	if self.mField then
 		self.mField:destroy();
 	end
+
 end
 
 --------------------------------
@@ -38,8 +43,8 @@ function LevelScene:init(sceneMan, params)
 	local players = self.mField:getPlayerObjects();
 	if players then
 		for i, player in ipairs(players) do
-			player:setJoystick(self.mJoystick);
-			player:setFightButton(self.mFightButton);
+			player:setJoystick(self.mMainUI.mJoystick);
+			player:setFightButton(self.mMainUI.mFightButton);
 		end
 	end
 end
@@ -76,6 +81,9 @@ function LevelScene:initScene()
 			table.insert(layers, node);
 			local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
 			table.insert(nodes, fieldNode);
+			local layerSize = node:getContentSize();
+			local fieldSize = fieldNode:getContentSize();
+			node:setContentSize(CCSizeMake(layerSize.width, fieldSize.height));
 		end
 		self.mScrollView = ScrollView:create();
 		self.mScrollView:initLayers(layers);
@@ -97,15 +105,7 @@ end
 function LevelScene:initGui()
 	self:createGuiLayer();
 
-	local ccpproxy = CCBProxy:create();
-	local reader = ccpproxy:createCCBReader();
-	local node = ccpproxy:readCCBFromFile("Level_UI_layer", reader, false);
-
-	self.mGuiLayer:addChild(node);
-
-	self.mJoystick = Joystick:create();
-	self.mJoystick:init(node);
-
-	self.mFightButton = FightButton:create();
-	self.mFightButton:init(node);
+	self.mMainUI = MainUI:create();
+	self.mMainUI:init(self.mSceneManager.mGame.mDialogManager, self.mGuiLayer, "Level_UI_layer");
+	self.mMainUI:show();
 end

@@ -451,54 +451,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../../extensions/GUI/CCScrollView/CCScrollView.cpp"
-            timestampString = "417122657.390245"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "CCScrollView::setTouchEnabled(bool e)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
-            timestampString = "417122983.407967"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65941"
-            endingLineNumber = "65941"
-            landmarkName = "tolua_Cocos2d_CCScrollView_setTouchEnabled00(lua_State* tolua_S)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
-            timestampString = "417122997.529823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24079"
-            endingLineNumber = "24079"
-            landmarkName = "tolua_Cocos2d_CCLayer_setTouchEnabled00(lua_State* tolua_S)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../../../cocos2dx/base_nodes/CCNode.cpp"
             timestampString = "418415540.203288"
             startingColumnNumber = "9223372036854775807"
@@ -515,13 +467,75 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../../cocos2dx/base_nodes/CCNode.cpp"
-            timestampString = "418415573.18048"
+            filePath = "../../../../scripting/lua/cocos2dx_support/Lua_extensions_CCB.cpp"
+            timestampString = "420575561.83718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "882"
-            endingLineNumber = "882"
-            landmarkName = "CCNode::transform()"
+            startingLineNumber = "1881"
+            endingLineNumber = "1881"
+            landmarkName = "tolua_Cocos2d_CCBAnimationManager_setCallFuncForLuaCallbackNamed00(lua_State* tolua_S)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../extensions/CCBReader/CCBAnimationManager.cpp"
+            timestampString = "420575632.557243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
+            landmarkName = "CCBAnimationManager::actionForCallbackChannel(CCBSequenceProperty* channel)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::extension::CCBAnimationManager::actionForCallbackChannel(cocos2d::extension::CCBSequenceProperty*)"
+                  moduleName = "IceClimber"
+                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/extensions/CCBReader/CCBAnimationManager.cpp"
+                  timestampString = "420576022.561606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "616"
+                  endingLineNumber = "616"
+                  offsetFromSymbolStart = "896">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cocos2d::extension::CCBAnimationManager::actionForCallbackChannel(cocos2d::extension::CCBSequenceProperty*)"
+                  moduleName = "IceClimber"
+                  urlString = "file://localhost/Volumes/PART2/cocos2d-x-2.2/extensions/CCBReader/CCBAnimationManager.cpp"
+                  timestampString = "420576022.561933"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "616"
+                  endingLineNumber = "616"
+                  offsetFromSymbolStart = "1090">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../extensions/CCBReader/CCBAnimationManager.cpp"
+            timestampString = "420576006.890895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
+            landmarkName = "CCBAnimationManager::actionForCallbackChannel(CCBSequenceProperty* channel)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

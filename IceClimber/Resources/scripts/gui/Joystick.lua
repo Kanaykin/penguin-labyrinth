@@ -81,9 +81,7 @@ end
 
 --------------------------------
 function Joystick:init(guiLayer)
-	--local ccpproxy = CCBProxy:create();
-	--local reader = ccpproxy:createCCBReader();
-	--local node = ccpproxy:readCCBFromFile("joystick", reader, false);
+	
 	local node  = guiLayer:getChildByTag(Joystick.JOYSTICK_TAG);
 	print(" Joystick:init ", node);
 

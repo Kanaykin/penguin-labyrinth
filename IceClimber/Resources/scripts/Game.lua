@@ -1,12 +1,14 @@
 require "SceneManager"
 require "GameConfigs"
 require "Location"
+require "DialogManager"
 
 --[[
 It is main class for game.
 --]]
 Game =  inheritsFrom(nil)
 Game.mSceneMan = nil
+Game.mDialogManager = nil
 Game.mGameTime = 0
 Game.mScale = 1
 Game.mLocations = {}
@@ -32,8 +34,10 @@ end
 
 ---------------------------------
 function Game:tick(dt)
-	self.mGameTime = self.mGameTime + dt;
-	self.mSceneMan:tick(dt);
+	if not self.mDialogManager:hasModalDlg() then
+		self.mGameTime = self.mGameTime + dt;
+		self.mSceneMan:tick(dt);
+	end
 end
 
 ---------------------------------
@@ -54,6 +58,7 @@ function Game:initResolution()
 	for i = #SUPPORTED_RESOLUTION, 1, -1  do
 		if visibleSize.width >= SUPPORTED_RESOLUTION[i].size.width and visibleSize.height >= SUPPORTED_RESOLUTION[i].size.height then
 			print("resolution x ", SUPPORTED_RESOLUTION[i].size.width);
+			print("resolution y ", SUPPORTED_RESOLUTION[i].size.height);
 			resolutionInfo = SUPPORTED_RESOLUTION[i];
 			break;
 		end
@@ -82,6 +87,9 @@ function Game:init()
 	-- create scene manager
 	self.mSceneMan = SceneManager:create();
 	self.mSceneMan:init(self);
+
+	-- create gui manager
+	self.mDialogManager = DialogManager:create();
 
 	-- create locations
 	self:createLocation();
