@@ -100,6 +100,7 @@
 		A560237C1811C384005719B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A560237A1811C384005719B1 /* InfoPlist.strings */; };
 		A560237E1811C384005719B1 /* IceClimberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A560237D1811C384005719B1 /* IceClimberTests.m */; };
 		A572B06118B3DF1B0068BB19 /* PlistAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A572B06018B3DF1B0068BB19 /* PlistAnimation.lua */; };
+		A574494C191E90D7007A9FF9 /* GuiHelper.lua in Resources */ = {isa = PBXBuildFile; fileRef = A574494B191E90D7007A9FF9 /* GuiHelper.lua */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A593E45318D5A2AA00854816 /* FieldNode.lua in Resources */ = {isa = PBXBuildFile; fileRef = A593E45218D5A2AA00854816 /* FieldNode.lua */; };
 		A5B19D82190D672E001829C0 /* DialogManager.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5B19D81190D672E001829C0 /* DialogManager.lua */; };
@@ -345,6 +346,7 @@
 		A560237B1811C384005719B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A560237D1811C384005719B1 /* IceClimberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IceClimberTests.m; sourceTree = "<group>"; };
 		A572B06018B3DF1B0068BB19 /* PlistAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlistAnimation.lua; sourceTree = "<group>"; };
+		A574494B191E90D7007A9FF9 /* GuiHelper.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GuiHelper.lua; sourceTree = "<group>"; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A593E45218D5A2AA00854816 /* FieldNode.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FieldNode.lua; sourceTree = "<group>"; };
@@ -908,6 +910,7 @@
 		A5DB5C1B18B13DF2004A6FC4 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				A574494B191E90D7007A9FF9 /* GuiHelper.lua */,
 				A5B19D81190D672E001829C0 /* DialogManager.lua */,
 				A549EFA2190443B80072353C /* MainUI.lua */,
 				A549EF9E190410610072353C /* CCBBaseDlg.lua */,
@@ -1064,6 +1067,7 @@
 				A5DB5C3F18B13DF2004A6FC4 /* ChooseLevel.lua in Resources */,
 				A5DB5C3C18B13DF2004A6FC4 /* SceneManager.lua in Resources */,
 				A5DB5C4518B13DF2004A6FC4 /* FightButton.lua in Resources */,
+				A574494C191E90D7007A9FF9 /* GuiHelper.lua in Resources */,
 				A5DB5C4F18B13DF2004A6FC4 /* PlayerObject.lua in Resources */,
 				A5DB5C3618B13DF2004A6FC4 /* Callback.lua in Resources */,
 				A5DB5C4B18B13DF2004A6FC4 /* Trigger.lua in Resources */,

@@ -1,4 +1,5 @@
 require "CCBBaseDlg"
+require "GuiHelper"
 
 SettingsDlg = inheritsFrom(CCBBaseDialog)
 
@@ -6,6 +7,8 @@ SettingsDlg.mAnimator = nil;
 SettingsDlg.BASE_NODE_TAG = 49;
 SettingsDlg.BACK_MENU_TAG = 50;
 SettingsDlg.BACK_MENU_ITEM_TAG = 51;
+SettingsDlg.REPLAY_MENU_TAG = 70;
+SettingsDlg.REPLAY_MENU_ITEM_TAG = 71;
 
 --------------------------------
 function SettingsDlg:doModal()
@@ -28,6 +31,25 @@ function SettingsDlg:hidePanel()
 end
 
 --------------------------------
+function SettingsDlg:initReplayButton(nodeBase)
+	local function onReplayButtonPressed(val, val2)
+    	print("onReplayButtonPressed ");
+    end
+
+    setMenuCallback(nodeBase, SettingsDlg.REPLAY_MENU_TAG, SettingsDlg.REPLAY_MENU_ITEM_TAG, onReplayButtonPressed);
+end
+
+--------------------------------
+function SettingsDlg:initHideButton(nodeBase)
+	local function onPanelHidePressed(val, val2)
+    	print("onPanelHidePressed ");
+    	self:hidePanel();
+    end
+
+    setMenuCallback(nodeBase, SettingsDlg.BACK_MENU_TAG, SettingsDlg.BACK_MENU_ITEM_TAG, onPanelHidePressed);
+end
+
+--------------------------------
 function SettingsDlg:initGuiElements()
 	local nodeBase = self.mNode:getChildByTag(SettingsDlg.BASE_NODE_TAG);
 	print("SettingsDlg:initGuiElements nodeBase ", nodeBase );
@@ -36,21 +58,8 @@ function SettingsDlg:initGuiElements()
 		return;
 	end
 
-	local settingsButton = nodeBase:getChildByTag(SettingsDlg.BACK_MENU_TAG);
-	if settingsButton then
-		local settingsItem = settingsButton:getChildByTag(SettingsDlg.BACK_MENU_ITEM_TAG);
-		
-		settingsItem = tolua.cast(settingsItem, "CCMenuItem");
-		print("SettingsDlg:init ", settingsItem);
-		if settingsItem then
-			local function onPanelHidePressed(val, val2)
-    			print("onPanelHidePressed ");
-    			self:hidePanel();
-    		end
-
-    		settingsItem:registerScriptTapHandler(onPanelHidePressed);
-    	end
-	end
+	self:initHideButton(nodeBase);
+	self:initReplayButton(nodeBase);
 end
 
 --------------------------------

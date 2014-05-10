@@ -155,7 +155,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>settings_button.png</string>
+									<string>pause_button_normal.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -166,7 +166,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>settings_button_pressed.png</string>
+									<string>pause_button_pressed.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -181,8 +181,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -202,9 +200,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>32</real>
-							<real>288</real>
-							<integer>5</integer>
+							<real>4.4000000953674316</real>
+							<real>93.800003051757812</real>
+							<integer>4</integer>
 						</array>
 					</dict>
 					<dict>
