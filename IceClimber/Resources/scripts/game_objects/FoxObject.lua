@@ -3,10 +3,14 @@ require "PlistAnimation"
 
 FoxObject = inheritsFrom(PlayerObject)
 
+FoxObject.mVelocity = 25;
+
 --------------------------------
 function FoxObject:init(field, node, needReverse)
 	print("FoxObject:init ");
 	FoxObject:superClass().init(self, field, node, needReverse);
+
+	self.mVelocity = self.mVelocity * field.mGame:getScale();
 end
 
 --------------------------------
@@ -35,5 +39,10 @@ function FoxObject:initAnimation()
 				self.mIsFemale and ANIMATION_MALE[i].anchorFightFemale or 
 				ANIMATION_MALE[i].anchorFight);]]
 		end
+	end
+
+	for i=6,9 do
+		self.mAnimations[i] = PlistAnimation:create();
+		self.mAnimations[i]:init("FoxFight.plist", self.mNode, self.mNode:getAnchorPoint());
 	end
 end

@@ -50,6 +50,11 @@ function Game:createLocation()
 end
 
 ---------------------------------
+function Game:getScale()
+	return self.mScale;
+end
+
+---------------------------------
 function Game:initResolution()
 	-- compute resolution scale
 	local visibleSize = CCDirector:sharedDirector():getVisibleSize();

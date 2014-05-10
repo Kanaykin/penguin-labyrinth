@@ -35,6 +35,13 @@ function MovableObject:moveTo(posDest)
 end
 
 --------------------------------
+function MovableObject:updateOrder()
+	local parent = self.mNode:getParent();
+	parent:removeChild(self.mNode, false);
+	parent:addChild(self.mNode, -self.mGridPosition.y * 2);
+end
+
+--------------------------------
 function MovableObject:onMoveFinished( )
 	-- body
 end
@@ -61,6 +68,7 @@ function MovableObject:tick(dt)
 			print("grid pos ", self.mGridPosition.x, " y ", self.mGridPosition.y);
 			self.mDelta = nil;
 			self:onMoveFinished();
+			self:updateOrder();
 		end
 	end
 end

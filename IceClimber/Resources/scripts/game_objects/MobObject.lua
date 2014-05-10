@@ -51,6 +51,10 @@ function MobOject:init(field, node)
 
 	self.mState = MobOject.IDLE;
 	self.mTrigger = SnareTrigger:create();
+
+	-- set size of cell
+	self.mNode:setContentSize(CCSizeMake(self.mField:getCellSize(), self.mField:getCellSize()));
+
 	self.mTrigger:init(self.mField, self.mNode, Callback.new(self, MobOject.onPlayerEnter), Callback.new(self, MobOject.onPlayerLeave));
 
 	-- create animation

@@ -12,6 +12,7 @@ Field.mSize = nil;
 Field.mFieldNode = nil;
 Field.mEnemyObjects = nil;
 Field.mFinishTrigger = nil;
+Field.mGame = nil;
 
 Field.BRICK_TAG = -1;
 Field.DECOR_TAG = 0;
@@ -288,7 +289,8 @@ function Field:init(fieldNode, layer, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
 	print(" Game ", game);
-	self.mCellSize = fieldData.cellSize * game.mScale;
+	self.mCellSize = fieldData.cellSize * game:getScale();
+	self.mGame = game;
 
 	self.mObjects = {}
 	self.mFreePoints = {};
