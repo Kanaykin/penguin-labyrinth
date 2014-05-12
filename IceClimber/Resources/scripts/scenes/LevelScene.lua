@@ -17,7 +17,6 @@ local LOADSCEENIMAGE = "choseLevel.png"
 ---------------------------------
 function LevelScene:destroy()
 	print("LevelScene:destroy ");
-	LevelScene:superClass().destroy(self);
 
 	if self.mMainUI then
 		self.mMainUI:destroy();
@@ -27,6 +26,15 @@ function LevelScene:destroy()
 		self.mField:destroy();
 	end
 
+	LevelScene:superClass().destroy(self);
+end
+
+--------------------------------
+function LevelScene:replay()
+	local sceneMan = self.mSceneManager;
+	local data = self.mData;
+	self:destroy();
+	self:init(sceneMan, data);
 end
 
 --------------------------------
@@ -106,6 +114,6 @@ function LevelScene:initGui()
 	self:createGuiLayer();
 
 	self.mMainUI = MainUI:create();
-	self.mMainUI:init(self.mSceneManager.mGame.mDialogManager, self.mGuiLayer, "Level_UI_layer");
+	self.mMainUI:init(self.mSceneManager.mGame, self.mGuiLayer, "Level_UI_layer");
 	self.mMainUI:show();
 end

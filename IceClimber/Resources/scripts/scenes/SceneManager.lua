@@ -64,6 +64,13 @@ function SceneManager:runNextScene(params)
 end
 
 ---------------------------------
+function SceneManager:replayScene()
+	print("SceneManager:replayScene");
+	--self:getCurrentScene():replay();
+	self:runLevelScene(self:getCurrentScene().mData);
+end
+
+---------------------------------
 function SceneManager:runLevelScene(params)
 	self:destroyCurrentScene();
 	self.mScenes[SCENE_TYPE_ID.LEVEL] = LevelScene:create();

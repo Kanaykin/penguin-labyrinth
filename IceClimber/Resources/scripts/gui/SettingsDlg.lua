@@ -7,6 +7,8 @@ SettingsDlg.mAnimator = nil;
 SettingsDlg.BASE_NODE_TAG = 49;
 SettingsDlg.BACK_MENU_TAG = 50;
 SettingsDlg.BACK_MENU_ITEM_TAG = 51;
+SettingsDlg.CHOOSE_LEVEL_MENU_TAG = 60;
+SettingsDlg.CHOOSE_LEVEL_MENU_ITEM_TAG = 61;
 SettingsDlg.REPLAY_MENU_TAG = 70;
 SettingsDlg.REPLAY_MENU_ITEM_TAG = 71;
 
@@ -19,9 +21,10 @@ end
 
 --------------------------------
 function SettingsDlg:hidePanel()
+	print("SettingsDlg:hidePanel");
 	function callback()
 		print("SettingsDlg:callback");
-		self.mDialogManager:deactivateModal(self);
+		self.mGame.mDialogManager:deactivateModal(self);
 	end
 
 	local callFunc = CCCallFunc:create(callback);
@@ -34,9 +37,20 @@ end
 function SettingsDlg:initReplayButton(nodeBase)
 	local function onReplayButtonPressed(val, val2)
     	print("onReplayButtonPressed ");
+    	self.mGame.mDialogManager:isModal(self);
+    	self.mGame.mSceneMan:replayScene();
     end
 
     setMenuCallback(nodeBase, SettingsDlg.REPLAY_MENU_TAG, SettingsDlg.REPLAY_MENU_ITEM_TAG, onReplayButtonPressed);
+end
+
+--------------------------------
+function SettingsDlg:initChooseLevelButton(nodeBase)
+	local function onChooseLevelPressed(val, val2)
+    	print("onChooseLevelPressed ");
+    end
+
+    setMenuCallback(nodeBase, SettingsDlg.CHOOSE_LEVEL_MENU_TAG, SettingsDlg.CHOOSE_LEVEL_MENU_ITEM_TAG, onChooseLevelPressed);
 end
 
 --------------------------------
@@ -60,11 +74,12 @@ function SettingsDlg:initGuiElements()
 
 	self:initHideButton(nodeBase);
 	self:initReplayButton(nodeBase);
+	self:initChooseLevelButton(nodeBase);
 end
 
 --------------------------------
-function SettingsDlg:init(dialogManager, uiLayer, ccbFile)
-	self:superClass().init(self, dialogManager, uiLayer, ccbFile);
+function SettingsDlg:init(game, uiLayer, ccbFile)
+	self:superClass().init(self, game, uiLayer, ccbFile);
 
 	self:initGuiElements();
 

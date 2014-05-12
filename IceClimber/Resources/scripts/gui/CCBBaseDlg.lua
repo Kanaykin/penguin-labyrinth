@@ -5,10 +5,15 @@ CCBBaseDialog = inheritsFrom(nil)
 CCBBaseDialog.mNode = nil;
 CCBBaseDialog.mUILayer = nil;
 CCBBaseDialog.mReader = nil;
-CCBBaseDialog.mDialogManager = nil;
+CCBBaseDialog.mGame = nil;
 
 ---------------------------------
 function CCBBaseDialog:destroy()
+	print("CCBBaseDialog:destroy ", self.mGame.mDialogManager:isModal(self));
+	if self.mGame.mDialogManager:isModal(self) then 
+		self.mGame.mDialogManager:deactivateModal(self);
+	end
+
 	if self.mNode then
 		local parent = self.mNode:getParent();
 		parent:removeChild(self.mNode, true);
@@ -24,11 +29,11 @@ end
 --------------------------------
 function CCBBaseDialog:doModal()
 	self:show();
-	self.mDialogManager:activateModal(self);
+	self.mGame.mDialogManager:activateModal(self);
 end
 
 --------------------------------
-function CCBBaseDialog:init(dialogManager, uiLayer, ccbFile)
+function CCBBaseDialog:init(game, uiLayer, ccbFile)
 	local ccpproxy = CCBProxy:create();
 	local reader = ccpproxy:createCCBReader();
 	local node = ccpproxy:readCCBFromFile(ccbFile, reader, false);
@@ -39,5 +44,5 @@ function CCBBaseDialog:init(dialogManager, uiLayer, ccbFile)
 	self.mUILayer = uiLayer;
 	self.mReader = reader;
 	self.mNode:setVisible(false);
-	self.mDialogManager = dialogManager;
+	self.mGame = game;
 end
