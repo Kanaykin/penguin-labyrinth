@@ -5,6 +5,11 @@ ChooseLevel.mCurLocation = nil;
 local LOADSCEENIMAGE = "Games_Duck_Hunt_Nintendo_Dendy_Nes_025749_32.jpg"
 
 --------------------------------
+function ChooseLevel:getCurLocation()
+	return self.mCurLocation;
+end
+
+--------------------------------
 function ChooseLevel:init(sceneMan, params)
 	print("ChooseLevel:init ", params.location);
 	self.mCurLocation = params.location;

@@ -24,6 +24,7 @@ SCENE_TYPE_ID = {
 
 ---------------------------------
 function SceneManager:getCurrentScene()
+	print("SceneManager:getCurrentScene ", self.mCurrentSceneId);
 	return self.mScenes[self.mCurrentSceneId];
 end
 
@@ -36,7 +37,7 @@ function SceneManager:runPrevScene(params)
 		self.mCurrentSceneId = 0;
 	end
 
-	self:getCurrentScene():init(self);
+	self:getCurrentScene():init(self, params);
 	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
 end
 
@@ -66,8 +67,7 @@ end
 ---------------------------------
 function SceneManager:replayScene()
 	print("SceneManager:replayScene");
-	--self:getCurrentScene():replay();
-	self:runLevelScene(self:getCurrentScene().mData);
+	self:runLevelScene(self:getCurrentScene():getLevel());
 end
 
 ---------------------------------

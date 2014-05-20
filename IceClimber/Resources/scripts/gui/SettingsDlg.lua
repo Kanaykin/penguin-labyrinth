@@ -37,7 +37,6 @@ end
 function SettingsDlg:initReplayButton(nodeBase)
 	local function onReplayButtonPressed(val, val2)
     	print("onReplayButtonPressed ");
-    	self.mGame.mDialogManager:isModal(self);
     	self.mGame.mSceneMan:replayScene();
     end
 
@@ -48,6 +47,7 @@ end
 function SettingsDlg:initChooseLevelButton(nodeBase)
 	local function onChooseLevelPressed(val, val2)
     	print("onChooseLevelPressed ");
+    	self.mGame.mSceneMan:runPrevScene({location = self.mGame.mSceneMan:getCurrentScene():getLevel():getLocation()});
     end
 
     setMenuCallback(nodeBase, SettingsDlg.CHOOSE_LEVEL_MENU_TAG, SettingsDlg.CHOOSE_LEVEL_MENU_ITEM_TAG, onChooseLevelPressed);

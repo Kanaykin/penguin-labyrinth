@@ -21,6 +21,11 @@ function Level:isOpened()
 end
 
 -----------------------------------
+function Level:getData()
+	return self.mData;
+end
+
+-----------------------------------
 function Level:runStartAnimation(animManager, node)
 	print ("Level:runStartAnimation ", self:isOpened())
 	if self:isOpened() then
@@ -39,10 +44,15 @@ function Level:runStartAnimation(animManager, node)
 end
 
 -----------------------------------
+function Level:getLocation()
+	return self.mLocation;
+end
+
+-----------------------------------
 function Level:onLevelIconPressed()
 	print("onLevelIconPressed !!!");
 	if self:isOpened() then
-		self.mLocation.mGame.mSceneMan:runLevelScene(self.mData);
+		self.mLocation.mGame.mSceneMan:runLevelScene(self);
 	end
 end
 

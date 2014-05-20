@@ -6,13 +6,18 @@ require "MainUI"
 
 LevelScene = inheritsFrom(BaseScene)
 LevelScene.mField = nil;
-LevelScene.mData = nil;
+LevelScene.mLevel = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 LevelScene.mMainUI = nil;
 
 local LOADSCEENIMAGE = "choseLevel.png"
 
+
+---------------------------------
+function LevelScene:getLevel()
+	return self.mLevel;
+end
 
 ---------------------------------
 function LevelScene:destroy()
@@ -30,18 +35,10 @@ function LevelScene:destroy()
 end
 
 --------------------------------
-function LevelScene:replay()
-	local sceneMan = self.mSceneManager;
-	local data = self.mData;
-	self:destroy();
-	self:init(sceneMan, data);
-end
-
---------------------------------
 function LevelScene:init(sceneMan, params)
-	print("LevelScene:init ");
+	print("LevelScene:init( ", sceneMan, ", ", params, ")");
 	LevelScene:superClass().init(self, sceneMan, params);
-	self.mData = params;
+	self.mLevel = params;
 
 	self:initScene();
 
@@ -60,17 +57,17 @@ end
 --------------------------------
 function LevelScene:initScene()
 
-	if self.mData.tileMap then
-		local tileMap = CCTMXTiledMap:create(self.mData.tileMap);
+	if self.mLevel:getData().tileMap then
+		local tileMap = CCTMXTiledMap:create(self.mLevel:getData().tileMap);
 		print(" LevelScene:initScene tileMap ", tileMap);
 		self.mSceneGame:addChild(tileMap);
 	end
 
-	if type(self.mData.ccbFile) == "string" then
+	if type(self.mLevel:getData().ccbFile) == "string" then
 		local ccpproxy = CCBProxy:create();
 		local reader = ccpproxy:createCCBReader();
 		
-		local node = ccpproxy:readCCBFromFile(self.mData.ccbFile, reader, false);
+		local node = ccpproxy:readCCBFromFile(self.mLevel:getData().ccbFile, reader, false);
 
 		self.mSceneGame:addChild(node);
 
@@ -78,11 +75,11 @@ function LevelScene:initScene()
 		local fieldNode = node:getChildByTag(LevelScene.FIELD_NODE_TAG);
 
 		self.mField = Field:create();
-		self.mField:init({ fieldNode }, node, self.mData, self.mSceneManager.mGame);
-	elseif type(self.mData.ccbFile) == "table" then
+		self.mField:init({ fieldNode }, node, self.mLevel:getData(), self.mSceneManager.mGame);
+	elseif type(self.mLevel:getData().ccbFile) == "table" then
 		local layers = {};
 		local nodes = {};
-		for i, fileName in ipairs(self.mData.ccbFile) do
+		for i, fileName in ipairs(self.mLevel:getData().ccbFile) do
 			local ccpproxy = CCBProxy:create();
 			local reader = ccpproxy:createCCBReader();
 			local node = ccpproxy:readCCBFromFile(fileName, reader, false);
@@ -99,7 +96,7 @@ function LevelScene:initScene()
 		
 		self.mSceneGame:addChild(self.mScrollView.mScroll);
 		self.mField = Field:create();
-		self.mField:init(nodes, self.mScrollView.mScroll, self.mData, self.mSceneManager.mGame);
+		self.mField:init(nodes, self.mScrollView.mScroll, self.mLevel:getData(), self.mSceneManager.mGame);
 	end
 end
 
