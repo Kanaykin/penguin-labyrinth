@@ -50,7 +50,7 @@
 								<key>value</key>
 								<array>
 									<real>272</real>
-									<real>64</real>
+									<real>80</real>
 									<integer>5</integer>
 								</array>
 							</dict>
@@ -62,7 +62,7 @@
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.0</real>
+									<real>0.5</real>
 								</array>
 							</dict>
 							<dict>
@@ -102,7 +102,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>spider.png</string>
+									<string>Mario.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1780,8 +1780,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

@@ -24,7 +24,6 @@ SCENE_TYPE_ID = {
 
 ---------------------------------
 function SceneManager:getCurrentScene()
-	print("SceneManager:getCurrentScene ", self.mCurrentSceneId);
 	return self.mScenes[self.mCurrentSceneId];
 end
 

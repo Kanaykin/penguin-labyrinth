@@ -87,6 +87,7 @@
 		A549EFA0190410610072353C /* CCBBaseDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EF9E190410610072353C /* CCBBaseDlg.lua */; };
 		A549EFA1190410620072353C /* SettingsDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EF9F190410610072353C /* SettingsDlg.lua */; };
 		A549EFA3190443B80072353C /* MainUI.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EFA2190443B80072353C /* MainUI.lua */; };
+		A55570CC192FDAD500517364 /* HunterObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55570CB192FDAD500517364 /* HunterObject.lua */; };
 		A56023591811C384005719B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56023581811C384005719B1 /* Foundation.framework */; };
 		A560235B1811C384005719B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560235A1811C384005719B1 /* CoreGraphics.framework */; };
 		A560235D1811C384005719B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A560235C1811C384005719B1 /* UIKit.framework */; };
@@ -329,6 +330,7 @@
 		A549EF9E190410610072353C /* CCBBaseDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CCBBaseDlg.lua; sourceTree = "<group>"; };
 		A549EF9F190410610072353C /* SettingsDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SettingsDlg.lua; sourceTree = "<group>"; };
 		A549EFA2190443B80072353C /* MainUI.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MainUI.lua; sourceTree = "<group>"; };
+		A55570CB192FDAD500517364 /* HunterObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HunterObject.lua; sourceTree = "<group>"; };
 		A56023551811C384005719B1 /* IceClimber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IceClimber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56023581811C384005719B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A560235A1811C384005719B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -935,6 +937,7 @@
 		A5DB5C2418B13DF2004A6FC4 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A55570CB192FDAD500517364 /* HunterObject.lua */,
 				A593E45218D5A2AA00854816 /* FieldNode.lua */,
 				A5DB5C5818B268F3004A6FC4 /* FoxObject.lua */,
 				A5DB5C2518B13DF2004A6FC4 /* Field.lua */,
@@ -1089,6 +1092,7 @@
 				A5DB5C4418B13DF2004A6FC4 /* TouchWidget.lua in Resources */,
 				A5DB5C5418B13DF2004A6FC4 /* Game.lua in Resources */,
 				A5DB5C3B18B13DF2004A6FC4 /* LevelScene.lua in Resources */,
+				A55570CC192FDAD500517364 /* HunterObject.lua in Resources */,
 				A5DB5C5018B13DF2004A6FC4 /* Animation.lua in Resources */,
 				A5DB5C3718B13DF2004A6FC4 /* GameConfigs.lua in Resources */,
 				A5DB5C5618B13E64004A6FC4 /* EmptyAnimation.lua in Resources */,

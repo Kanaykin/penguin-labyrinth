@@ -3,20 +3,20 @@ require "WavePathFinder"
 require "SnareTrigger"
 require "PlayerObject"
 
---local MobOjectImpl = createClass(MovableObject, SnareTrigger;
+--local MobObjectImpl = createClass(MovableObject, SnareTrigger;
 
-MobOject = inheritsFrom(MovableObject)
+MobObject = inheritsFrom(MovableObject)
 
-MobOject.IDLE = 1;
-MobOject.MOVING = 2;
+MobObject.IDLE = 1;
+MobObject.MOVING = 2;
 
-MobOject.mState = MobOject.IDLE;
-MobOject.mPath = nil;
-MobOject.mTrigger = nil;
+MobObject.mState = MobObject.IDLE;
+MobObject.mPath = nil;
+MobObject.mTrigger = nil;
 
 --------------------------------
-function MobOject:initAnimation()
-	print("MobOject:initAnimation");
+function MobObject:initAnimation()
+	print("MobObject:initAnimation");
 
 	local animation = CCAnimation:create();
 	print("animation ", animation);
@@ -32,45 +32,45 @@ function MobOject:initAnimation()
 end
 
 --------------------------------
-function MobOject:onPlayerEnter(player, pos)
-	print("MobOject.onPlayerEnter ", player.mNode:getTag());
+function MobObject:onPlayerEnter(player, pos)
+	print("MobObject.onPlayerEnter ", player.mNode:getTag());
 	self.mField:createSnareTrigger(Vector.new(player.mNode:getPosition()));
 	--player:enterTrap(nil);
 end
 
 --------------------------------
-function MobOject:onPlayerLeave(player)
-	print("MobOject.onPlayerLeave");
+function MobObject:onPlayerLeave(player)
+	print("MobObject.onPlayerLeave");
 	--player:leaveTrap(nil);
 end
 
 --------------------------------
-function MobOject:init(field, node)
-	print("MobOject:init(", node, ")");
-	MobOject:superClass().init(self, field, node);
+function MobObject:init(field, node)
+	print("MobObject:init(", node, ")");
+	MobObject:superClass().init(self, field, node);
 
-	self.mState = MobOject.IDLE;
+	self.mState = MobObject.IDLE;
 	self.mTrigger = SnareTrigger:create();
 
 	-- set size of cell
 	self.mNode:setContentSize(CCSizeMake(self.mField:getCellSize(), self.mField:getCellSize()));
 
-	self.mTrigger:init(self.mField, self.mNode, Callback.new(self, MobOject.onPlayerEnter), Callback.new(self, MobOject.onPlayerLeave));
+	self.mTrigger:init(self.mField, self.mNode, Callback.new(self, MobObject.onPlayerEnter), Callback.new(self, MobObject.onPlayerLeave));
 
 	-- create animation
 	self:initAnimation();
 end
 
 --------------------------------
-function MobOject:getDestPoint()
+function MobObject:getDestPoint()
 	local freePoints = self.mField:getFreePoints();
 	return freePoints[math.random(#freePoints)];
 end
 
 --------------------------------
-function MobOject:moveToNextPoint( )
+function MobObject:moveToNextPoint( )
 	if #self.mPath == 0 then
-		self.mState = MobOject.IDLE;
+		self.mState = MobObject.IDLE;
 		return;
 	end
 	self:moveTo(self.mPath[1]);
@@ -78,25 +78,31 @@ function MobOject:moveToNextPoint( )
 end
 
 --------------------------------
-function MobOject:onMoveFinished( )
+function MobObject:onMoveFinished( )
 	self:moveToNextPoint();
 end
 
 --------------------------------
-function MobOject:tick(dt)
-	MobOject:superClass().tick(self, dt);
+function MobObject:tick(dt)
+	MobObject:superClass().tick(self, dt);
 
 	if self.mTrigger then
 		self.mTrigger:tick(dt);
 	end
 
-	if self.mState == MobOject.IDLE then
+	if self.mDelta then
+		local val = self.mDelta:normalized();
+		--print("MobObject:tick mDestGridPos ", val.x, ":", val.y);
+		tolua.cast(self.mNode, "CCSprite"):setFlipX(val.x < 0);
+	end
+
+	if self.mState == MobObject.IDLE then
 		-- find free point on field and move to this point
 		local destPoint = self:getDestPoint();
 		-- clone field
 		local cloneArray = self.mField:cloneArray();
-		print ("MobOject:tick destPoint ", destPoint.x, "y ", destPoint.y);
-		self.mState = MobOject.MOVING;
+		print ("MobObject:tick destPoint ", destPoint.x, "y ", destPoint.y);
+		self.mState = MobObject.MOVING;
 		self.mPath = WavePathFinder.buildPath(self.mGridPosition, destPoint, cloneArray, self.mField.mSize);
 		table.remove(self.mPath, 1);
 		self:moveToNextPoint();

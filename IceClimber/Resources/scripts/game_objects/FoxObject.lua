@@ -19,6 +19,20 @@ function FoxObject:move(dt)
 end
 
 --------------------------------
+function FoxObject:tick(dt)
+	FoxObject:superClass().tick(self, dt);
+
+	if self.mNode and self.mLastButtonPressed == Joystick.BUTTONS.RIGHT or self.mLastButtonPressed ==  Joystick.BUTTONS.LEFT then
+		local flip = self.mLastButtonPressed == Joystick.BUTTONS.RIGHT;
+		if self.mIsFemale then
+			flip = not flip;
+		end
+		--flip = (self.mIsFemale) and (not flip) or flip;
+		tolua.cast(self.mNode, "CCSprite"):setFlipX(flip);
+	end
+end
+
+--------------------------------
 function FoxObject:initAnimation()
 	local texture = tolua.cast(self.mNode, "CCSprite"):getTexture();
 

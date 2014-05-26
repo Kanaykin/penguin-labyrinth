@@ -32,7 +32,7 @@ end
 function Trigger:destroy()
 	Trigger:superClass().destroy(self);
 
-	if self.mLeaveCallback then
+	if self.mLeaveCallback and self.mContainedObj then
 		self.mLeaveCallback(self.mContainedObj);
 	end
 	self.mContainedObj = nil;

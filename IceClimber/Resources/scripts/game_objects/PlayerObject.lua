@@ -99,7 +99,7 @@ end
 --------------------------------
 function PlayerObject:playAnimation(button)
 	--print("PlayerObject:playAnimation ", self.mLastButtonPressed);
-	if self.mLastButtonPressed ~= button then
+	if self.mLastButtonPressed ~= button and self.mNode then
 		self.mLastButtonPressed = button;
 		print("PlayerObject:playAnimation2 ", self.mLastButtonPressed, " button ", button);
 		self.mNode:stopAllActions();

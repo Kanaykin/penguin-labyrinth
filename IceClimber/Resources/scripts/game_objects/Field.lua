@@ -5,6 +5,7 @@ require "PlayerObject"
 require "SnareTrigger"
 require "FoxObject"
 require "FieldNode"
+require "HunterObject"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
@@ -109,11 +110,10 @@ end
 
 ---------------------------------
 function Field:checkFinishGame()
-	--print("Field:checkFinishGame ");
+	-- check win game
 	local allObjectInTrigger = true;
-	for i, trigger in ipairs(self.mFinishTrigger) do
+	for _, trigger in ipairs(self.mFinishTrigger) do
 		local obj = trigger:getContainedObj();
-		--print("Field:checkFinishGame i ", i, " obj ", obj);
 		if not obj then
 			allObjectInTrigger = false;
 		end
@@ -121,6 +121,11 @@ function Field:checkFinishGame()
 
 	if allObjectInTrigger then
 		print("Field:checkFinishGame WIN");
+		return;
+	end
+
+	-- check game over
+	for _, object in ipairs(self.mObjects) do
 	end
 end
 
@@ -288,6 +293,7 @@ end
 function Field:init(fieldNode, layer, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
+	local mobType = _G[fieldData.mobType];
 	print(" Game ", game);
 	self.mCellSize = fieldData.cellSize * game:getScale();
 	self.mGame = game;
@@ -339,8 +345,8 @@ function Field:init(fieldNode, layer, fieldData, game)
 			local x, y = self:getGridPosition(brick);
 			self.mArray[COORD(x, y, self.mSize.x)] = 1;
 		elseif brick:getTag() == Field.MOB_TAG then
-			print("it is mob");
-			local mob = MobOject:create();
+			print("it is mob ", mobType, ", ", fieldData.mobType);
+			local mob = mobType:create();
 			mob:init(self, brick);
 			table.insert(self.mObjects, mob);
 			table.insert(self.mEnemyObjects, mob);
