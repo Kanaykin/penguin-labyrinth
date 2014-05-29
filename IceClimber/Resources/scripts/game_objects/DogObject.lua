@@ -1,17 +1,17 @@
 require "MobObject"
 require "PlistAnimation"
 
-HunterObject = inheritsFrom(MobObject)
+DogObject = inheritsFrom(MobObject)
 
-HunterObject.mAnimation = nil;
+DogObject.mAnimation = nil;
 
 --------------------------------
-function HunterObject:initAnimation()
+function DogObject:initAnimation()
 	print("HunterObject:initAnimation");
 
 	print("Texture ", tolua.cast(self.mNode, "CCSprite"):getTexture():getName());
 	self.mAnimation = PlistAnimation:create();
-	self.mAnimation:init("MarioWalk.plist", self.mNode, self.mNode:getAnchorPoint());
+	self.mAnimation:init("DogWalk.plist", self.mNode, self.mNode:getAnchorPoint());
 	self.mAnimation:play();
 
 	--[[local animation = CCAnimation:create();

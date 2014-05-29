@@ -1,11 +1,7 @@
 require "Inheritance"
 require "Vector"
-require "MobObject"
-require "PlayerObject"
-require "SnareTrigger"
-require "FoxObject"
 require "FieldNode"
-require "HunterObject"
+require "FactoryObject"
 
 Field = inheritsFrom(nil)
 Field.mArray = nil;
@@ -14,16 +10,6 @@ Field.mFieldNode = nil;
 Field.mEnemyObjects = nil;
 Field.mFinishTrigger = nil;
 Field.mGame = nil;
-
-Field.BRICK_TAG = -1;
-Field.DECOR_TAG = 0;
-Field.MOB_TAG = 100;
-Field.PLAYER_TAG = 101;
-Field.PLAYER2_TAG = 102;
-Field.LOVE_CAGE_TAG = 103;
-Field.WEB_TAG = 104;
-Field.FINISH_TAG = 105;
-
 
 Field.mPlayerObjects = nil;
 
@@ -89,7 +75,7 @@ end
 
 --------------------------------
 function Field:isBrick(brick)
-	return brick:getTag() == Field.BRICK_TAG;
+	return brick:getTag() == FactoryObject.BRICK_TAG;
 end
 
 ---------------------------------
@@ -290,6 +276,30 @@ function Field:addArrayBorder()
 end
 
 --------------------------------
+function Field:addBrick(brick)
+	local x, y = self:getGridPosition(brick);
+	self.mArray[COORD(x, y, self.mSize.x)] = 1;
+end
+
+--------------------------------
+function Field:addMob(mob)
+	table.insert(self.mObjects, mob);
+	table.insert(self.mEnemyObjects, mob);
+end
+
+--------------------------------
+function Field:addFinish(finish)
+	table.insert(self.mObjects, finish);
+	table.insert(self.mFinishTrigger, finish);
+end
+
+--------------------------------
+function Field:addPlayer(player)
+	table.insert(self.mObjects, player);
+	table.insert(self.mPlayerObjects, player);
+end
+
+--------------------------------
 function Field:init(fieldNode, layer, fieldData, game)
 
 	local objectType = _G[fieldData.playerType];
@@ -340,35 +350,9 @@ function Field:init(fieldNode, layer, fieldData, game)
 
 	for i = 1, count do
 		local brick = tolua.cast(children:objectAtIndex(i - 1), "CCNode");
-		
-		if self:isBrick(brick) then
-			local x, y = self:getGridPosition(brick);
-			self.mArray[COORD(x, y, self.mSize.x)] = 1;
-		elseif brick:getTag() == Field.MOB_TAG then
-			print("it is mob ", mobType, ", ", fieldData.mobType);
-			local mob = mobType:create();
-			mob:init(self, brick);
-			table.insert(self.mObjects, mob);
-			table.insert(self.mEnemyObjects, mob);
-		elseif brick:getTag() == Field.PLAYER_TAG or brick:getTag() == Field.PLAYER2_TAG then
-			print("it is player");
-			local player = objectType:create(); --PlayerObject:create();
-			player:init(self, brick, brick:getTag() == Field.PLAYER2_TAG);
-			table.insert(self.mObjects, player);
-			table.insert(self.mPlayerObjects, player);
-		elseif brick:getTag() == Field.WEB_TAG then
-			print("it is web");
-			local web = SnareTrigger:create();
-			web:init(self, brick, Callback.new(self, Field.onPlayerEnterWeb), Callback.new(self, Field.onPlayerLeaveWeb));
-			table.insert(self.mObjects, web);
-			table.insert(self.mEnemyObjects, web);
-		elseif brick:getTag() == Field.FINISH_TAG then
-			print("it is finish trigger");
-			local finish = Trigger:create();
-			finish:init(self, brick, nil, nil);
-			table.insert(self.mObjects, finish);
-			table.insert(self.mFinishTrigger, finish);
-		end
+
+		local object = FactoryObject:createObject(self, brick);
+		print("create object ", object);
 	end
 
 	self:addArrayBorder();

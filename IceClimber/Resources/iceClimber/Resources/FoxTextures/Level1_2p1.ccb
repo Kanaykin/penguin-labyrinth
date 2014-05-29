@@ -91,7 +91,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>102</integer>
+								<integer>109</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -113,6 +113,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -171,7 +173,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>101</integer>
+								<integer>108</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3358,7 +3360,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>100</integer>
+								<integer>106</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3438,7 +3440,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>100</integer>
+								<integer>107</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3456,7 +3458,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>Mario.png</string>
+									<string>Dog.png</string>
 								</array>
 							</dict>
 						</array>
@@ -4836,8 +4838,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
