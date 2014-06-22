@@ -55,8 +55,10 @@ function Trigger:tick(dt)
 				local pointX, pointY = self.mContainedObj.mNode:getPosition();
 				contained = self.mNode:boundingBox():containsPoint(CCPointMake(pointX, pointY));
 			end
-			if not contained and self.mLeaveCallback then
-				self.mLeaveCallback(self.mContainedObj);
+			if not contained then
+				if self.mLeaveCallback then
+					self.mLeaveCallback(self.mContainedObj);
+				end
 				self.mContainedObj = nil;
 			end
 		else

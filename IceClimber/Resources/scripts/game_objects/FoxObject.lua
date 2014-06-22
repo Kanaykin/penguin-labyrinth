@@ -59,4 +59,7 @@ function FoxObject:initAnimation()
 		self.mAnimations[i] = PlistAnimation:create();
 		self.mAnimations[i]:init("FoxFight.plist", self.mNode, self.mNode:getAnchorPoint());
 	end
+
+	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = PlistAnimation:create();
+	self.mAnimations[PlayerObject.OBJECT_IN_TRAP]:init("FoxInTrap.plist", self.mNode, self.mNode:getAnchorPoint());
 end

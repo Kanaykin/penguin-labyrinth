@@ -20,6 +20,12 @@ function LevelScene:getLevel()
 end
 
 ---------------------------------
+function LevelScene:onStateLose()
+	print("LevelScene: LOSE !!!");
+	self.mMainUI:onStateLose();
+end
+
+---------------------------------
 function LevelScene:destroy()
 	print("LevelScene:destroy ");
 
@@ -98,6 +104,7 @@ function LevelScene:initScene()
 		self.mField = Field:create();
 		self.mField:init(nodes, self.mScrollView.mScroll, self.mLevel:getData(), self.mSceneManager.mGame);
 	end
+	self.mField:setStateListener(self);
 end
 
 ---------------------------------

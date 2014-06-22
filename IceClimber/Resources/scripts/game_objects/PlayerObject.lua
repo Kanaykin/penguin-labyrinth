@@ -14,6 +14,7 @@ PlayerObject.mLastButtonPressed = nil;
 PlayerObject.mNameTexture = "penguin";
 PlayerObject.mIsFemale = false;
 PlayerObject.mFightTrigger = nil;
+PlayerObject.mInTrap = false;
 
 PlayerObject.MALE_PREFIX = "penguin";
 PlayerObject.FEMALE_PREFIX = "penguin_girl";
@@ -52,9 +53,15 @@ function PlayerObject:destroy()
 end
 
 ---------------------------------
+function PlayerObject:isInTrap()
+	return self.mInTrap;
+end
+
+---------------------------------
 function PlayerObject:leaveTrap(pos)
 	print("PlayerObject:leaveTrap");
 	self:playAnimation(nil);
+	self.mInTrap = false;
 end
 
 ---------------------------------
@@ -68,6 +75,7 @@ function PlayerObject:enterTrap(pos)
 	else
 		self:playAnimation(PlayerObject.OBJECT_IN_TRAP);
 	end
+	self.mInTrap = true;
 end
 
 --------------------------------
@@ -188,11 +196,11 @@ function PlayerObject:fight()
 end
 
 --------------------------------
-function PlayerObject:updateOrder()
+--[[function PlayerObject:updateOrder()
 	local parent = self.mNode:getParent();
 	parent:removeChild(self.mNode, false);
 	parent:addChild(self.mNode, -self.mGridPosition.y * 2);
-end
+end]]
 
 --------------------------------
 function PlayerObject:move(dt)
@@ -203,7 +211,7 @@ function PlayerObject:move(dt)
 	local button = self.mJoystick:getButtonPressed();
 	self:playAnimation(button);
 	--print("button pressed ", );
-	if button then
+	if button and button ~= PlayerObject.OBJECT_IN_TRAP then
 		self.mLastDir = button;
 		local newGridPos = self.mGridPosition + DIRECTIONS[button];
 		
@@ -217,6 +225,7 @@ function PlayerObject:move(dt)
 
 			self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
 			self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
+			print("PlayerObject:move ");
 			self:updateOrder();
 		end
 	end

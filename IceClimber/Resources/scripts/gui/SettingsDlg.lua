@@ -11,11 +11,12 @@ SettingsDlg.CHOOSE_LEVEL_MENU_TAG = 60;
 SettingsDlg.CHOOSE_LEVEL_MENU_ITEM_TAG = 61;
 SettingsDlg.REPLAY_MENU_TAG = 70;
 SettingsDlg.REPLAY_MENU_ITEM_TAG = 71;
+SettingsDlg.INTERACTIVE_PANEL = 80;
+SettingsDlg.mAnimator = nil;
 
 --------------------------------
 function SettingsDlg:doModal()
 	self:superClass().doModal(self);
-
 	self.mAnimator:runAnimationsForSequenceNamed("Show");
 end
 
@@ -72,14 +73,19 @@ function SettingsDlg:initGuiElements()
 		return;
 	end
 
+	local panel = nodeBase:getChildByTag(SettingsDlg.INTERACTIVE_PANEL);
+	if panel then
+		self:setTouchBBox(panel:boundingBox());
+	end
+
 	self:initHideButton(nodeBase);
 	self:initReplayButton(nodeBase);
 	self:initChooseLevelButton(nodeBase);
 end
 
 --------------------------------
-function SettingsDlg:init(game, uiLayer, ccbFile)
-	self:superClass().init(self, game, uiLayer, ccbFile);
+function SettingsDlg:init(game, uiLayer)
+	self:superClass().init(self, game, uiLayer, "SettingsDlg");
 
 	self:initGuiElements();
 

@@ -34,10 +34,10 @@ end
 
 ---------------------------------
 function Game:tick(dt)
-	if not self.mDialogManager:hasModalDlg() then
+	--if not self.mDialogManager:hasModalDlg() then
 		self.mGameTime = self.mGameTime + dt;
 		self.mSceneMan:tick(dt);
-	end
+	--end
 end
 
 ---------------------------------

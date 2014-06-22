@@ -38,8 +38,6 @@ end
 function MovableObject:updateOrder()
 	local parent = self.mNode:getParent();
 	parent:removeChild(self.mNode, false);
-	print("self.mNode ", self.mNode);
-	print("self.mGridPosition.y ", self.mGridPosition.y);
 	parent:addChild(self.mNode, -self.mGridPosition.y * 2);
 end
 

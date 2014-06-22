@@ -20,6 +20,14 @@ local MIN_NUMBER = -math.huge;
 Field.mObjects = nil;
 Field.mFreePoints = nil;
 Field.mCellSize = nil;
+Field.mState = nil;
+Field.mStateListener = nil;
+
+-- states
+Field.PAUSE = 1;
+Field.IN_GAME = 2;
+Field.WIN = 3;
+Field.LOSE = 3;
 
 --------------------------------
 function COORD(x, y, width)
@@ -44,6 +52,11 @@ function Field:destroy()
 	for i, obj in ipairs(self.mObjects) do
 		obj:destroy();
 	end
+end
+
+--------------------------------
+function Field:setStateListener(listener)
+	self.mStateListener = listener;
 end
 
 --------------------------------
@@ -96,6 +109,10 @@ end
 
 ---------------------------------
 function Field:checkFinishGame()
+	if self.mState ~= Field.IN_GAME then
+		return;
+	end
+
 	-- check win game
 	local allObjectInTrigger = true;
 	for _, trigger in ipairs(self.mFinishTrigger) do
@@ -104,24 +121,80 @@ function Field:checkFinishGame()
 			allObjectInTrigger = false;
 		end
 	end
-
+	
 	if allObjectInTrigger then
 		print("Field:checkFinishGame WIN");
+		self:onStateWin()
 		return;
 	end
 
 	-- check game over
-	for _, object in ipairs(self.mObjects) do
+	local allObjectInTrap = true;
+	for _, object in ipairs(self.mPlayerObjects) do
+		--print("isInTrap ", object:isInTrap());
+		if not object:isInTrap() then
+			allObjectInTrap = false;
+		end
+	end
+
+	if allObjectInTrap then
+		print("Field:checkFinishGame LOSE");
+		self:onStateLose();
+		return;
+	end
+end
+
+---------------------------------
+function Field:onStateLose()
+	self.mState = Field.LOSE;
+	print("LOSE !!!");
+	if self.mStateListener then
+		self.mStateListener:onStateLose();
+	end
+end
+
+---------------------------------
+function Field:onStateWin()
+	self.mState = Field.WIN;
+	print("WIN !!!");
+end
+
+---------------------------------
+function Field:onStatePause()
+	self.mState = Field.PAUSE;
+	print("PAUSE !!!");
+end
+
+---------------------------------
+function Field:onStateInGame()
+	self.mState = Field.IN_GAME;
+	print("IN GAME !!!");
+end
+
+---------------------------------
+function Field:updateState()
+	if self.mState ~= Field.PAUSE and self.mState ~= Field.IN_GAME then
+		return;
+	end
+	--print("self.mGame.mDialogManager:hasModalDlg() ", self.mGame.mDialogManager:hasModalDlg());
+	if self.mState == Field.IN_GAME and self.mGame.mDialogManager:hasModalDlg() then
+		self:onStatePause();
+	elseif self.mState == Field.PAUSE and not self.mGame.mDialogManager:hasModalDlg() then
+		self:onStateInGame();
 	end
 end
 
 ---------------------------------
 function Field:tick(dt)
-	for i, obj in ipairs(self.mObjects) do
-		obj:tick(dt);
+	self:updateState();
+
+	if self.mState ~= Field.PAUSE then
+		for i, obj in ipairs(self.mObjects) do
+			obj:tick(dt);
+		end
+		self:updateScrollPos();
+		self:checkFinishGame();
 	end
-	self:updateScrollPos();
-	self:checkFinishGame();
 end
 
 --------------------------------
@@ -301,6 +374,8 @@ end
 
 --------------------------------
 function Field:init(fieldNode, layer, fieldData, game)
+
+	self.mState = Field.IN_GAME;
 
 	local objectType = _G[fieldData.playerType];
 	local mobType = _G[fieldData.mobType];
