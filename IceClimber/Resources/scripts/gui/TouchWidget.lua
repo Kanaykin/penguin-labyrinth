@@ -43,6 +43,12 @@ function findContainPoint(box, arrayPoints)
 end
 
 ----------------------------------------
+function TouchWidget:release()
+	self.mTouchId = nil;
+	self:onTouchEnded({0,0});
+end
+
+----------------------------------------
 function TouchWidget:onTouchHandler(action, var)
 	local arrayPoints = self:convertToPoints(var);
 

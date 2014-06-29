@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A52042221934561A00920560 /* FactoryObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52042211934561A00920560 /* FactoryObject.lua */; };
+		A524A61819593BC8004379CC /* YouWinDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A524A61719593BC8004379CC /* YouWinDlg.lua */; };
+		A524A61C195CA2C4004379CC /* FinishTrigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A524A61B195CA2C4004379CC /* FinishTrigger.lua */; };
 		A5404C40181435DD004A027E /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5404C3D181434E9004A027E /* libcocos2dx.a */; };
 		A5404C4618146175004A027E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5404C4518146175004A027E /* RootViewController.mm */; };
 		A5404C6E1816FC81004A027E /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5404C541816FC81004A027E /* CCBProxy.cpp */; };
@@ -172,6 +174,8 @@
 
 /* Begin PBXFileReference section */
 		A52042211934561A00920560 /* FactoryObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FactoryObject.lua; sourceTree = "<group>"; };
+		A524A61719593BC8004379CC /* YouWinDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YouWinDlg.lua; sourceTree = "<group>"; };
+		A524A61B195CA2C4004379CC /* FinishTrigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinishTrigger.lua; sourceTree = "<group>"; };
 		A5404C38181434E9004A027E /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		A5404C4418146175004A027E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A5404C4518146175004A027E /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
@@ -918,6 +922,7 @@
 		A5DB5C1B18B13DF2004A6FC4 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				A524A61719593BC8004379CC /* YouWinDlg.lua */,
 				A564DB61193E512E008AFEF4 /* YouLooseDlg.lua */,
 				A574494B191E90D7007A9FF9 /* GuiHelper.lua */,
 				A5B19D81190D672E001829C0 /* DialogManager.lua */,
@@ -944,6 +949,7 @@
 		A5DB5C2418B13DF2004A6FC4 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A524A61B195CA2C4004379CC /* FinishTrigger.lua */,
 				A5C6106A193667D100D16F4F /* DogObject.lua */,
 				A52042211934561A00920560 /* FactoryObject.lua */,
 				A55570CB192FDAD500517364 /* HunterObject.lua */,
@@ -1075,6 +1081,7 @@
 				A564DB62193E512E008AFEF4 /* YouLooseDlg.lua in Resources */,
 				A5DB5C3E18B13DF2004A6FC4 /* StartScene.lua in Resources */,
 				A593E45318D5A2AA00854816 /* FieldNode.lua in Resources */,
+				A524A61819593BC8004379CC /* YouWinDlg.lua in Resources */,
 				A5DB5C0A18AFA128004A6FC4 /* Maps in Resources */,
 				A5DB5C4118B13DF2004A6FC4 /* Dialog.lua in Resources */,
 				A5DB5C3F18B13DF2004A6FC4 /* ChooseLevel.lua in Resources */,
@@ -1120,6 +1127,7 @@
 				A5DB5C4918B13DF2004A6FC4 /* SnareTrigger.lua in Resources */,
 				A572B06118B3DF1B0068BB19 /* PlistAnimation.lua in Resources */,
 				A5DB5C4E18B13DF2004A6FC4 /* FightTrigger.lua in Resources */,
+				A524A61C195CA2C4004379CC /* FinishTrigger.lua in Resources */,
 				A5404DE61816FCC9004A027E /* AudioEngine.lua in Resources */,
 				A5DB5C0818AF6E86004A6FC4 /* Published-iOS in Resources */,
 				A52042221934561A00920560 /* FactoryObject.lua in Resources */,

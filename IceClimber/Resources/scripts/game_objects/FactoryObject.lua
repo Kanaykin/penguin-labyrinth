@@ -3,6 +3,7 @@ require "MobObject"
 require "SnareTrigger"
 require "FoxObject"
 require "DogObject"
+require "FinishTrigger"
 
 FactoryObject = {}
 
@@ -80,7 +81,7 @@ end
 ------------------------------
 function FactoryObject:createFinish(field, node)
 	print("FactoryObject:createFinish ", field, ", ", node);
-	local finish = Trigger:create();
+	local finish = FinishTrigger:create();
 	finish:init(field, node, nil, nil);
 	field:addFinish(finish);
 	return finish;

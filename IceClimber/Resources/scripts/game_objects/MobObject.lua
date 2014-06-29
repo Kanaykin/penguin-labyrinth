@@ -35,7 +35,6 @@ end
 function MobObject:onPlayerEnter(player, pos)
 	print("MobObject.onPlayerEnter ", player.mNode:getTag());
 	self.mField:createSnareTrigger(Vector.new(player.mNode:getPosition()));
-	--player:enterTrap(nil);
 end
 
 --------------------------------

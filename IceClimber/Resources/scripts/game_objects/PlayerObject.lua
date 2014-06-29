@@ -20,6 +20,8 @@ PlayerObject.MALE_PREFIX = "penguin";
 PlayerObject.FEMALE_PREFIX = "penguin_girl";
 PlayerObject.OBJECT_IN_TRAP = 5;
 
+PlayerObject.mStateInTrap = PlayerObject.OBJECT_IN_TRAP;
+
 DIRECTIONS = {
 		Vector.new(-1, 0),
 		Vector.new(1, 0),
@@ -65,15 +67,17 @@ function PlayerObject:leaveTrap(pos)
 end
 
 ---------------------------------
-function PlayerObject:enterTrap(pos)
+function PlayerObject:enterTrap(pos, stateInTrap)
 	
+	self.mStateInTrap = stateInTrap and stateInTrap or PlayerObject.OBJECT_IN_TRAP;
+
 	self:playAnimation(nil);
 	if pos then
 		print("PlayerObject:enterTrap x= ", pos.x, " y= ", pos.y);
 		local posTo = Vector.new(self.mField:positionToGrid(pos));
 		self:moveTo(posTo);
 	else
-		self:playAnimation(PlayerObject.OBJECT_IN_TRAP);
+		self:playAnimation(self.mStateInTrap);
 	end
 	self.mInTrap = true;
 end
@@ -81,7 +85,7 @@ end
 --------------------------------
 function PlayerObject:onMoveFinished( )
 	PlayerObject:superClass().onMoveFinished(self);
-	self:playAnimation(PlayerObject.OBJECT_IN_TRAP);
+	self:playAnimation(self.mStateInTrap);
 	self.mDelta = nil;
 end
 

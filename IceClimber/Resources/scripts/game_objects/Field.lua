@@ -157,6 +157,16 @@ end
 function Field:onStateWin()
 	self.mState = Field.WIN;
 	print("WIN !!!");
+	if self.mStateListener then
+		self.mStateListener:onStateWin();
+	end
+
+	for _, object in ipairs(self.mPlayerObjects) do
+	end
+
+	for _, trigger in ipairs(self.mFinishTrigger) do
+		trigger:onStateWin();
+	end
 end
 
 ---------------------------------

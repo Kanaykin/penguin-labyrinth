@@ -26,6 +26,12 @@ function LevelScene:onStateLose()
 end
 
 ---------------------------------
+function LevelScene:onStateWin()
+	print("LevelScene: WIN !!!");
+	self.mMainUI:onStateWin();
+end
+
+---------------------------------
 function LevelScene:destroy()
 	print("LevelScene:destroy ");
 

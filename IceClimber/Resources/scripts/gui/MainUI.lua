@@ -2,6 +2,7 @@ require "CCBBaseDlg"
 require "SettingsDlg"
 require "GuiHelper"
 require "YouLooseDlg"
+require "YouWinDlg"
 
 MainUI = inheritsFrom(CCBBaseDialog)
 
@@ -9,6 +10,7 @@ MainUI.mJoystick = nil;
 MainUI.mFightButton = nil;
 MainUI.mSettingsDlg = nil;
 MainUI.mYouLooseDlg = nil;
+MainUI.mYouWinDlg = nil;
 
 MainUI.SETTINGS_MENU_TAG = 50;
 MainUI.SETTINGS_MENU_ITEM_TAG = 51;
@@ -34,6 +36,12 @@ function MainUI:onStateLose()
 	self.mYouLooseDlg:doModal();
 end
 
+---------------------------------
+function MainUI:onStateWin()
+	self.mJoystick:release();
+	self.mYouWinDlg:doModal();
+end
+
 --------------------------------
 function MainUI:init(game, uiLayer, ccbFile)
 	self:superClass().init(self, game, uiLayer, ccbFile);
@@ -56,4 +64,8 @@ function MainUI:init(game, uiLayer, ccbFile)
 	-------------------------
 	self.mYouLooseDlg = YouLooseDlg:create();
 	self.mYouLooseDlg:init(self.mGame, self.mUILayer);
+
+	-------------------------
+	self.mYouWinDlg = YouWinDlg:create();
+	self.mYouWinDlg:init(self.mGame, self.mUILayer);
 end

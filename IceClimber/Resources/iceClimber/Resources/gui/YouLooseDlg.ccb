@@ -382,8 +382,6 @@
 								<real>4</real>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -805,7 +803,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>49.791667938232422</real>
+									<real>50.5</real>
 									<real>55.625</real>
 									<integer>4</integer>
 								</array>
@@ -907,9 +905,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>Game Over</string>
+								<string>Level Failed !!!</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
