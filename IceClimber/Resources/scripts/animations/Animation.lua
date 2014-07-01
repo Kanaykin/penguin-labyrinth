@@ -10,3 +10,12 @@ end
 function IAnimation:destroy()
 	
 end
+
+---------------------------------
+function IAnimation:isDone()
+	
+end
+
+--------------------------------
+function IAnimation:tick(dt)
+end

@@ -236,6 +236,12 @@ function PlayerObject:move(dt)
 end
 
 --------------------------------
+function PlayerObject:animationTick(dt)
+	local animationButton = (self.mLastButtonPressed == nil) and -1 or self.mLastButtonPressed;
+	self.mAnimations[animationButton]:tick(dt);
+end
+
+--------------------------------
 function PlayerObject:tick(dt)
 	PlayerObject:superClass().tick(self, dt);
 	
@@ -246,4 +252,6 @@ function PlayerObject:tick(dt)
 	elseif not self:fight() then 
 		self:move(dt);
 	end
+
+	self:animationTick(dt);
 end

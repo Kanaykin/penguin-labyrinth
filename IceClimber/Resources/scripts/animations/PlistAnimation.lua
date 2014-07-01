@@ -3,7 +3,18 @@ require "EmptyAnimation"
 PlistAnimation = inheritsFrom(EmptyAnimation)
 PlistAnimation.mAnimation = nil;
 PlistAnimation.mAction = nil;
-PlistAnimation.tmp = 1;
+
+--------------------------------
+function PlistAnimation:getAction()
+	return self.mAction;
+end
+
+--------------------------------
+function PlistAnimation:setAction(action)
+	self.mAction:release();
+	self.mAction = action;
+	self.mAction:retain();
+end
 
 --------------------------------
 function PlistAnimation:destroy()
@@ -17,11 +28,18 @@ function PlistAnimation:play()
 	PlistAnimation:superClass().play(self);
 
 	self.mNode:runAction(self.mAction);
+end
 
-	if self.tmp > 100 then
-		self.mNode:dfg();
-	end
-	self.tmp = self.tmp +1 ;
+---------------------------------
+function PlistAnimation:isDone()
+	--print("PlistAnimation:isDone ", CCDirector:sharedDirector():getActionManager():numberOfRunningActionsInTarget(self.mAction:getTarget()));
+	return self.mAction and self.mAction:isDone() or 
+		CCDirector:sharedDirector():getActionManager():numberOfRunningActionsInTarget(self.mAction:getTarget()) == 0;
+end
+
+--------------------------------
+function PlistAnimation:tick(dt)
+	--print("animation is done :", self.mAction:isDone());
 end
 
 --------------------------------
@@ -65,27 +83,7 @@ function PlistAnimation:init(plistName, node, anchor, texture)
 	self.mAnimation:setRestoreOriginalFrame(true);
 
 	local action = CCAnimate:create(self.mAnimation);
-	self.mAction = CCRepeatForever:create(action);
+	self.mAction = action;--CCActionInterval:create(action, 1);
 
 	self.mAction:retain();
---[[
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-	cache:addSpriteFramesWithFile(plistName);
-
-
-	for i = 1, 11 do
-		local fullName = FoxIdle00..tostring(i)..".png";
-		print("PlistAnimation:createAnimation ", fullName);
-		self.mAnimation:addSpriteFrameWithFileName(fullName);
-	end
-
-	self.mAnimation = CCAnimation:createWithSpriteFrames();
-
-	self.mAnimation:setDelayPerUnit(1 / 10);
-	self.mAnimation:setRestoreOriginalFrame(true);
-
-	local action = CCAnimate:create(self.mAnimation);
-	self.mAction = CCRepeatForever:create(action);
-
-	self.mAction:retain();]]
 end

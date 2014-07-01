@@ -1,5 +1,7 @@
 require "PlayerObject"
 require "PlistAnimation"
+require "RandomAnimation"
+require "DelayAnimation"
 
 FoxObject = inheritsFrom(PlayerObject)
 
@@ -33,33 +35,48 @@ function FoxObject:tick(dt)
 end
 
 --------------------------------
+function FoxObject:createRepeatAnimation(nameAnimation)
+	local animation = PlistAnimation:create();
+	animation:init(nameAnimation, self.mNode, self.mNode:getAnchorPoint());
+
+	local repeatAnimation = RepeatAnimation:create();
+	repeatAnimation:init(animation);
+	return repeatAnimation;
+end
+
+--------------------------------
+function FoxObject:createIdleAnimation(nameAnimation)
+	local idle = PlistAnimation:create();
+	idle:init(nameAnimation, self.mNode, self.mNode:getAnchorPoint());
+	local delayAnim = DelayAnimation:create();
+	delayAnim:init(idle, math.random());
+	self.mAnimations[-1]:addAnimation(delayAnim);
+end
+
+--------------------------------
 function FoxObject:initAnimation()
 	local texture = tolua.cast(self.mNode, "CCSprite"):getTexture();
 
 	self.mAnimations = {}
-	self.mAnimations[-1] = PlistAnimation:create();
-	self.mAnimations[-1]:init("FoxIdle1.plist", self.mNode, self.mNode:getAnchorPoint());
-	self.mAnimations[-1]:play();
+	
+	self.mAnimations[-1] = RandomAnimation:create();
+	self.mAnimations[-1]:init();
+	self:createIdleAnimation("FoxIdle1.plist");
+	self:createIdleAnimation("FoxIdle2.plist");
+	self:createIdleAnimation("FoxIdle3.plist");
 
-	--self.mAnimations[3] = PlistAnimation:create();
-	--self.mAnimations[3]:init("FoxWalk1.plist", self.mNode, self.mNode:getAnchorPoint());
+	self.mAnimations[-1]:play();
 
 	-- create empty animation
 	for i, info in ipairs(ANIMATION_MALE) do
 		if info.name then
-			self.mAnimations[i] = PlistAnimation:create();
-			self.mAnimations[i]:init("FoxWalk1.plist", self.mNode, self.mNode:getAnchorPoint());
-			--[[self.mAnimations[i]:init(self.mNameTexture..info.name, info.frames, self.mNode, texture,
-				self.mIsFemale and ANIMATION_MALE[i].anchorFightFemale or 
-				ANIMATION_MALE[i].anchorFight);]]
+			self.mAnimations[i] = self:createRepeatAnimation("FoxWalk1.plist");
 		end
 	end
 
 	for i=6,9 do
-		self.mAnimations[i] = PlistAnimation:create();
-		self.mAnimations[i]:init("FoxFight.plist", self.mNode, self.mNode:getAnchorPoint());
+		self.mAnimations[i] = self:createRepeatAnimation("FoxFight.plist");
 	end
 
-	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = PlistAnimation:create();
-	self.mAnimations[PlayerObject.OBJECT_IN_TRAP]:init("FoxInTrap.plist", self.mNode, self.mNode:getAnchorPoint());
+	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = self:createRepeatAnimation("FoxInTrap.plist");
 end
