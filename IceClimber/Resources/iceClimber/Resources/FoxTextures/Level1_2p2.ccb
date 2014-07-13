@@ -1688,7 +1688,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>103</integer>
+								<integer>10</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1699,6 +1699,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1769,7 +1771,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>103</integer>
+								<integer>10</integer>
 							</dict>
 							<dict>
 								<key>name</key>

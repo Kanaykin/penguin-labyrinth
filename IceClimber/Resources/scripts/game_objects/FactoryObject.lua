@@ -4,6 +4,7 @@ require "SnareTrigger"
 require "FoxObject"
 require "DogObject"
 require "FinishTrigger"
+require "FinishObject"
 
 FactoryObject = {}
 
@@ -70,6 +71,15 @@ function FactoryObject:createMob(field, node)
 end
 
 ------------------------------
+function FactoryObject:createFinishObject(field, node)
+	print("FactoryObject:createFinishObject ", field, ", ", node);
+	local obj = FinishObject:create();
+	obj:init(field, node);
+	field:addObject(obj);
+	return obj;
+end
+
+------------------------------
 function FactoryObject:createWeb(field, node)
 	print("FactoryObject:createWeb ", field, ", ", node);
 	local web = SnareTrigger:create();
@@ -116,5 +126,6 @@ FactoryObject.CreateFunctions = {
 	[FactoryObject.PLAYER_TAG] = FactoryObject.createPlayer,
 	[FactoryObject.PLAYER2_TAG] = FactoryObject.createPlayer,
 	[FactoryObject.FOX_TAG] = FactoryObject.createFoxPlayer,
-	[FactoryObject.FOX2_TAG] = FactoryObject.createFoxPlayer
+	[FactoryObject.FOX2_TAG] = FactoryObject.createFoxPlayer,
+	[FactoryObject.LOVE_CAGE_TAG] = FactoryObject.createFinishObject
 }

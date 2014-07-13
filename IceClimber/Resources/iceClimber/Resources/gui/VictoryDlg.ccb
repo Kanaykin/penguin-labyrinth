@@ -252,8 +252,8 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>12</real>
-									<integer>0</integer>
+									<real>20</real>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>

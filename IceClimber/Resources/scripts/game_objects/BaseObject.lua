@@ -14,6 +14,10 @@ function BaseObject:destroyNode()
 	end
 end
 
+---------------------------------
+function BaseObject:onStateWin()
+end
+
 --------------------------------
 function BaseObject:init(field, node)
 	self.mNode = node;

@@ -17,7 +17,9 @@ end
 
 --------------------------------
 function RandomAnimation:tick(dt)
-	--print("RandomAnimation:tick ", dt);
+	if self.mCurrentAnimation then
+		self.mCurrentAnimation:tick(dt);
+	end
 	self:playNext();
 end
 

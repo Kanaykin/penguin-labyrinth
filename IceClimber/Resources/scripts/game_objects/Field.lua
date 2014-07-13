@@ -161,11 +161,8 @@ function Field:onStateWin()
 		self.mStateListener:onStateWin();
 	end
 
-	for _, object in ipairs(self.mPlayerObjects) do
-	end
-
-	for _, trigger in ipairs(self.mFinishTrigger) do
-		trigger:onStateWin();
+	for _, object in ipairs(self.mObjects) do
+		object:onStateWin();
 	end
 end
 
@@ -366,20 +363,25 @@ end
 
 --------------------------------
 function Field:addMob(mob)
-	table.insert(self.mObjects, mob);
+	self:addObject(mob);
 	table.insert(self.mEnemyObjects, mob);
 end
 
 --------------------------------
 function Field:addFinish(finish)
-	table.insert(self.mObjects, finish);
+	self:addObject(finish);
 	table.insert(self.mFinishTrigger, finish);
 end
 
 --------------------------------
 function Field:addPlayer(player)
-	table.insert(self.mObjects, player);
+	self:addObject(player);
 	table.insert(self.mPlayerObjects, player);
+end
+
+--------------------------------
+function Field:addObject(object)
+	table.insert(self.mObjects, object);
 end
 
 --------------------------------

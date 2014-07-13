@@ -90,6 +90,7 @@
 		A549EFA0190410610072353C /* CCBBaseDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EF9E190410610072353C /* CCBBaseDlg.lua */; };
 		A549EFA1190410620072353C /* SettingsDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EF9F190410610072353C /* SettingsDlg.lua */; };
 		A549EFA3190443B80072353C /* MainUI.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EFA2190443B80072353C /* MainUI.lua */; };
+		A551458D196D05EC00FEC63A /* FinishObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A551458C196D05EB00FEC63A /* FinishObject.lua */; };
 		A55570CC192FDAD500517364 /* HunterObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55570CB192FDAD500517364 /* HunterObject.lua */; };
 		A55E989B19606F8400C53BB2 /* RandomAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55E989A19606F8400C53BB2 /* RandomAnimation.lua */; };
 		A55E989D1961299D00C53BB2 /* RepeatAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55E989C1961299D00C53BB2 /* RepeatAnimation.lua */; };
@@ -109,6 +110,7 @@
 		A564DB62193E512E008AFEF4 /* YouLooseDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A564DB61193E512E008AFEF4 /* YouLooseDlg.lua */; };
 		A572B06118B3DF1B0068BB19 /* PlistAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A572B06018B3DF1B0068BB19 /* PlistAnimation.lua */; };
 		A574494C191E90D7007A9FF9 /* GuiHelper.lua in Resources */ = {isa = PBXBuildFile; fileRef = A574494B191E90D7007A9FF9 /* GuiHelper.lua */; };
+		A579AEEB196E538B0071971D /* SequenceAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A579AEEA196E538B0071971D /* SequenceAnimation.lua */; };
 		A5892472181850B2005765D2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5892470181850B2005765D2 /* AppDelegate.cpp */; };
 		A593E45318D5A2AA00854816 /* FieldNode.lua in Resources */ = {isa = PBXBuildFile; fileRef = A593E45218D5A2AA00854816 /* FieldNode.lua */; };
 		A5B19D82190D672E001829C0 /* DialogManager.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5B19D81190D672E001829C0 /* DialogManager.lua */; };
@@ -341,6 +343,7 @@
 		A549EF9E190410610072353C /* CCBBaseDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CCBBaseDlg.lua; sourceTree = "<group>"; };
 		A549EF9F190410610072353C /* SettingsDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SettingsDlg.lua; sourceTree = "<group>"; };
 		A549EFA2190443B80072353C /* MainUI.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MainUI.lua; sourceTree = "<group>"; };
+		A551458C196D05EB00FEC63A /* FinishObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinishObject.lua; sourceTree = "<group>"; };
 		A55570CB192FDAD500517364 /* HunterObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HunterObject.lua; sourceTree = "<group>"; };
 		A55E989A19606F8400C53BB2 /* RandomAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RandomAnimation.lua; sourceTree = "<group>"; };
 		A55E989C1961299D00C53BB2 /* RepeatAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepeatAnimation.lua; sourceTree = "<group>"; };
@@ -364,6 +367,7 @@
 		A564DB61193E512E008AFEF4 /* YouLooseDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YouLooseDlg.lua; sourceTree = "<group>"; };
 		A572B06018B3DF1B0068BB19 /* PlistAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlistAnimation.lua; sourceTree = "<group>"; };
 		A574494B191E90D7007A9FF9 /* GuiHelper.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GuiHelper.lua; sourceTree = "<group>"; };
+		A579AEEA196E538B0071971D /* SequenceAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SequenceAnimation.lua; sourceTree = "<group>"; };
 		A5892470181850B2005765D2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		A5892471181850B2005765D2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A593E45218D5A2AA00854816 /* FieldNode.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FieldNode.lua; sourceTree = "<group>"; };
@@ -955,6 +959,7 @@
 		A5DB5C2418B13DF2004A6FC4 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A551458C196D05EB00FEC63A /* FinishObject.lua */,
 				A524A61B195CA2C4004379CC /* FinishTrigger.lua */,
 				A5C6106A193667D100D16F4F /* DogObject.lua */,
 				A52042211934561A00920560 /* FactoryObject.lua */,
@@ -976,6 +981,7 @@
 		A5DB5C2D18B13DF2004A6FC4 /* animations */ = {
 			isa = PBXGroup;
 			children = (
+				A579AEEA196E538B0071971D /* SequenceAnimation.lua */,
 				A55E989F19627BED00C53BB2 /* DelayAnimation.lua */,
 				A55E989C1961299D00C53BB2 /* RepeatAnimation.lua */,
 				A55E989A19606F8400C53BB2 /* RandomAnimation.lua */,
@@ -1107,11 +1113,13 @@
 				A5B19D82190D672E001829C0 /* DialogManager.lua in Resources */,
 				A5DB5C5118B13DF2004A6FC4 /* FramesAnimation.lua in Resources */,
 				A5DB5C3818B13DF2004A6FC4 /* Level.lua in Resources */,
+				A551458D196D05EC00FEC63A /* FinishObject.lua in Resources */,
 				A56023631811C384005719B1 /* InfoPlist.strings in Resources */,
 				A5DB5C4218B13DF2004A6FC4 /* Joystick.lua in Resources */,
 				A5DB5C5918B268F3004A6FC4 /* FoxObject.lua in Resources */,
 				A549EFA0190410610072353C /* CCBBaseDlg.lua in Resources */,
 				A55E989D1961299D00C53BB2 /* RepeatAnimation.lua in Resources */,
+				A579AEEB196E538B0071971D /* SequenceAnimation.lua in Resources */,
 				A5DB5C4018B13DF2004A6FC4 /* ChooseLocation.lua in Resources */,
 				A5DB5C4D18B13DF2004A6FC4 /* BaseObject.lua in Resources */,
 				A5DB5C3A18B13DF2004A6FC4 /* BaseScene.lua in Resources */,
