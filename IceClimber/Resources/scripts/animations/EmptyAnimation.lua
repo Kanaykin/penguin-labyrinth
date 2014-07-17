@@ -19,6 +19,11 @@ function EmptyAnimation:getAction()
 	return nil;
 end
 
+--------------------------------
+function EmptyAnimation:getNode()
+	return self.mNode;
+end
+
 ---------------------------------
 function EmptyAnimation:isDone()
 	return true;

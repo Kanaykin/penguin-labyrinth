@@ -6,6 +6,7 @@ DelayAnimation.mImpl = nil
 
 DelayAnimationSoftImpl = inheritsFrom(IAnimation)
 DelayAnimationSoftImpl.mAnimation = nil
+DelayAnimationSoftImpl.mTexture = nil
 
 --------------------------------
 function DelayAnimationSoftImpl:init(animation, delay)
@@ -16,6 +17,14 @@ function DelayAnimationSoftImpl:init(animation, delay)
 	animation:setAction(seq);
 
 	self.mAnimation = animation;
+
+	-- remembe texture
+	if animation.getNode then
+		local node = animation:getNode();
+		local texture = tolua.cast(node, "CCSprite"):getTexture();
+		self.mTexture = texture;
+		self.mTextureSize = node:getContentSize();
+	end
 end
 
 ---------------------------------
@@ -31,6 +40,10 @@ end
 ----------------------------
 function DelayAnimationSoftImpl:play()
 	--print("DelayAnimation:play")
+	if self.mTexture then
+		tolua.cast(self.mAnimation:getNode(), "CCSprite"):setTexture(self.mTexture);
+		tolua.cast(self.mAnimation:getNode(), "CCSprite"):setTextureRect(CCRectMake(0, 0, self.mTextureSize.width, self.mTextureSize.height));
+	end
 	self.mAnimation:play();
 end
 
@@ -66,7 +79,7 @@ end
 
 --------------------------------
 function DelayAnimationHardImpl:tick(dt)
-	print("DelayAnimationHardImpl:tick ", self.mCurrentDelay)
+	--print("DelayAnimationHardImpl:tick ", self.mCurrentDelay)
 	if self.mCurrentDelay then
 		
 		self.mCurrentDelay = self.mCurrentDelay - dt;

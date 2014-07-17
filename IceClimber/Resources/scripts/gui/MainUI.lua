@@ -20,6 +20,7 @@ function MainUI:destroy()
 	print("MainUI:destroy");
 	self.mSettingsDlg:destroy();
 	self.mYouLooseDlg:destroy();
+	self.mYouWinDlg:destroy();
 
 	self:superClass().destroy(self);
 end

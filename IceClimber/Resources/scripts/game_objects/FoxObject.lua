@@ -79,4 +79,7 @@ function FoxObject:initAnimation()
 	end
 
 	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = self:createRepeatAnimation("FoxInTrap.plist");
+
+	self.mAnimations[PlayerObject.WIN_STATE] = EmptyAnimation:create();
+	self.mAnimations[PlayerObject.WIN_STATE]:init(texture, self.mNode, self.mNode:getAnchorPoint());
 end

@@ -19,6 +19,7 @@ PlayerObject.mInTrap = false;
 PlayerObject.MALE_PREFIX = "penguin";
 PlayerObject.FEMALE_PREFIX = "penguin_girl";
 PlayerObject.OBJECT_IN_TRAP = 5;
+PlayerObject.WIN_STATE = 10;
 
 PlayerObject.mStateInTrap = PlayerObject.OBJECT_IN_TRAP;
 
@@ -84,6 +85,7 @@ end
 
 --------------------------------
 function PlayerObject:onMoveFinished( )
+	print("PlayerObject:onMoveFinished ", self.mStateInTrap)
 	PlayerObject:superClass().onMoveFinished(self);
 	self:playAnimation(self.mStateInTrap);
 	self.mDelta = nil;
@@ -106,6 +108,8 @@ function PlayerObject:initAnimation()
 				ANIMATION_MALE[i].anchorFight);
 		end
 	end
+	self.mAnimations[PlayerObject.WIN_STATE] = EmptyAnimation:create();
+	self.mAnimations[PlayerObject.WIN_STATE]:init(texture, self.mNode, self.mNode:getAnchorPoint());
 end
 
 --------------------------------
@@ -247,7 +251,7 @@ function PlayerObject:tick(dt)
 	
 	self.mFightTrigger:tick(dt);
 
-	if PlayerObject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
+	if PlayerObject.WIN_STATE == self.mLastButtonPressed or PlayerObject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
 		-- do nothing object is in trap
 	elseif not self:fight() then 
 		self:move(dt);

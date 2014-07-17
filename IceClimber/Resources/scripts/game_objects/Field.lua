@@ -27,7 +27,7 @@ Field.mStateListener = nil;
 Field.PAUSE = 1;
 Field.IN_GAME = 2;
 Field.WIN = 3;
-Field.LOSE = 3;
+Field.LOSE = 4;
 
 --------------------------------
 function COORD(x, y, width)
