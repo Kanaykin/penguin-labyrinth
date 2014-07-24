@@ -35,12 +35,12 @@ function FoxObject:tick(dt)
 end
 
 --------------------------------
-function FoxObject:createRepeatAnimation(nameAnimation)
+function FoxObject:createRepeatAnimation(nameAnimation, soft)
 	local animation = PlistAnimation:create();
 	animation:init(nameAnimation, self.mNode, self.mNode:getAnchorPoint());
 
 	local repeatAnimation = RepeatAnimation:create();
-	repeatAnimation:init(animation);
+	repeatAnimation:init(animation, soft);
 	return repeatAnimation;
 end
 
@@ -75,7 +75,7 @@ function FoxObject:initAnimation()
 	end
 
 	for i=6,9 do
-		self.mAnimations[i] = self:createRepeatAnimation("FoxFight.plist");
+		self.mAnimations[i] = self:createRepeatAnimation("FoxFight.plist", true);
 	end
 
 	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = self:createRepeatAnimation("FoxInTrap.plist");

@@ -28,6 +28,11 @@ function FightTrigger:setActivated(activated)
 end
 
 --------------------------------
+function FightTrigger:isActivated()
+	return self.mActivated;
+end
+
+--------------------------------
 function FightTrigger:tick(dt)
 	if self.mActivated then
 		--print("FightTrigger:tick");
