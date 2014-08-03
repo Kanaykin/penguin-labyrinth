@@ -22,6 +22,11 @@ function RepeatAnimationSoftImpl:play()
 end
 
 ---------------------------------
+function RepeatAnimationSoftImpl:setStopAfterDone(stopAfterDone)
+	
+end
+
+---------------------------------
 function RepeatAnimationSoftImpl:destroy()
 	self.mAnimation:destroy();
 end
@@ -39,6 +44,8 @@ end
 --------------------------------
 RepeatAnimationHardImpl = inheritsFrom(IAnimation)
 RepeatAnimationHardImpl.mAnimation = nil
+RepeatAnimationHardImpl.mPlaying = false
+RepeatAnimationHardImpl.mStopAfterDone = false
 
 --------------------------------
 function RepeatAnimationHardImpl:init(animation)
@@ -48,6 +55,7 @@ end
 ----------------------------
 function RepeatAnimationHardImpl:play()
 	self.mAnimation:play();
+	self.mPlaying = true
 end
 
 ---------------------------------
@@ -55,9 +63,19 @@ function RepeatAnimationHardImpl:destroy()
 	self.mAnimation:destroy();
 end
 
+---------------------------------
+function RepeatAnimationHardImpl:setStopAfterDone(stopAfterDone)
+	self.mStopAfterDone = stopAfterDone
+end
+
+----------------------------
+function RepeatAnimationHardImpl:stop()
+	self.mPlaying = false
+end
+
 --------------------------------
 function RepeatAnimationHardImpl:tick(dt)
-	if self:isDone() then
+	if self.mPlaying and self:isDone() and not self.mStopAfterDone then
 		print("RepeatAnimationHardImpl:tick replay ");
 		self:play();
 	end
@@ -90,9 +108,19 @@ function RepeatAnimation:play()
 	self.mImpl:play();
 end
 
+----------------------------
+function RepeatAnimation:stop()
+	self.mImpl:stop();
+end
+
 ---------------------------------
 function RepeatAnimation:destroy()
 	self.mImpl:destroy();
+end
+
+---------------------------------
+function RepeatAnimation:setStopAfterDone(stopAfterDone)
+	self.mImpl:setStopAfterDone(stopAfterDone);
 end
 
 --------------------------------

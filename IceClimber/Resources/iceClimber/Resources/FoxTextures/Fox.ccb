@@ -39,13 +39,25 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.34999999403953552</real>
 						</array>
 					</dict>
 					<dict>
@@ -60,6 +72,14 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>5</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -104,9 +124,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-28</real>
-							<real>-13</real>
-							<integer>0</integer>
+							<real>-30</real>
+							<real>-15</real>
+							<integer>5</integer>
 						</array>
 					</dict>
 					<dict>
@@ -117,7 +137,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -135,6 +155,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>6</integer>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -149,10 +177,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Wave.png</string>
+							<string>WaveEmpty.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -165,6 +195,18 @@
 		<integer>0</integer>
 		<key>properties</key>
 		<array>
+			<dict>
+				<key>name</key>
+				<string>contentSize</string>
+				<key>type</key>
+				<string>Size</string>
+				<key>value</key>
+				<array>
+					<real>0.0</real>
+					<real>0.0</real>
+					<integer>1</integer>
+				</array>
+			</dict>
 			<dict>
 				<key>name</key>
 				<string>anchorPoint</string>

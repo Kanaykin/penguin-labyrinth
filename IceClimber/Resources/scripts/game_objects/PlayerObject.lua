@@ -113,12 +113,17 @@ function PlayerObject:initAnimation()
 end
 
 --------------------------------
+function PlayerObject:getAnimationNode()
+	return self.mNode;
+end
+
+--------------------------------
 function PlayerObject:playAnimation(button)
 	--print("PlayerObject:playAnimation ", self.mLastButtonPressed);
 	if self.mLastButtonPressed ~= button and self.mNode then
 		self.mLastButtonPressed = button;
 		print("PlayerObject:playAnimation2 ", self.mLastButtonPressed, " button ", button);
-		self.mNode:stopAllActions();
+		self:getAnimationNode():stopAllActions();
 		button = (button == nil) and -1 or button;
 		self.mAnimations[button]:play();
 	end
@@ -191,6 +196,11 @@ function PlayerObject:weakfight()
 end
 
 --------------------------------
+function PlayerObject:setFightActivated(activated)
+	self.mFightTrigger:setActivated(activated);
+end
+
+--------------------------------
 function PlayerObject:fight()
 	if not self.mFightButton then
 		return false;
@@ -200,7 +210,7 @@ function PlayerObject:fight()
 		if not self.mFightTrigger:isActivated() then 
 			self:playAnimation(self.mLastDir + PlayerObject.mFightButtonOffset);
 
-			self.mFightTrigger:setActivated(true);
+			self:setFightActivated(true);
 			local selfPosX, selfPosY = self.mNode:getPosition();
 			
 			local newDir = DIRECTIONS[self.mLastDir]:clone() * self.mReverse;
@@ -217,13 +227,6 @@ function PlayerObject:fight()
 end
 
 --------------------------------
---[[function PlayerObject:updateOrder()
-	local parent = self.mNode:getParent();
-	parent:removeChild(self.mNode, false);
-	parent:addChild(self.mNode, -self.mGridPosition.y * 2);
-end]]
-
---------------------------------
 function PlayerObject:move(dt)
 	if not self.mJoystick then
 		return;
@@ -233,12 +236,13 @@ function PlayerObject:move(dt)
 	--print("button pressed ", );
 	if button and button ~= PlayerObject.OBJECT_IN_TRAP then
 
-		if self.mFightTrigger:isActivated() then 
-			self.mFightTrigger:setActivated(false);
-		end
-
 		self:playAnimation(button);
 		self.mLastDir = button;
+
+		if self.mFightTrigger:isActivated() then 
+			self:setFightActivated(false);
+		end
+
 		local newGridPos = self.mGridPosition + DIRECTIONS[button];
 		
 		local curPosition = Vector.new(self.mNode:getPosition());
@@ -258,7 +262,7 @@ function PlayerObject:move(dt)
 		self:playAnimation(button);
 
 		if self.mFightTrigger:isActivated() then 
-			self.mFightTrigger:setActivated(false);
+			self:setFightActivated(false);
 		end
 	end
 end

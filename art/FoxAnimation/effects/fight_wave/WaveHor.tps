@@ -146,6 +146,8 @@
         </struct>
         <key>fileList</key>
         <array>
+            <filename>WaveHor__0000_Layer--1.png</filename>
+            <filename>WaveHor__0000_Layer--2.png</filename>
             <filename>WaveHor__0008_Layer-1.png</filename>
             <filename>WaveHor__0007_Layer-2.png</filename>
             <filename>WaveHor__0006_Layer-3.png</filename>

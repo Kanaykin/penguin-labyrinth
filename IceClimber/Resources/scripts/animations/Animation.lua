@@ -6,6 +6,10 @@ IAnimation = inheritsFrom(nil)
 function IAnimation:play()
 end
 
+----------------------------
+function IAnimation:stop()
+end
+
 ---------------------------------
 function IAnimation:destroy()
 	
