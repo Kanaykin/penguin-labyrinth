@@ -9,7 +9,7 @@ DelayAnimationSoftImpl.mAnimation = nil
 DelayAnimationSoftImpl.mTexture = nil
 
 --------------------------------
-function DelayAnimationSoftImpl:init(animation, delay)
+function DelayAnimationSoftImpl:init(animation, delay, texture, textureSize)
 	local action = animation:getAction();
 	local delayAction = CCDelayTime:create(delay);
 	local seq = CCSequence:createWithTwoActions(delayAction, action);
@@ -19,7 +19,10 @@ function DelayAnimationSoftImpl:init(animation, delay)
 	self.mAnimation = animation;
 
 	-- remembe texture
-	if animation.getNode then
+	if texture and textureSize then
+		self.mTexture = texture;
+		self.mTextureSize = textureSize;
+	elseif animation.getNode then
 		local node = animation:getNode();
 		local texture = tolua.cast(node, "CCSprite"):getTexture();
 		self.mTexture = texture;
@@ -95,10 +98,10 @@ end
 
 --////////////////////////////////////////
 --------------------------------
-function DelayAnimation:init(animation, delay)
+function DelayAnimation:init(animation, delay, texture, textureSize)
 	if animation:getAction() then
 		self.mImpl = DelayAnimationSoftImpl:create();
-		self.mImpl:init(animation, delay);
+		self.mImpl:init(animation, delay, texture, textureSize);
 	else 
 		self.mImpl = DelayAnimationHardImpl:create();
 		self.mImpl:init(animation, delay);

@@ -100,7 +100,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCBFile</string>
+						<string>Fox</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -114,7 +114,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>272</real>
+									<real>271</real>
 									<real>16</real>
 									<integer>5</integer>
 								</array>
@@ -517,8 +517,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>

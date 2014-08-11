@@ -18,10 +18,6 @@ PlayerObject.mInTrap = false;
 
 PlayerObject.MALE_PREFIX = "penguin";
 PlayerObject.FEMALE_PREFIX = "penguin_girl";
-PlayerObject.OBJECT_IN_TRAP = 5;
-PlayerObject.WIN_STATE = 10;
-
-PlayerObject.mStateInTrap = PlayerObject.OBJECT_IN_TRAP;
 
 DIRECTIONS = {
 		Vector.new(-1, 0),
@@ -30,6 +26,22 @@ DIRECTIONS = {
 		Vector.new(0, -1)
 	}
 PlayerObject.mLastDir = 3;
+
+PlayerObject.PLAYER_STATE = {
+	PS_LEFT = 1,
+	PS_RIGHT = 2,
+	PS_TOP = 3,
+	PS_BOTTOM = 4,
+	PS_OBJECT_IN_TRAP = 5,
+	PS_FIGHT_LEFT = 6,
+	PS_FIGHT_RIGHT = 7,
+	PS_FIGHT_UP = 8,
+	PS_FIGHT_DOWN = 9,
+	PS_WIN_STATE = 10,
+	NONE = nil	
+};
+
+PlayerObject.mStateInTrap = PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP;
 
 ANIMATION_MALE = {
 		{name = "_left", frames = 2, anchorFight = CCPointMake(0.5, 0.5), anchorFightFemale = CCPointMake(0.5, 0.5)},
@@ -70,7 +82,7 @@ end
 ---------------------------------
 function PlayerObject:enterTrap(pos, stateInTrap)
 	
-	self.mStateInTrap = stateInTrap and stateInTrap or PlayerObject.OBJECT_IN_TRAP;
+	self.mStateInTrap = stateInTrap and stateInTrap or PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP;
 
 	self:playAnimation(nil);
 	if pos then
@@ -108,8 +120,8 @@ function PlayerObject:initAnimation()
 				ANIMATION_MALE[i].anchorFight);
 		end
 	end
-	self.mAnimations[PlayerObject.WIN_STATE] = EmptyAnimation:create();
-	self.mAnimations[PlayerObject.WIN_STATE]:init(texture, self.mNode, self.mNode:getAnchorPoint());
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE] = EmptyAnimation:create();
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE]:init(texture, self.mNode, self.mNode:getAnchorPoint());
 end
 
 --------------------------------
@@ -234,7 +246,7 @@ function PlayerObject:move(dt)
 	
 	local button = self.mJoystick:getButtonPressed();
 	--print("button pressed ", );
-	if button and button ~= PlayerObject.OBJECT_IN_TRAP then
+	if button and button ~= PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP then
 
 		self:playAnimation(button);
 		self.mLastDir = button;
@@ -279,7 +291,7 @@ function PlayerObject:tick(dt)
 	
 	self.mFightTrigger:tick(dt);
 
-	if PlayerObject.WIN_STATE == self.mLastButtonPressed or PlayerObject.OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
+	if PlayerObject.PLAYER_STATE.PS_WIN_STATE == self.mLastButtonPressed or PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP == self.mLastButtonPressed or self.mDelta then
 		-- do nothing object is in trap
 	elseif not self:fight() then 
 		self:move(dt);

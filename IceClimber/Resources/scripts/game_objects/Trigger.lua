@@ -12,6 +12,11 @@ function Trigger:getContainedObj()
 end
 
 --------------------------------
+function Trigger:setEnterCallback(callback)
+	self.mEnterCallback = callback;
+end
+
+--------------------------------
 function Trigger:init(field, node, enterCallback, leaveCallback)
 	Trigger:superClass().init(self, field, node);
 

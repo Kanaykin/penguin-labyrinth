@@ -43,6 +43,13 @@ function MobObject:onPlayerLeave(player)
 	--player:leaveTrap(nil);
 end
 
+---------------------------------
+function MobObject:onStateWin()
+	print("MobObject:onStateWin ", self.mTrigger);
+	MobObject:superClass().onStateWin(self);
+	self.mTrigger:setEnterCallback(nil);
+end
+
 --------------------------------
 function MobObject:init(field, node)
 	print("MobObject:init(", node, ")");

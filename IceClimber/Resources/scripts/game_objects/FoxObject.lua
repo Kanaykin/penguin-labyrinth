@@ -13,6 +13,9 @@ FoxObject.mEffectAnimations = nil;
 FoxObject.OBJECT_NODE_TAG = 5;
 FoxObject.EFFECT_NODE_TAG = 6;
 
+FoxObject.mIdleAnimation = nil;
+FoxObject.mBackIdleAnimation = nil;
+
 --------------------------------
 function FoxObject:init(field, node, needReverse)
 	self.mAnimationNode  = node:getChildByTag(FoxObject.OBJECT_NODE_TAG);
@@ -115,18 +118,32 @@ function PlayerObject:getAnimationNode()
 end
 
 --------------------------------
-function FoxObject:createIdleAnimation(nameAnimation)
+function FoxObject:createIdleAnimation(animation, nameAnimation, texture, textureSize)
 	local idle = PlistAnimation:create();
 	idle:init(nameAnimation, self.mAnimationNode, self.mAnimationNode:getAnchorPoint());
 	local delayAnim = DelayAnimation:create();
-	delayAnim:init(idle, math.random());
-	self.mAnimations[-1]:addAnimation(delayAnim);
+	delayAnim:init(idle, math.random(), texture, textureSize);
+	animation:addAnimation(delayAnim);
 end
 
 --------------------------------
 function FoxObject:initEffectAnimations()
 	self.mEffectAnimations = {};
 	self.mEffectAnimations[1] = self:createRepeatAnimation(self.mEffectNode, "WaveHor.plist", true);
+end
+
+--------------------------------
+function FoxObject:playAnimation(button)
+	if button == PlayerObject.PLAYER_STATE.PS_TOP then
+		self.mAnimations[-1] = self.mBackIdleAnimation;
+		self.mAnimations[-2] = self.mIdleAnimation;
+	elseif button == PlayerObject.PLAYER_STATE.PS_LEFT or 
+		button == PlayerObject.PLAYER_STATE.PS_RIGHT or 
+		button == PlayerObject.PLAYER_STATE.PS_BOTTOM then
+		self.mAnimations[-1] = self.mIdleAnimation;
+		self.mAnimations[-2] = self.mBackIdleAnimation;
+	end
+	FoxObject:superClass().playAnimation(self, button);
 end
 
 --------------------------------
@@ -137,12 +154,20 @@ function FoxObject:initAnimation()
 	
 	self.mAnimations[-1] = RandomAnimation:create();
 	self.mAnimations[-1]:init();
-	self:createIdleAnimation("FoxIdle1.plist");
-	self:createIdleAnimation("FoxIdle2.plist");
-	self:createIdleAnimation("FoxIdle3.plist");
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle1.plist");
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle2.plist");
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle3.plist");
 
-	self.mAnimations[-1]:play();
+	self.mAnimations[-2] = RandomAnimation:create();
+	self.mAnimations[-2]:init();
+	local texture = CCTextureCache:sharedTextureCache():addImage("FoxBack.png");
+	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle1.plist", texture, self.mAnimationNode:getContentSize());
+	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle2.plist", texture, self.mAnimationNode:getContentSize());
+	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle3.plist", texture, self.mAnimationNode:getContentSize());
 
+	self.mIdleAnimation = self.mAnimations[-1];
+	self.mBackIdleAnimation = self.mAnimations[-2];
+	
 	-- create empty animation
 	for i, info in ipairs(ANIMATION_MALE) do
 		if info.name then
@@ -150,14 +175,18 @@ function FoxObject:initAnimation()
 		end
 	end
 
-	for i=6,9 do
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_TOP] = self:createRepeatAnimation(self.mAnimationNode, "FoxWalkBack.plist");
+
+	for i = PlayerObject.PLAYER_STATE.PS_FIGHT_LEFT, PlayerObject.PLAYER_STATE.PS_FIGHT_DOWN do
 		self.mAnimations[i] = self:createRepeatAnimation(self.mAnimationNode, "FoxFight.plist", true);
 	end
 
-	self.mAnimations[PlayerObject.OBJECT_IN_TRAP] = self:createRepeatAnimation(self.mAnimationNode, "FoxInTrap.plist");
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP] = self:createRepeatAnimation(self.mAnimationNode, "FoxInTrap.plist");
 
-	self.mAnimations[PlayerObject.WIN_STATE] = EmptyAnimation:create();
-	self.mAnimations[PlayerObject.WIN_STATE]:init(texture, self.mNode, self.mNode:getAnchorPoint());
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE] = EmptyAnimation:create();
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE]:init(texture, self.mAnimationNode, self.mAnimationNode:getAnchorPoint());
 
 	self:initEffectAnimations();
+
+	self.mAnimations[-1]:play();
 end
