@@ -142,6 +142,11 @@ function PlayerObject:playAnimation(button)
 end
 
 --------------------------------
+function PlayerObject:getReverse()
+	return self.mReverse;
+end
+
+--------------------------------
 function PlayerObject:init(field, node, needReverse)
 	PlayerObject:superClass().init(self, field, node);
 

@@ -16,6 +16,16 @@ MainUI.SETTINGS_MENU_TAG = 50;
 MainUI.SETTINGS_MENU_ITEM_TAG = 51;
 
 --------------------------------
+function MainUI:getJoystick()
+	return self.mJoystick;
+end
+
+--------------------------------
+function MainUI:getFightButton()
+	return self.mFightButton;
+end
+
+--------------------------------
 function MainUI:destroy()
 	print("MainUI:destroy");
 	self.mSettingsDlg:destroy();
@@ -41,6 +51,19 @@ end
 function MainUI:onStateWin()
 	self.mJoystick:release();
 	self.mYouWinDlg:doModal();
+end
+
+--------------------------------
+function MainUI:setTouchListener(listener)
+	local function onTouchHandler(action, var)
+		print("MainUI:onTouchHandler ", action);
+		return listener:onTouchHandler(action, var);
+    end
+
+    local layer = tolua.cast(self.mNode, "CCLayer");
+    layer:registerScriptTouchHandler(onTouchHandler, true, 2, false);
+    layer:setTouchEnabled(true);
+
 end
 
 --------------------------------

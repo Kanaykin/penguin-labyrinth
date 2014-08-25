@@ -3,10 +3,12 @@ require "Joystick"
 require "Field"
 require "FightButton"
 require "MainUI"
+require "PlayerController"
 
 LevelScene = inheritsFrom(BaseScene)
 LevelScene.mField = nil;
 LevelScene.mLevel = nil;
+LevelScene.mPlayerController = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 LevelScene.mMainUI = nil;
@@ -43,6 +45,8 @@ function LevelScene:destroy()
 		self.mField:destroy();
 	end
 
+	self.mPlayerController:destroy();
+
 	LevelScene:superClass().destroy(self);
 end
 
@@ -60,10 +64,15 @@ function LevelScene:init(sceneMan, params)
 	local players = self.mField:getPlayerObjects();
 	if players then
 		for i, player in ipairs(players) do
-			player:setJoystick(self.mMainUI.mJoystick);
-			player:setFightButton(self.mMainUI.mFightButton);
+			player:setJoystick(self.mMainUI:getJoystick());
+			player:setFightButton(self.mMainUI:getFightButton());
 		end
 	end
+
+	self.mPlayerController = PlayerController:create();
+	self.mPlayerController:init(self.mGuiLayer:boundingBox(), self.mField:getPlayerObjects(), self.mField,
+		self.mMainUI:getJoystick(), self.mMainUI:getFightButton());
+	self.mMainUI:setTouchListener(self.mPlayerController);
 end
 
 --------------------------------
@@ -117,6 +126,7 @@ end
 function LevelScene:tick(dt)
 	LevelScene:superClass().tick(self, dt);
 	self.mField:tick(dt);
+	self.mPlayerController:tick(dt);
 end
 
 --------------------------------

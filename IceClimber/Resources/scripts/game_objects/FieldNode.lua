@@ -22,6 +22,14 @@ function FieldNode:getChildren()
 end
 
 --------------------------------
+function FieldNode:getScrollPos()
+	if self.mScrollView.getContentOffset then
+		local point = self.mScrollView:getContentOffset();
+		return Vector.new(point.x, point.y);
+	end
+end
+
+--------------------------------
 function FieldNode:setScrollPos(pos)
 	--print("FieldNode:setScrollPos ");
 	if self.mScrollView.setContentOffset then

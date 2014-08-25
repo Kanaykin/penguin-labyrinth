@@ -5,7 +5,7 @@ require "DelayAnimation"
 
 FoxObject = inheritsFrom(PlayerObject)
 
-FoxObject.mVelocity = 25;
+FoxObject.mVelocity = 45;
 FoxObject.mAnimationNode = nil;
 FoxObject.mEffectNode = nil;
 FoxObject.mEffectAnimations = nil;
@@ -184,7 +184,8 @@ function FoxObject:initAnimation()
 	self.mAnimations[PlayerObject.PLAYER_STATE.PS_OBJECT_IN_TRAP] = self:createRepeatAnimation(self.mAnimationNode, "FoxInTrap.plist");
 
 	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE] = EmptyAnimation:create();
-	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE]:init(texture, self.mAnimationNode, self.mAnimationNode:getAnchorPoint());
+	local frontTexture = tolua.cast(self.mAnimationNode, "CCSprite"):getTexture();
+	self.mAnimations[PlayerObject.PLAYER_STATE.PS_WIN_STATE]:init(frontTexture, self.mAnimationNode, self.mAnimationNode:getAnchorPoint());
 
 	self:initEffectAnimations();
 

@@ -15,6 +15,11 @@ function FightButton:isPressed()
 end
 
 --------------------------------
+function FightButton:setPressed(pressed)
+	self.mPressed = pressed;
+end
+
+--------------------------------
 function FightButton:onDown()
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	local frame = cache:spriteFrameByName("fire_button_pressed.png");
@@ -53,20 +58,27 @@ end
 function FightButton:init(guiLayer)
 	local node  = guiLayer:getChildByTag(FightButton.BUTTON_TAG);
 	print(" FightButton:init ", node);
-	self.mButtonNode = tolua.cast(node, "CCSprite");
 
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-	cache:addSpriteFramesWithFile("fight_button_map.plist");
+	node:setVisible(false);
 
-	self:superClass().init(self, node:boundingBox());
+	if node:isVisible() then
 
-	local parent = node:getParent();
-	
-	local function onTouchHandler(action, var)
-		return self:onTouchHandler(action, var);
-    end
+		self.mButtonNode = tolua.cast(node, "CCSprite");
 
-    local layer = tolua.cast(parent, "CCLayer");
-    layer:registerScriptTouchHandler(onTouchHandler, true, 2, false);
-    layer:setTouchEnabled(true);
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
+		cache:addSpriteFramesWithFile("fight_button_map.plist");
+
+		self:superClass().init(self, node:boundingBox());
+
+		local parent = node:getParent();
+		
+		local function onTouchHandler(action, var)
+			return self:onTouchHandler(action, var);
+	    end
+
+	    local layer = tolua.cast(parent, "CCLayer");
+	    layer:registerScriptTouchHandler(onTouchHandler, true, 2, false);
+	    layer:setTouchEnabled(true);
+
+	end
 end

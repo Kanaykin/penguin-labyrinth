@@ -18,6 +18,17 @@ end
 function BaseObject:onStateWin()
 end
 
+---------------------------------
+function BaseObject:getScreenPos()
+	local point = self.mNode:convertToWorldSpace(CCPointMake(0, 0)); --self.mField:fieldToScreen(Vector.new(self.mNode:getPosition()));
+	return Vector.new(point.x, point.y);
+end
+
+---------------------------------
+function BaseObject:getBoundingBox()
+	return self.mNode:boundingBox();
+end
+
 --------------------------------
 function BaseObject:init(field, node)
 	self.mNode = node;

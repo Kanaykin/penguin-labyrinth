@@ -4,6 +4,9 @@ require "Vector"
 TouchWidget = inheritsFrom(nil)
 TouchWidget.mTouchId = nil;
 TouchWidget.mBBox = nil;
+TouchWidget.mDeltaTime = nil;
+
+TouchWidget.DOUBLE_TOUCH_DELTA = 1.0;
 
 ----------------------------------------
 function TouchWidget:convertToPoints(var)
@@ -20,6 +23,11 @@ end
 ----------------------------------------
 function TouchWidget:onTouchBegan(point)
 	print("TouchWidget:onTouchBegan ");
+end
+
+----------------------------------------
+function TouchWidget:onDoubleTouch(point)
+	print("TouchWidget:onDoubleTouch ");
 end
 
 ----------------------------------------
@@ -52,7 +60,7 @@ end
 function TouchWidget:onTouchHandler(action, var)
 	local arrayPoints = self:convertToPoints(var);
 
-	print("TouchWidget.mTouchId ", self.mTouchId);
+	--print("TouchWidget.mTouchId ", self.mTouchId, " var ", var);
 
 	if self.mTouchId ~= nil and not arrayPoints[self.mTouchId] then
 		return;
@@ -65,6 +73,10 @@ function TouchWidget:onTouchHandler(action, var)
 			local indx = findContainPoint(self.mBBox, arrayPoints);
 			self.mTouchId = indx;
 		end
+		if self.mDeltaTime > 0 and self.mDeltaTime < TouchWidget.DOUBLE_TOUCH_DELTA then
+			self:onDoubleTouch();
+		end
+		self.mDeltaTime = 0;
 	elseif action == "moved" then
 		if self.mTouchId == nil then
 			local indx = findContainPoint(self.mBBox, arrayPoints);
@@ -88,7 +100,14 @@ function TouchWidget:onTouchHandler(action, var)
 
 end
 
+---------------------------------
+function TouchWidget:tick(dt)
+	self.mDeltaTime = self.mDeltaTime + dt;
+	--print("TouchWidget:tick ", self.mDeltaTime);
+end
+
 --------------------------------
 function TouchWidget:init(bbox)
 	self.mBBox = bbox;
+	self.mDeltaTime = 0;
 end

@@ -92,6 +92,12 @@ function Field:isBrick(brick)
 end
 
 ---------------------------------
+function Field:fieldToScreen(pos)
+	local scrollPos = self.mFieldNode:getScrollPos();
+	return pos + scrollPos;
+end
+
+---------------------------------
 function Field:updateScrollPos()
 	local min = math.huge;
 	local max = -math.huge;

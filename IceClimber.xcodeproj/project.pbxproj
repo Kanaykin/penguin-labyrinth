@@ -151,6 +151,7 @@
 		A5DB5C5418B13DF2004A6FC4 /* Game.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C3318B13DF2004A6FC4 /* Game.lua */; };
 		A5DB5C5618B13E64004A6FC4 /* EmptyAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C5518B13E64004A6FC4 /* EmptyAnimation.lua */; };
 		A5DB5C5918B268F3004A6FC4 /* FoxObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C5818B268F3004A6FC4 /* FoxObject.lua */; };
+		A5EC7CB8199D37F800DD9A58 /* PlayerController.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5EC7CB7199D37F800DD9A58 /* PlayerController.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +410,7 @@
 		A5DB5C3318B13DF2004A6FC4 /* Game.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Game.lua; sourceTree = "<group>"; };
 		A5DB5C5518B13E64004A6FC4 /* EmptyAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EmptyAnimation.lua; sourceTree = "<group>"; };
 		A5DB5C5818B268F3004A6FC4 /* FoxObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FoxObject.lua; sourceTree = "<group>"; };
+		A5EC7CB7199D37F800DD9A58 /* PlayerController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlayerController.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -959,6 +961,7 @@
 		A5DB5C2418B13DF2004A6FC4 /* game_objects */ = {
 			isa = PBXGroup;
 			children = (
+				A5EC7CB7199D37F800DD9A58 /* PlayerController.lua */,
 				A551458C196D05EB00FEC63A /* FinishObject.lua */,
 				A524A61B195CA2C4004379CC /* FinishTrigger.lua */,
 				A5C6106A193667D100D16F4F /* DogObject.lua */,
@@ -1105,6 +1108,7 @@
 				A574494C191E90D7007A9FF9 /* GuiHelper.lua in Resources */,
 				A5DB5C4F18B13DF2004A6FC4 /* PlayerObject.lua in Resources */,
 				A5DB5C3618B13DF2004A6FC4 /* Callback.lua in Resources */,
+				A5EC7CB8199D37F800DD9A58 /* PlayerController.lua in Resources */,
 				A5DB5C4B18B13DF2004A6FC4 /* Trigger.lua in Resources */,
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5DB5C3518B13DF2004A6FC4 /* AlignmentHelper.lua in Resources */,

@@ -19,7 +19,7 @@ end
 --------------------------------
 function MovableObject:moveTo(posDest)
 	-- compute real position
-	print("posDest.x ", posDest.x, "posDest.y ", posDest.y);
+--	print("posDest.x ", posDest.x, "posDest.y ", posDest.y);
 	local dest = self.mField:gridPosToReal(posDest);
 	dest.x= dest.x + self.mField.mCellSize / 2;
 	dest.y= dest.y + self.mField.mCellSize / 2;
@@ -27,8 +27,8 @@ function MovableObject:moveTo(posDest)
 	local delta = dest - src;
 	self.mMoveTime = delta:len() / self.mVelocity;
 	self.mDelta = delta;
-	print("delta.x ", delta.x, " delta.y ", delta.y);
-	print("moveTime ", self.mMoveTime);
+--	print("delta.x ", delta.x, " delta.y ", delta.y);
+--	print("moveTime ", self.mMoveTime);
 	local x, y = self.mNode:getPosition();
 	self.mSrcPos = Vector.new(x, y);
 	self.mDestGridPos = posDest;
@@ -65,7 +65,7 @@ function MovableObject:tick(dt)
 			self.mNode:setPosition(CCPointMake(dest.x, dest.y));
 
 			self.mGridPosition = self.mDestGridPos;--Vector.new(self.mField:getGridPosition(self.mNode));
-			print("grid pos ", self.mGridPosition.x, " y ", self.mGridPosition.y);
+--			print("grid pos ", self.mGridPosition.x, " y ", self.mGridPosition.y);
 			self.mDelta = nil;
 			self:onMoveFinished();
 			self:updateOrder();

@@ -71,11 +71,18 @@ function Joystick:onTouchMoved(point)
 end
 
 ----------------------------------------
+function Joystick:setButtonPressed(button)
+	self.mButtonPressed = button;
+end
+
+----------------------------------------
 function Joystick:onTouchEnded(point)
 	print("Joystick:onTouchEnded ");
 	self.mDestPosition = self.mCenter;
 	self.mButtonPressed = Joystick.BUTTONS.NONE;
-	self.mButton:setPosition(self.mDestPosition.x, self.mDestPosition.y);
+	if self.mButton then
+		self.mButton:setPosition(self.mDestPosition.x, self.mDestPosition.y);
+	end
 end
 
 
@@ -85,31 +92,35 @@ function Joystick:init(guiLayer)
 	local node  = guiLayer:getChildByTag(Joystick.JOYSTICK_TAG);
 	print(" Joystick:init ", node);
 
-	--scene.mGuiLayer:addChild(node);
-	self:superClass().init(self, node:boundingBox());
-	
-	-- set touch enabled for joystick 
-	local function onTouchHandler(action, var)
-		self:onTouchHandler(action, var);
-    end
+	node:setVisible(false);
 
-    local layer = tolua.cast(node, "CCLayer");
-    layer:registerScriptTouchHandler(onTouchHandler, true, 2, false);
-    layer:setTouchEnabled(true);
+	if node:isVisible() then
+		--scene.mGuiLayer:addChild(node);
+		self:superClass().init(self, node:boundingBox());
+		
+		-- set touch enabled for joystick 
+		local function onTouchHandler(action, var)
+			self:onTouchHandler(action, var);
+	    end
 
-    -- init joystick size
-    local back = node:getChildByTag(Joystick.BACKGROUND_TAG);
-    local backSize = back:getContentSize();
-    print("backSize width ", backSize.width, " height ", backSize.height);
-    local backPosX, backPosY = back:getPosition();
-    local anchor = back:getAnchorPoint();
-    
-    self.mRadius = backSize.width / 2;
-    self.mCenter = Vector.new(backPosX - backSize.width * anchor.x + self.mRadius, backPosY - backSize.height * anchor.y + self.mRadius);
-    print("mCenter x ", self.mCenter.x, " y ", self.mCenter.y);
+	    local layer = tolua.cast(node, "CCLayer");
+	    layer:registerScriptTouchHandler(onTouchHandler, true, 2, false);
+	    layer:setTouchEnabled(true);
 
-    -- get button of joystick
-    self.mButton = node:getChildByTag(Joystick.BUTTON_TAG);
-    local buttonSize = self.mButton:getContentSize();
-    self.mRadius = self.mRadius - buttonSize.width / 2;
+	    -- init joystick size
+	    local back = node:getChildByTag(Joystick.BACKGROUND_TAG);
+	    local backSize = back:getContentSize();
+	    print("backSize width ", backSize.width, " height ", backSize.height);
+	    local backPosX, backPosY = back:getPosition();
+	    local anchor = back:getAnchorPoint();
+	    
+	    self.mRadius = backSize.width / 2;
+	    self.mCenter = Vector.new(backPosX - backSize.width * anchor.x + self.mRadius, backPosY - backSize.height * anchor.y + self.mRadius);
+	    print("mCenter x ", self.mCenter.x, " y ", self.mCenter.y);
+
+	    -- get button of joystick
+	    self.mButton = node:getChildByTag(Joystick.BUTTON_TAG);
+	    local buttonSize = self.mButton:getContentSize();
+	    self.mRadius = self.mRadius - buttonSize.width / 2;
+	end
 end
