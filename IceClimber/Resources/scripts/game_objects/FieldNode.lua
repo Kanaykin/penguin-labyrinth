@@ -88,7 +88,7 @@ function FieldNode:init(nodes, layer, field)
 		local child = tolua.cast(self.mChildren:objectAtIndex(i - 1), "CCNode");
 		child:getParent():removeChild(child, false);
 		local posGridX, posGridY = field:getGridPosition(child);
-		print("posGridY ", posGridY);
+		--print("posGridY ", posGridY);
 		newLayer:addChild(child, -posGridY * 2);
 		
 		--child:setVertexZ(-posGridY);

@@ -36,6 +36,7 @@ end
 
 --------------------------------
 function PRINT_FIELD(array, size)
+	print("PRINT_FIELD !");
 	for j = 0, size.y do
 		local raw = "";
 		for i = 0, size.x do
@@ -348,7 +349,7 @@ end
 
 --------------------------------
 function Field:addArrayBorder()
-	print("Field:addArrayBorder ", self.mSize.x);
+	print("Field:addArrayBorder x ", self.mSize.x, " y ", self.mSize.y);
 
 	for j = 0, self.mSize.y do
 		self.mArray[COORD(0, j, self.mSize.x)] = 1;
@@ -428,8 +429,8 @@ function Field:init(fieldNode, layer, fieldData, game)
 	local contentSize = self.mFieldNode:getContentSize();
 	print("newMaxValue x ", contentSize.width / self.mCellSize, " y ", contentSize.height / self.mCellSize);
 
-	maxValue.x = contentSize.width / self.mCellSize + 1;--(maxValue.x - minValue.x) / self.mCellSize;
-	maxValue.y = contentSize.height / self.mCellSize + 1;--(maxValue.y - minValue.y) / self.mCellSize;
+	maxValue.x = math.floor(contentSize.width / self.mCellSize + 1);--(maxValue.x - minValue.x) / self.mCellSize;
+	maxValue.y = math.floor(contentSize.height / self.mCellSize + 1);--(maxValue.y - minValue.y) / self.mCellSize;
 
 	print("maxValue x ", maxValue.x, " y ", maxValue.y);
 	self.mArray = {};

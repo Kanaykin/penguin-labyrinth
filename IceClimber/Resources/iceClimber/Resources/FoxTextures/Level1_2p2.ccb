@@ -1655,7 +1655,7 @@
 								<array>
 									<real>36</real>
 									<real>36</real>
-									<integer>0</integer>
+									<integer>5</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1736,7 +1736,7 @@
 								<array>
 									<real>36</real>
 									<real>36</real>
-									<integer>0</integer>
+									<integer>5</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1780,6 +1780,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>

@@ -6,7 +6,7 @@ TouchWidget.mTouchId = nil;
 TouchWidget.mBBox = nil;
 TouchWidget.mDeltaTime = nil;
 
-TouchWidget.DOUBLE_TOUCH_DELTA = 1.0;
+TouchWidget.DOUBLE_TOUCH_DELTA = 0.3;
 
 ----------------------------------------
 function TouchWidget:convertToPoints(var)
@@ -73,10 +73,6 @@ function TouchWidget:onTouchHandler(action, var)
 			local indx = findContainPoint(self.mBBox, arrayPoints);
 			self.mTouchId = indx;
 		end
-		if self.mDeltaTime > 0 and self.mDeltaTime < TouchWidget.DOUBLE_TOUCH_DELTA then
-			self:onDoubleTouch();
-		end
-		self.mDeltaTime = 0;
 	elseif action == "moved" then
 		if self.mTouchId == nil then
 			local indx = findContainPoint(self.mBBox, arrayPoints);
@@ -96,6 +92,10 @@ function TouchWidget:onTouchHandler(action, var)
 		self:onTouchMoved(arrayPoints[self.mTouchId]);
 	elseif oldTouchId and not self.mTouchId then
 		self:onTouchEnded(arrayPoints[self.mTouchId]);
+		if self.mDeltaTime > 0 and self.mDeltaTime < TouchWidget.DOUBLE_TOUCH_DELTA then
+			self:onDoubleTouch();
+		end
+		self.mDeltaTime = 0;
 	end
 
 end

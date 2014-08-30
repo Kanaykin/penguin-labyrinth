@@ -57,6 +57,7 @@ function MobObject:init(field, node)
 
 	self.mState = MobObject.IDLE;
 	self.mTrigger = SnareTrigger:create();
+	self.mVelocity = self.mVelocity * field.mGame:getScale();
 
 	-- set size of cell
 	self.mNode:setContentSize(CCSizeMake(self.mField:getCellSize(), self.mField:getCellSize()));
