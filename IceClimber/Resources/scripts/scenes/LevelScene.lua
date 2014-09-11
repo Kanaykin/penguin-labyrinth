@@ -4,6 +4,7 @@ require "Field"
 require "FightButton"
 require "MainUI"
 require "PlayerController"
+require "TutorialManager"
 
 LevelScene = inheritsFrom(BaseScene)
 LevelScene.mField = nil;
@@ -12,6 +13,7 @@ LevelScene.mPlayerController = nil;
 
 LevelScene.FIELD_NODE_TAG = 10;
 LevelScene.mMainUI = nil;
+LevelScene.mTutorial = nil;
 
 local LOADSCEENIMAGE = "choseLevel.png"
 
@@ -73,6 +75,11 @@ function LevelScene:init(sceneMan, params)
 	self.mPlayerController:init(self.mGuiLayer:boundingBox(), self.mField:getPlayerObjects(), self.mField,
 		self.mMainUI:getJoystick(), self.mMainUI:getFightButton());
 	self.mMainUI:setTouchListener(self.mPlayerController);
+
+	if self.mLevel:getData().tutorial then
+		self.mTutorial = TutorialManager:create();
+		self.mTutorial:init(self.mSceneGame, self.mField);
+	end
 end
 
 --------------------------------
@@ -127,6 +134,10 @@ function LevelScene:tick(dt)
 	LevelScene:superClass().tick(self, dt);
 	self.mField:tick(dt);
 	self.mPlayerController:tick(dt);
+
+	if self.mTutorial then
+		self.mTutorial:tick(dt);
+	end
 end
 
 --------------------------------

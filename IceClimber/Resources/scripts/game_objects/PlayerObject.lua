@@ -272,7 +272,7 @@ function PlayerObject:move(dt)
 
 			self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
 			self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
-			print("PlayerObject:move ");
+			print("PlayerObject:move x ", self.mGridPosition.x, ", y", self.mGridPosition.y);
 			self:updateOrder();
 		end
 	elseif not self:weakfight() then

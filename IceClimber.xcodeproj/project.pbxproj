@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50B0BC219B1FADF000774F7 /* TutorialManager.lua in Resources */ = {isa = PBXBuildFile; fileRef = A50B0BC019B1FADF000774F7 /* TutorialManager.lua */; };
+		A50B0BC519B3244F000774F7 /* TutorialStep1.lua in Resources */ = {isa = PBXBuildFile; fileRef = A50B0BC419B3244F000774F7 /* TutorialStep1.lua */; };
+		A50B0BC719B3460E000774F7 /* Finger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A50B0BC619B3460E000774F7 /* Finger.lua */; };
 		A52042221934561A00920560 /* FactoryObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A52042211934561A00920560 /* FactoryObject.lua */; };
 		A524A61819593BC8004379CC /* YouWinDlg.lua in Resources */ = {isa = PBXBuildFile; fileRef = A524A61719593BC8004379CC /* YouWinDlg.lua */; };
 		A524A61C195CA2C4004379CC /* FinishTrigger.lua in Resources */ = {isa = PBXBuildFile; fileRef = A524A61B195CA2C4004379CC /* FinishTrigger.lua */; };
@@ -92,6 +95,10 @@
 		A549EFA3190443B80072353C /* MainUI.lua in Resources */ = {isa = PBXBuildFile; fileRef = A549EFA2190443B80072353C /* MainUI.lua */; };
 		A551458D196D05EC00FEC63A /* FinishObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A551458C196D05EB00FEC63A /* FinishObject.lua */; };
 		A55570CC192FDAD500517364 /* HunterObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55570CB192FDAD500517364 /* HunterObject.lua */; };
+		A5591C9B19BE30FE00B7791B /* TutorialStep3.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5591C9A19BE30FE00B7791B /* TutorialStep3.lua */; };
+		A5591C9D19BEC1D200B7791B /* TutorialStep4.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5591C9C19BEC1D200B7791B /* TutorialStep4.lua */; };
+		A5591C9F19BEC3A800B7791B /* TutorialStep5.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5591C9E19BEC3A800B7791B /* TutorialStep5.lua */; };
+		A5591CA119BEC4FD00B7791B /* TutorialStep6.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5591CA019BEC4FD00B7791B /* TutorialStep6.lua */; };
 		A55E989B19606F8400C53BB2 /* RandomAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55E989A19606F8400C53BB2 /* RandomAnimation.lua */; };
 		A55E989D1961299D00C53BB2 /* RepeatAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55E989C1961299D00C53BB2 /* RepeatAnimation.lua */; };
 		A55E98A019627BED00C53BB2 /* DelayAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = A55E989F19627BED00C53BB2 /* DelayAnimation.lua */; };
@@ -115,6 +122,8 @@
 		A593E45318D5A2AA00854816 /* FieldNode.lua in Resources */ = {isa = PBXBuildFile; fileRef = A593E45218D5A2AA00854816 /* FieldNode.lua */; };
 		A5B19D82190D672E001829C0 /* DialogManager.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5B19D81190D672E001829C0 /* DialogManager.lua */; };
 		A5C6106B193667D200D16F4F /* DogObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C6106A193667D100D16F4F /* DogObject.lua */; };
+		A5CA765719B97D5800C07B27 /* TutorialStep2.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5CA765519B97D5800C07B27 /* TutorialStep2.lua */; };
+		A5CA765819B97D5800C07B27 /* TutorialStepBase.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5CA765619B97D5800C07B27 /* TutorialStepBase.lua */; };
 		A5DB5C0818AF6E86004A6FC4 /* Published-iOS in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0718AF6E86004A6FC4 /* Published-iOS */; };
 		A5DB5C0A18AFA128004A6FC4 /* Maps in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0918AFA128004A6FC4 /* Maps */; };
 		A5DB5C3418B13DF2004A6FC4 /* Inheritance.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0D18B13DF2004A6FC4 /* Inheritance.lua */; };
@@ -179,6 +188,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A50B0BC019B1FADF000774F7 /* TutorialManager.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialManager.lua; path = tutorial/TutorialManager.lua; sourceTree = "<group>"; };
+		A50B0BC419B3244F000774F7 /* TutorialStep1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep1.lua; path = tutorial/TutorialStep1.lua; sourceTree = "<group>"; };
+		A50B0BC619B3460E000774F7 /* Finger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Finger.lua; path = tutorial/Finger.lua; sourceTree = "<group>"; };
 		A52042211934561A00920560 /* FactoryObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FactoryObject.lua; sourceTree = "<group>"; };
 		A524A61719593BC8004379CC /* YouWinDlg.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YouWinDlg.lua; sourceTree = "<group>"; };
 		A524A61B195CA2C4004379CC /* FinishTrigger.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinishTrigger.lua; sourceTree = "<group>"; };
@@ -346,6 +358,10 @@
 		A549EFA2190443B80072353C /* MainUI.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MainUI.lua; sourceTree = "<group>"; };
 		A551458C196D05EB00FEC63A /* FinishObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FinishObject.lua; sourceTree = "<group>"; };
 		A55570CB192FDAD500517364 /* HunterObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HunterObject.lua; sourceTree = "<group>"; };
+		A5591C9A19BE30FE00B7791B /* TutorialStep3.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep3.lua; path = tutorial/TutorialStep3.lua; sourceTree = "<group>"; };
+		A5591C9C19BEC1D200B7791B /* TutorialStep4.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep4.lua; path = tutorial/TutorialStep4.lua; sourceTree = "<group>"; };
+		A5591C9E19BEC3A800B7791B /* TutorialStep5.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep5.lua; path = tutorial/TutorialStep5.lua; sourceTree = "<group>"; };
+		A5591CA019BEC4FD00B7791B /* TutorialStep6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep6.lua; path = tutorial/TutorialStep6.lua; sourceTree = "<group>"; };
 		A55E989A19606F8400C53BB2 /* RandomAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RandomAnimation.lua; sourceTree = "<group>"; };
 		A55E989C1961299D00C53BB2 /* RepeatAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepeatAnimation.lua; sourceTree = "<group>"; };
 		A55E989F19627BED00C53BB2 /* DelayAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DelayAnimation.lua; sourceTree = "<group>"; };
@@ -374,6 +390,8 @@
 		A593E45218D5A2AA00854816 /* FieldNode.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FieldNode.lua; sourceTree = "<group>"; };
 		A5B19D81190D672E001829C0 /* DialogManager.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DialogManager.lua; sourceTree = "<group>"; };
 		A5C6106A193667D100D16F4F /* DogObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DogObject.lua; sourceTree = "<group>"; };
+		A5CA765519B97D5800C07B27 /* TutorialStep2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep2.lua; path = tutorial/TutorialStep2.lua; sourceTree = "<group>"; };
+		A5CA765619B97D5800C07B27 /* TutorialStepBase.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStepBase.lua; path = tutorial/TutorialStepBase.lua; sourceTree = "<group>"; };
 		A5DB5C0718AF6E86004A6FC4 /* Published-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Published-iOS"; path = "iceClimber/Published-iOS"; sourceTree = "<group>"; };
 		A5DB5C0918AFA128004A6FC4 /* Maps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Maps; path = iceClimber/Resources/Maps; sourceTree = "<group>"; };
 		A5DB5C0D18B13DF2004A6FC4 /* Inheritance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inheritance.lua; sourceTree = "<group>"; };
@@ -441,6 +459,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A50B0BBF19B1FAC8000774F7 /* tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				A5591CA019BEC4FD00B7791B /* TutorialStep6.lua */,
+				A5591C9E19BEC3A800B7791B /* TutorialStep5.lua */,
+				A5591C9C19BEC1D200B7791B /* TutorialStep4.lua */,
+				A5591C9A19BE30FE00B7791B /* TutorialStep3.lua */,
+				A5CA765519B97D5800C07B27 /* TutorialStep2.lua */,
+				A5CA765619B97D5800C07B27 /* TutorialStepBase.lua */,
+				A50B0BC619B3460E000774F7 /* Finger.lua */,
+				A50B0BC419B3244F000774F7 /* TutorialStep1.lua */,
+				A50B0BC019B1FADF000774F7 /* TutorialManager.lua */,
+			);
+			name = tutorial;
+			sourceTree = "<group>";
+		};
 		A5404C39181434E9004A027E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -891,6 +925,7 @@
 		A5DB5C0B18B13DF2004A6FC4 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
+				A50B0BBF19B1FAC8000774F7 /* tutorial */,
 				A5DB5C0C18B13DF2004A6FC4 /* base */,
 				A5DB5C1018B13DF2004A6FC4 /* scenes */,
 				A5DB5C1B18B13DF2004A6FC4 /* gui */,
@@ -1100,6 +1135,7 @@
 				A5DB5C3E18B13DF2004A6FC4 /* StartScene.lua in Resources */,
 				A593E45318D5A2AA00854816 /* FieldNode.lua in Resources */,
 				A524A61819593BC8004379CC /* YouWinDlg.lua in Resources */,
+				A50B0BC519B3244F000774F7 /* TutorialStep1.lua in Resources */,
 				A5DB5C0A18AFA128004A6FC4 /* Maps in Resources */,
 				A5DB5C4118B13DF2004A6FC4 /* Dialog.lua in Resources */,
 				A5DB5C3F18B13DF2004A6FC4 /* ChooseLevel.lua in Resources */,
@@ -1114,14 +1150,19 @@
 				A5DB5C3518B13DF2004A6FC4 /* AlignmentHelper.lua in Resources */,
 				A5DB5C4318B13DF2004A6FC4 /* ScrollView.lua in Resources */,
 				A5DB5C4818B13DF2004A6FC4 /* Field.lua in Resources */,
+				A5591C9B19BE30FE00B7791B /* TutorialStep3.lua in Resources */,
 				A5B19D82190D672E001829C0 /* DialogManager.lua in Resources */,
 				A5DB5C5118B13DF2004A6FC4 /* FramesAnimation.lua in Resources */,
 				A5DB5C3818B13DF2004A6FC4 /* Level.lua in Resources */,
 				A551458D196D05EC00FEC63A /* FinishObject.lua in Resources */,
+				A50B0BC719B3460E000774F7 /* Finger.lua in Resources */,
 				A56023631811C384005719B1 /* InfoPlist.strings in Resources */,
 				A5DB5C4218B13DF2004A6FC4 /* Joystick.lua in Resources */,
+				A5591CA119BEC4FD00B7791B /* TutorialStep6.lua in Resources */,
 				A5DB5C5918B268F3004A6FC4 /* FoxObject.lua in Resources */,
 				A549EFA0190410610072353C /* CCBBaseDlg.lua in Resources */,
+				A5CA765719B97D5800C07B27 /* TutorialStep2.lua in Resources */,
+				A50B0BC219B1FADF000774F7 /* TutorialManager.lua in Resources */,
 				A55E989D1961299D00C53BB2 /* RepeatAnimation.lua in Resources */,
 				A579AEEB196E538B0071971D /* SequenceAnimation.lua in Resources */,
 				A5DB5C4018B13DF2004A6FC4 /* ChooseLocation.lua in Resources */,
@@ -1134,11 +1175,14 @@
 				A55570CC192FDAD500517364 /* HunterObject.lua in Resources */,
 				A5DB5C5018B13DF2004A6FC4 /* Animation.lua in Resources */,
 				A5DB5C3718B13DF2004A6FC4 /* GameConfigs.lua in Resources */,
+				A5591C9D19BEC1D200B7791B /* TutorialStep4.lua in Resources */,
 				A5DB5C5618B13E64004A6FC4 /* EmptyAnimation.lua in Resources */,
 				A549EFA3190443B80072353C /* MainUI.lua in Resources */,
 				A5DB5C3418B13DF2004A6FC4 /* Inheritance.lua in Resources */,
 				A549EFA1190410620072353C /* SettingsDlg.lua in Resources */,
+				A5591C9F19BEC3A800B7791B /* TutorialStep5.lua in Resources */,
 				A55E989B19606F8400C53BB2 /* RandomAnimation.lua in Resources */,
+				A5CA765819B97D5800C07B27 /* TutorialStepBase.lua in Resources */,
 				A5DB5C4618B13DF2004A6FC4 /* main.lua in Resources */,
 				A5DB5C4A18B13DF2004A6FC4 /* MobObject.lua in Resources */,
 				A5DB5C4C18B13DF2004A6FC4 /* MovableObject.lua in Resources */,
