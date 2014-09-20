@@ -39,6 +39,13 @@ function FoxObject:move(dt)
 	FoxObject:superClass().move(self, dt);
 end
 
+---------------------------------
+function FoxObject:getBoundingBox()
+	local pos = FoxObject:superClass().getBoundingBox(self).origin;
+	local size = self.mAnimationNode:boundingBox().size;
+	return CCRectMake(pos.x, pos.y, size.width, size.width);
+end
+
 --------------------------------
 function FoxObject:setFightActivated(activated)
 	print("FoxObject:setFightActivated ", activated);

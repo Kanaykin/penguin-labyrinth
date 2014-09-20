@@ -78,7 +78,7 @@ function LevelScene:init(sceneMan, params)
 
 	if self.mLevel:getData().tutorial then
 		self.mTutorial = TutorialManager:create();
-		self.mTutorial:init(self.mSceneGame, self.mField);
+		self.mTutorial:init(self.mSceneGame, self.mField, self.mMainUI);
 	end
 end
 

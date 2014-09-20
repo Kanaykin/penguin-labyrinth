@@ -10,12 +10,19 @@ TutorialManager =  inheritsFrom(nil)
 TutorialManager.mCurrentStep = nil;
 TutorialManager.mField = nil;
 TutorialManager.mGameScene = nil;
+TutorialManager.mMainUi = nil;
 
 --------------------------------
-function TutorialManager:init(gameScene, field)
+function TutorialManager:getMainUI()
+	return self.mMainUi;
+end
+
+--------------------------------
+function TutorialManager:init(gameScene, field, mainUi)
 	print("TutorialManager:init()");
 	self.mField = field;
 	self.mGameScene = gameScene;
+	self.mMainUi = mainUi;
 
 	self.mCurrentStep = TutorialStep1:create();
 	self.mCurrentStep:init(gameScene, self.mField, self);

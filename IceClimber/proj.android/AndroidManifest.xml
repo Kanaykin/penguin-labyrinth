@@ -12,7 +12,7 @@
 
         <activity android:name=".BinaryLand"
                   android:label="BinaryLand"
-                  android:screenOrientation="landscape"
+                  android:screenOrientation="sensorLandscape"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:configChanges="orientation">
             <intent-filter>

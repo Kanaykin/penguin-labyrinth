@@ -101,6 +101,7 @@ function TutorialStepBase:init(gameScene, field, tutorialManager, ccbfile)
 	self.mField = field;
 
 	self.mTutorialManager = tutorialManager;
+	print("TutorialStepBase:init ", self.mTutorialManager );
 
 	self:initFromCCB(ccbfile, gameScene);
 end

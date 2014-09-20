@@ -56,6 +56,17 @@ function Field:destroy()
 end
 
 --------------------------------
+function Field:getObjetcByTag(tag)
+	for _, obj in ipairs(self.mObjects) do
+		print("Field:getObjetcByTag tag ", obj:getTag())
+		if obj:getTag() == tag then
+			return obj;
+		end
+	end
+	return nil
+end
+
+--------------------------------
 function Field:setStateListener(listener)
 	self.mStateListener = listener;
 end
@@ -282,6 +293,33 @@ end
 --------------------------------
 function Field:getEnemyObjects()
 	return self.mEnemyObjects;
+end
+
+--------------------------------
+function Field:collideObject(player, destPos)
+	for _, object in ipairs(self.mPlayerObjects) do
+		if player ~= object and object:isInTrap() then
+			--check bbox
+			local boxl = player:getBoundingBox();
+			
+			--local anchor = player.mAnimationNode:getAnchorPoint();
+			--local leftBottom = Vector.new(anchor.x * boxl.size.width, anchor.y * boxl.size.height);
+
+			boxl.origin.x = destPos.x-- + boxl.origin.x;
+			boxl.origin.y = destPos.y-- + boxl.origin.y;
+			print("Field:collideObject1 x ", boxl.origin.x, " y ", boxl.origin.y);
+			print("Field:collideObject1 size x ", boxl.size.width, " y ", boxl.size.height);
+			local boxr = object:getBoundingBox();
+			print("Field:collideObject2 x ", boxr.origin.x, " y ", boxr.origin.y);
+			print("Field:collideObject2 size x ", boxr.size.width, " y ", boxr.size.height);
+
+			local centerL = Vector.new(boxl.origin.x - boxl.size.width / 2, boxl.origin.y - boxl.size.height / 2);
+			local centerR = Vector.new(boxr.origin.x - boxr.size.width / 2, boxr.origin.y - boxr.size.height / 2);
+			local diametr = Vector.distance(centerL, centerR);
+			return diametr <= boxr.size.width * 0.7;
+		end
+	end
+	return false;
 end
 
 --------------------------------

@@ -178,7 +178,8 @@ function PlayerObject:collisionDetect(delta, newDir)
 	local currentPos = Vector.new(self.mNode:getPosition());
 	--print("currentPos ", currentPos.x, " ", currentPos.y);
 	local anchor = self.mNode:getAnchorPoint();
-	local destPos = currentPos + delta * (self.mField:getCellSize() * 0.5)--[[Vector.new(anchor.x, anchor.y))]];
+	delta = delta * (self.mField:getCellSize() * 0.5);
+	local destPos = currentPos + delta --[[Vector.new(anchor.x, anchor.y))]];
 	--print("destPos ", destPos.x, " ", destPos.y);
 
 	local destGrid = Vector.new(self.mField:positionToGrid(destPos));
@@ -269,11 +270,12 @@ function PlayerObject:move(dt)
 		self.mLastButton = button;
 		if self:collisionDetect(DIRECTIONS[button] * self.mReverse, newDir) then --self.mField:isFreePoint(newGridPos) then
 			curPosition = curPosition + newDir * self.mVelocity * dt;
-
-			self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
-			self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
-			print("PlayerObject:move x ", self.mGridPosition.x, ", y", self.mGridPosition.y);
-			self:updateOrder();
+			if not self.mField:collideObject(self, curPosition) then
+				self.mNode:setPosition(CCPointMake(curPosition.x, curPosition.y));
+				self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
+				print("PlayerObject:move x ", self.mGridPosition.x, ", y", self.mGridPosition.y);
+				self:updateOrder();
+			end
 		end
 	elseif not self:weakfight() then
 		self:playAnimation(button);

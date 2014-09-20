@@ -14,6 +14,12 @@ function TutorialStep3:init(gameScene, field, tutorialManager)
 	self.mSecondPlayer = self.mField:getPlayerObjects()[1];
 
 	self:initFinger(gameScene, field);
+
+	self.mTutorialManager:getMainUI():getJoystick():clearBlockedButtons();
+	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.TOP);
+	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.LEFT);
+	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.RIGHT);
+	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.BOTTOM);
 end
 
 --------------------------------

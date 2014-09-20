@@ -21,6 +21,7 @@ Joystick.mRadius = nil;
 Joystick.mDestPosition = nil;
 Joystick.mButton = nil;
 Joystick.mButtonPressed = Joystick.BUTTONS.NONE;
+Joystick.mBlockedButton = nil;
 
 --------------------------------
 function Joystick:getButtonPressed( )
@@ -29,6 +30,7 @@ end
 
 --------------------------------
 function Joystick:findButtonPressed(res)
+	print("Joystick:findButtonPressed");
 	if math.abs(res.x) > math.abs(res.y) then
 		if res.x > 0 then
 			self.mButtonPressed = Joystick.BUTTONS.RIGHT;
@@ -42,6 +44,7 @@ function Joystick:findButtonPressed(res)
 			self.mButtonPressed = Joystick.BUTTONS.BOTTOM;
 		end
 	end
+	self.mButtonPressed = self:checkBlockedButton(self.mButtonPressed);
 end
 
 ----------------------------------------
@@ -73,6 +76,7 @@ end
 ----------------------------------------
 function Joystick:setButtonPressed(button)
 	self.mButtonPressed = button;
+	self.mButtonPressed = self:checkBlockedButton(self.mButtonPressed);
 end
 
 ----------------------------------------
@@ -85,6 +89,24 @@ function Joystick:onTouchEnded(point)
 	end
 end
 
+--------------------------------
+function Joystick:checkBlockedButton(button)
+	print("Joystick:checkBlockedButton button ", button, "blocked ", self.mBlockedButton[button]);
+	if self.mBlockedButton[button] then
+		return nil
+	end
+	return button;
+end
+
+--------------------------------
+function Joystick:addBlockedButton(button)
+	self.mBlockedButton[button] = true;
+end
+
+--------------------------------
+function Joystick:clearBlockedButtons()
+	self.mBlockedButton = {};
+end
 
 --------------------------------
 function Joystick:init(guiLayer)
@@ -93,6 +115,8 @@ function Joystick:init(guiLayer)
 	print(" Joystick:init ", node);
 
 	node:setVisible(false);
+
+	self.mBlockedButton = {}
 
 	if node:isVisible() then
 		--scene.mGuiLayer:addChild(node);

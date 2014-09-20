@@ -5,6 +5,7 @@ require "FoxObject"
 require "DogObject"
 require "FinishTrigger"
 require "FinishObject"
+require "TutorialTrigger"
 
 FactoryObject = {}
 
@@ -21,6 +22,11 @@ FactoryObject.HUNTER_TAG = 106;
 FactoryObject.DOG_TAG = 107;
 FactoryObject.FOX_TAG = 108;
 FactoryObject.FOX2_TAG = 109;
+
+-- tutorial
+FactoryObject.TUTORIAL_TRIGGER_1 = 200;
+FactoryObject.TUTORIAL_TRIGGER_2 = 201;
+FactoryObject.TUTORIAL_TRIGGER_3 = 202;
 
 ------------------------------
 function FactoryObject:createObject(field, node)
@@ -107,6 +113,15 @@ function FactoryObject:createPlayer(field, node)
 end
 
 ------------------------------
+function FactoryObject:createTrigger(field, node)
+	print("FactoryObject:createTrigger ", field, ", ", node);
+	local trigger = TutorialTrigger:create(); --PlayerObject:create();
+	trigger:init(field, node);
+	field:addObject(trigger);
+	return trigger;
+end
+
+------------------------------
 function FactoryObject:createFoxPlayer(field, node)
 	print("FactoryObject:createFoxPlayer ", field, ", ", node);
 	local player = FoxObject:create(); --PlayerObject:create();
@@ -127,5 +142,8 @@ FactoryObject.CreateFunctions = {
 	[FactoryObject.PLAYER2_TAG] = FactoryObject.createPlayer,
 	[FactoryObject.FOX_TAG] = FactoryObject.createFoxPlayer,
 	[FactoryObject.FOX2_TAG] = FactoryObject.createFoxPlayer,
-	[FactoryObject.LOVE_CAGE_TAG] = FactoryObject.createFinishObject
+	[FactoryObject.LOVE_CAGE_TAG] = FactoryObject.createFinishObject,
+	[FactoryObject.TUTORIAL_TRIGGER_1] = FactoryObject.createTrigger,
+	[FactoryObject.TUTORIAL_TRIGGER_2] = FactoryObject.createTrigger,
+	[FactoryObject.TUTORIAL_TRIGGER_3] = FactoryObject.createTrigger
 }
