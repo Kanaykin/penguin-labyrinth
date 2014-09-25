@@ -1,7 +1,7 @@
 require "Inheritance"
 require "MovableObject"
 
-Finger =  inheritsFrom(MovableObject)
+Finger =  inheritsFrom(BaseObject)
 
 Finger.mVelocity = 100;
 Finger.mIsMoving = false;
@@ -68,8 +68,31 @@ function Finger:stop()
 end
 
 --------------------------------
+function Finger:stopMoving()
+	if self.mDelta then
+		self.mDelta = nil;
+		self:onMoveFinished();
+	end
+end
+
+--------------------------------
 function Finger:IsMoving()
 	return self.mIsMoving;
+end
+
+--------------------------------
+function Finger:moveTo(dest)
+	local src = Vector.new(self.mNode:getPosition()); --self.mField:gridPosToReal(self.mGridPosition);
+	print("[Finger:moveTo] src.x ", src.x, " src.y ", src.y);
+	print("[Finger:moveTo] dest.x ", dest.x, " dest.y ", dest.y);
+	local delta = dest - src;
+	self.mMoveTime = delta:len() / self.mVelocity;
+	self.mDelta = delta;
+	print("[MovableObject:moveTo] delta.x ", delta.x, " delta.y ", delta.y);
+	print("[MovableObject:moveTo] moveTime ", self.mMoveTime);
+	local x, y = self.mNode:getPosition();
+	self.mSrcPos = Vector.new(x, y);
+	self.mDestGridPos = posDest;
 end
 
 --------------------------------
@@ -77,7 +100,7 @@ function Finger:move(from, to)
 	self.mIsMoving = true;
 	self.mDestPos = to;
 
-	self:setGrigPos(from);
+	self:setPosition(from);
 
 	self.mAnimator:runAnimationsForSequenceNamed("Show");
 end
@@ -106,6 +129,19 @@ end
 --------------------------------
 function Finger:tick(dt)
 	Finger:superClass().tick(self, dt);
+
+	if self.mDelta then
+		local val = self.mDelta:normalized() * self.mVelocity * self.mMoveTime;
+		local cur = self.mSrcPos + self.mDelta - val;
+		self.mNode:setPosition(CCPointMake(cur.x, cur.y));
+		self.mMoveTime = self.mMoveTime - dt;
+		if self.mMoveTime <= 0 then
+			self.mNode:setPosition(CCPointMake(self.mDestPos.x, self.mDestPos.y));
+
+			self.mDelta = nil;
+			self:onMoveFinished();
+		end
+	end
 end
 
 --------------------------------

@@ -8,9 +8,18 @@ FightButton.BUTTON_TAG = 21;
 FightButton.mBBox = nil;
 FightButton.mButtonNode = nil;
 FightButton.mPressed = false;
+FightButton.mBlocked = false;
+
+--------------------------------
+function FightButton:setBlocked(blocked)
+	self.mBlocked = blocked;
+end
 
 --------------------------------
 function FightButton:isPressed()
+	if self.mBlocked then
+		return false;
+	end
 	return self.mPressed;
 end
 

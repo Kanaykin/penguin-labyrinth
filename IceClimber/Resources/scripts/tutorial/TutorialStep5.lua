@@ -19,3 +19,23 @@ end
 function TutorialStep5:getNextStep()
 	return "TutorialStep6";
 end
+
+--------------------------------
+function TutorialStep5:tick(dt)
+	self.mFinger:tick(dt);
+
+	if self.mCurrentFingerTime ~= nil then
+		-- check finished
+		print("self.mField:getState() ", self.mField:getState());
+		if --[[self.mTrigger:getContainedObj() ~= nil]] self.mField:getState() == Field.WIN then
+			print("TutorialStep1:tick FINISH Step");
+			self.mIsFinished = true;
+		end
+
+		self.mCurrentFingerTime = self.mCurrentFingerTime + dt;
+
+		if self.mCurrentFingerTime > self.FREE_TIME and not self.mFinger:IsMoving() then
+			self.mFinger:move(self:getPlayerPos(), self.mFinishPosition);
+		end
+	end
+end

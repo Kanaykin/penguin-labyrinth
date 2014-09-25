@@ -47,6 +47,10 @@ function PRINT_FIELD(array, size)
 	end
 end
 
+---------------------------------
+function Field:getState()
+	return self.mState;
+end
 
 ---------------------------------
 function Field:destroy()

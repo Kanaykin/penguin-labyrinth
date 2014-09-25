@@ -20,6 +20,8 @@ function TutorialStep3:init(gameScene, field, tutorialManager)
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.LEFT);
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.RIGHT);
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.BOTTOM);
+
+	self.mTutorialManager:getMainUI():getFightButton():setBlocked(false);
 end
 
 --------------------------------
@@ -52,7 +54,7 @@ function TutorialStep3:tick(dt)
 		self.mCurrentFingerTime = self.mCurrentFingerTime + dt;
 
 		if self.mCurrentFingerTime > self.FREE_TIME and not self.mFinger:IsMoving() then
-			self.mFinger:setGrigPos(self:getPlayerPos());
+			self.mFinger:setPosition(self:getPlayerPos());
 			self.mFinger:playDoubleTapAnimation();
 		end
 

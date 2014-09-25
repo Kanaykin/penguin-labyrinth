@@ -78,6 +78,12 @@ function TutorialStepBase:getPlayerPos()
 	dest.y= dest.y + self.mField.mCellSize / 2;
 
 	return dest;]]
+	return Vector.new(self.mPlayer.mNode:getPosition());
+end
+
+--------------------------------
+function TutorialStepBase:getPlayerGridPos()
+	local playerGridPosition = Vector.new(self.mField:getGridPosition(self.mPlayer.mNode));
 	return playerGridPosition;
 end
 

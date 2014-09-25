@@ -4,7 +4,9 @@ TutorialStep1 =  inheritsFrom(TutorialStepBase)
 TutorialStep1.mPlayer = nil;
 TutorialStep1.FREE_TIME = 2.0;
 TutorialStep1.mCurrentFingerTime = nil;
+
 TutorialStep1.mFinishPosition = Vector.new(10, 6);
+
 TutorialStep1.mCCBFileName = "Step1";
 TutorialStep1.mTriggerTag = FactoryObject.TUTORIAL_TRIGGER_1;
 TutorialStep1.mTrigger = nil;--FactoryObject.TUTORIAL_TRIGGER_1;
@@ -37,6 +39,11 @@ end
 function TutorialStep1:init(gameScene, field, tutorialManager)
 	TutorialStep1:superClass().init(self, gameScene, field, tutorialManager, self.mCCBFileName);
 
+	local dest = field:gridPosToReal(self.mFinishPosition);
+	dest.x = dest.x + field.mCellSize / 2;
+	dest.y = dest.y + field.mCellSize / 2;
+	self.mFinishPosition = dest;
+
 	self.mPlayer = self.mField:getPlayerObjects()[2];
 
 	self.mTrigger = self.mField:getObjetcByTag(self.mTriggerTag);
@@ -48,6 +55,8 @@ function TutorialStep1:init(gameScene, field, tutorialManager)
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.LEFT);
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.RIGHT);
 	self.mTutorialManager:getMainUI():getJoystick():addBlockedButton(Joystick.BUTTONS.BOTTOM);
+
+	self.mTutorialManager:getMainUI():getFightButton():setBlocked(true);
 end
 
 --------------------------------
