@@ -80,6 +80,7 @@ function LevelScene:init(sceneMan, params)
 		self.mTutorial = TutorialManager:create();
 		self.mTutorial:init(self.mSceneGame, self.mField, self.mMainUI);
 	end
+
 end
 
 --------------------------------
@@ -138,6 +139,10 @@ function LevelScene:tick(dt)
 	if self.mTutorial then
 		self.mTutorial:tick(dt);
 	end
+
+	if self.mField:getTimer() then
+		self.mMainUI:setTime(self.mField:getTimer());
+	end
 end
 
 --------------------------------
@@ -146,5 +151,10 @@ function LevelScene:initGui()
 
 	self.mMainUI = MainUI:create();
 	self.mMainUI:init(self.mSceneManager.mGame, self.mGuiLayer, "Level_UI_layer");
+
+	if self.mField:getTimer() then
+		self.mMainUI:setTimerEnabled(true);
+	end
+
 	self.mMainUI:show();
 end

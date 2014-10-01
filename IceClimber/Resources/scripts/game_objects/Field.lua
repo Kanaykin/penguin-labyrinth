@@ -10,6 +10,7 @@ Field.mFieldNode = nil;
 Field.mEnemyObjects = nil;
 Field.mFinishTrigger = nil;
 Field.mGame = nil;
+Field.mTime = nil;
 
 Field.mPlayerObjects = nil;
 
@@ -159,7 +160,7 @@ function Field:checkFinishGame()
 		end
 	end
 
-	if allObjectInTrap then
+	if allObjectInTrap or self.mTime <= 0 then
 		print("Field:checkFinishGame LOSE");
 		self:onStateLose();
 		return;
@@ -221,6 +222,11 @@ function Field:tick(dt)
 		for i, obj in ipairs(self.mObjects) do
 			obj:tick(dt);
 		end
+		
+		if self.mTime then
+			self.mTime = self.mTime - dt;
+		end
+
 		self:updateScrollPos();
 		self:checkFinishGame();
 	end
@@ -434,6 +440,11 @@ function Field:addObject(object)
 end
 
 --------------------------------
+function Field:getTimer()
+	return self.mTime;
+end
+
+--------------------------------
 function Field:init(fieldNode, layer, fieldData, game)
 
 	self.mState = Field.IN_GAME;
@@ -496,4 +507,8 @@ function Field:init(fieldNode, layer, fieldData, game)
 	-- fill free point it is point where objects can move
 	self:fillFreePoint();
 	self:printField();
+
+	if fieldData.time then
+		self.mTime = fieldData.time;
+	end
 end

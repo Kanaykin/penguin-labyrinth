@@ -19,7 +19,8 @@ gLocations = {
 				ccbFile = {"Level1_2p1", "Level1_2p2"},
 				tileMap = "Level1_2_map.tmx",
 				cellSize = 32,
-				tutorial = false
+				tutorial = false,
+				time = 120
 			},
 			{
 			},
