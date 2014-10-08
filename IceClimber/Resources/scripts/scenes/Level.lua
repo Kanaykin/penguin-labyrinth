@@ -9,6 +9,7 @@ Level.MENU_ITEM_TAG = 101;
 Level.DUMMY_TAG = 20;
 Level.FIRST_STAR_TAG = 21;
 Level.mLocation = nil;
+Level.mIndex = nil;
 
 -----------------------------------
 function Level:getCountStar()
@@ -17,7 +18,8 @@ end
 
 -----------------------------------
 function Level:isOpened()
-	return self.mOpened;
+	local locationId = self:getLocation():getId();
+	return self.mLocation.mGame:isLevelOpened(locationId, self:getIndex()); --self.mOpened;
 end
 
 -----------------------------------
@@ -69,6 +71,12 @@ function Level:initButton(node)
 	end
 end
 
+
+-----------------------------------
+function Level:getIndex()
+	return self.mIndex;
+end
+
 -----------------------------------
 function Level:initVisual(primaryAnimator, animManager, nameFrame, node)
 
@@ -84,8 +92,9 @@ function Level:initVisual(primaryAnimator, animManager, nameFrame, node)
 end
 
 ---------------------------------
-function Level:init(levelData, location)
+function Level:init(levelData, location, index)
 	self.mLocation = location;
+	self.mIndex = index;
 	self.mData = levelData;
 	if(levelData.opened ~= nil ) then
 		self.mOpened = levelData.opened; 

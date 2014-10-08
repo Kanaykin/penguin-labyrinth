@@ -245,6 +245,12 @@ function PlayerObject:fight()
 end
 
 --------------------------------
+function PlayerObject:IsMoving()
+	local button = self.mJoystick:getButtonPressed();
+	return button ~= nil;
+end
+
+--------------------------------
 function PlayerObject:move(dt)
 	if not self.mJoystick then
 		return;

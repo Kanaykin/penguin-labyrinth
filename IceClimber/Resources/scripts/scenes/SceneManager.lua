@@ -49,24 +49,55 @@ function SceneManager:destroyCurrentScene()
 end
 
 ---------------------------------
-function SceneManager:runNextScene(params)
-	self:destroyCurrentScene();
-
-	if self.mCurrentSceneId == nil then
-		self.mCurrentSceneId = 0;
-	else
-		self.mCurrentSceneId = self.mCurrentSceneId + 1;
-	end
-
+function SceneManager:runScene(index, params)
+	self.mCurrentSceneId = index;
 	print("mCurrentSceneId ", self.mCurrentSceneId);
 	self:getCurrentScene():init(self, params);
 	CCDirector:sharedDirector():pushScene(self:getCurrentScene().mSceneGame);
 end
 
 ---------------------------------
+function SceneManager:runNextScene(params)
+	local index = 0;
+	if self.mCurrentSceneId == nil then
+		index = 0;		
+	else
+		index = self.mCurrentSceneId + 1;
+	end
+
+	if index == SCENE_TYPE_ID.CHOOSE_LOCATION then
+		local locationId = "mercury";
+		local isLevelOpened = self.mGame:isLevelOpened(locationId, 1);
+		print("First start is level opened ", isLevelOpened);
+		if not isLevelOpened then
+			self.mGame:openLevel(locationId, 1);
+			-- run tutorial
+			local locations = self.mGame:getLocations();
+			self:runLevelScene(locations[locationId]:getLevels()[1]);
+			return;
+		end
+	end
+
+	self:destroyCurrentScene();
+	self:runScene(index, params);
+end
+
+---------------------------------
 function SceneManager:replayScene()
 	print("SceneManager:replayScene");
 	self:runLevelScene(self:getCurrentScene():getLevel());
+end
+
+---------------------------------
+function SceneManager:runNextLevelScene()
+	local level = self:getCurrentScene():getLevel();
+	local locationId = level:getLocation():getId();
+
+	-- TODO: open location
+	local index = level:getIndex() + 1;
+
+	local locations = self.mGame:getLocations();
+	self:runLevelScene(locations[locationId]:getLevels()[index]);
 end
 
 ---------------------------------

@@ -32,6 +32,11 @@ end
 ---------------------------------
 function LevelScene:onStateWin()
 	print("LevelScene: WIN !!!");
+	local locationId = self.mLevel:getLocation():getId();
+
+	-- TODO: open location
+
+	self.mSceneManager.mGame:openLevel(locationId, self.mLevel:getIndex() + 1);
 	self.mMainUI:onStateWin();
 end
 

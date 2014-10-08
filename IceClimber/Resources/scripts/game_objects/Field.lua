@@ -160,7 +160,7 @@ function Field:checkFinishGame()
 		end
 	end
 
-	if allObjectInTrap or self.mTime <= 0 then
+	if allObjectInTrap or (self.mTime and self.mTime <= 0) then
 		print("Field:checkFinishGame LOSE");
 		self:onStateLose();
 		return;

@@ -62,6 +62,11 @@ function MovableObject:onMoveFinished( )
 end
 
 --------------------------------
+function MovableObject:IsMoving()
+	return self.mDelta ~= nil;
+end
+
+--------------------------------
 function MovableObject:tick(dt)
 	MovableObject:superClass().tick(self, dt);
 	if self.mDelta then

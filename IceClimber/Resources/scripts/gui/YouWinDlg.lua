@@ -8,6 +8,8 @@ YouWinDlg.REPLAY_MENU_TAG = 70;
 YouWinDlg.REPLAY_MENU_ITEM_TAG = 71;
 YouWinDlg.CHOOSE_LEVEL_MENU_TAG = 60;
 YouWinDlg.CHOOSE_LEVEL_MENU_ITEM_TAG = 61;
+YouWinDlg.NEXT_LEVEL_MENU_TAG = 80;
+YouWinDlg.NEXT_LEVEL_MENU_ITEM_TAG = 81;
 
 --------------------------------
 function YouWinDlg:init(game, uiLayer)
@@ -44,6 +46,16 @@ function YouWinDlg:initReplayButton(nodeBase)
 end
 
 --------------------------------
+function YouWinDlg:initNextLevelButton(nodeBase)
+	local function onNextLevelPressed(val, val2)
+    	print("onNextLevelPressed ");
+    	self.mGame.mSceneMan:runNextLevelScene();
+    end
+
+    setMenuCallback(nodeBase, YouWinDlg.NEXT_LEVEL_MENU_TAG, YouWinDlg.NEXT_LEVEL_MENU_ITEM_TAG, onNextLevelPressed);
+end
+
+--------------------------------
 function YouWinDlg:initGuiElements()
 	local nodeBase = self.mNode:getChildByTag(YouWinDlg.BASE_NODE_TAG);
 	print("YouLooseDlg:initGuiElements nodeBase ", nodeBase );
@@ -59,4 +71,5 @@ function YouWinDlg:initGuiElements()
 
 	self:initReplayButton(nodeBase);
 	self:initChooseLevelButton(nodeBase);
+	self:initNextLevelButton(nodeBase);
 end

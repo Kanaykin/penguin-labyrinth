@@ -72,7 +72,7 @@ function TutorialStep1:tick(dt)
 
 		self.mCurrentFingerTime = self.mCurrentFingerTime + dt;
 
-		if self.mCurrentFingerTime > self.FREE_TIME and not self.mFinger:IsMoving() then
+		if self.mCurrentFingerTime > self.FREE_TIME and not self.mFinger:IsMoving() and not self.mPlayer:IsMoving() then
 			self.mFinger:move(self:getPlayerPos(), self.mFinishPosition);
 		end
 	end

@@ -46,12 +46,24 @@ function Game:createLocation()
 		local locat = Location:create();
 		locat:init(location, self);
 		self.mLocations[location.id] = locat;
+		print("location.id ", location.id);
 	end
 end
 
 ---------------------------------
 function Game:getScale()
 	return self.mScale;
+end
+
+
+---------------------------------
+function Game:isLevelOpened(locationId, level)
+	return CCUserDefault:sharedUserDefault():getBoolForKey(locationId .. tostring(level));
+end
+
+---------------------------------
+function Game:openLevel(locationId, level)
+	CCUserDefault:sharedUserDefault():setBoolForKey(locationId .. tostring(level), true);
 end
 
 ---------------------------------
@@ -87,7 +99,15 @@ end
 
 ---------------------------------
 function Game:init()
+
+	CCUserDefault:sharedUserDefault();
+	local xmlFilePath = CCUserDefault:getXMLFilePath();
+	print("Game:init xmlFilePath ", xmlFilePath);
+
 	self:initResolution();
+
+	-- create locations
+	self:createLocation();
 
 	-- create scene manager
 	self.mSceneMan = SceneManager:create();
@@ -96,9 +116,6 @@ function Game:init()
 	-- create gui manager
 	self.mDialogManager = DialogManager:create();
 
-	-- create locations
-	self:createLocation();
-
 	local g_game = self;
 	
 	function tick(dt)
@@ -106,4 +123,5 @@ function Game:init()
 	end
 
 	CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(tick, 0, false)
+
 end

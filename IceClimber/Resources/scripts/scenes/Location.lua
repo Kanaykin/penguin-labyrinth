@@ -33,8 +33,18 @@ function Location:getImage()
 end
 
 ---------------------------------
+function Location:getLevels()
+	return self.mLevels;
+end
+
+---------------------------------
 function Location:getPosition()
 	return self.mData.position;
+end
+
+---------------------------------
+function Location:getId()
+	return self.mData.id;
 end
 
 ---------------------------------
@@ -42,7 +52,7 @@ function Location:initLevels(locationData)
 	if type(locationData.levels) == "table" then
 		for i, levelData in ipairs(locationData.levels) do
 			local level = Level:create();
-			level:init(levelData, self);
+			level:init(levelData, self, i);
 			table.insert(self.mLevels, level);
 		end
 	end
