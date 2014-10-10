@@ -120,7 +120,7 @@ function FoxObject:createRepeatAnimation(node, nameAnimation, soft)
 end
 
 --------------------------------
-function PlayerObject:getAnimationNode()
+function FoxObject:getAnimationNode()
 	return self.mAnimationNode;
 end
 
@@ -154,20 +154,33 @@ function FoxObject:playAnimation(button)
 end
 
 --------------------------------
+function FoxObject:getPrefixTexture()
+	if self.mIsFemale then
+		return "FoxGirl";
+	else
+		return "Fox";
+	end
+end
+
+--------------------------------
 function FoxObject:initAnimation()
-	local texture = tolua.cast(self.mAnimationNode, "CCSprite"):getTexture();
+	--local texture = tolua.cast(self.mAnimationNode, "CCSprite"):getTexture();
+	local textureName = self:getPrefixTexture() .. ".png";
+	print("FoxObject:initAnimation textureName ", textureName);
+	local texture = CCTextureCache:sharedTextureCache():addImage(textureName);
 
 	self.mAnimations = {}
 	
 	self.mAnimations[-1] = RandomAnimation:create();
 	self.mAnimations[-1]:init();
-	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle1.plist");
-	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle2.plist");
-	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle3.plist");
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle1.plist", texture, self.mAnimationNode:getContentSize());
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle2.plist", texture, self.mAnimationNode:getContentSize());
+	self:createIdleAnimation(self.mAnimations[-1], "FoxIdle3.plist", texture, self.mAnimationNode:getContentSize());
 
 	self.mAnimations[-2] = RandomAnimation:create();
 	self.mAnimations[-2]:init();
-	local texture = CCTextureCache:sharedTextureCache():addImage("FoxBack.png");
+	textureName = self:getPrefixTexture() .. "Back.png";
+	local texture = CCTextureCache:sharedTextureCache():addImage(textureName);
 	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle1.plist", texture, self.mAnimationNode:getContentSize());
 	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle2.plist", texture, self.mAnimationNode:getContentSize());
 	self:createIdleAnimation(self.mAnimations[-2], "FoxBackIdle3.plist", texture, self.mAnimationNode:getContentSize());

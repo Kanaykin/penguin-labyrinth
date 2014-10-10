@@ -142,7 +142,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Fox.png</string>
+							<string>FoxBaby.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -729,6 +729,8 @@
 				<true/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

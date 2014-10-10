@@ -96,7 +96,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Fox.png</string>
+							<string>FoxBaby.png</string>
 						</array>
 					</dict>
 				</array>
@@ -539,8 +539,6 @@
 ты справился.</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
