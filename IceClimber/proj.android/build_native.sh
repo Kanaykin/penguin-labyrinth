@@ -105,6 +105,7 @@ COCOS_BUILDER_PUBLISH_FOLDER="$APP_ROOT"/Resources/iceClimber/Published-iOS
 
 cp -rf "$COCOS_BUILDER_PUBLISH_FOLDER" "$APP_ANDROID_ROOT"/assets
 cp -rf "$APP_ROOT"/Resources/iceClimber/Resources/Maps "$APP_ANDROID_ROOT"/assets
+cp -rf "$APP_ROOT"/Resources/iceClimber/Resources/sounds "$APP_ANDROID_ROOT"/assets
 
 devices=("iphone" "iphonehd")
 

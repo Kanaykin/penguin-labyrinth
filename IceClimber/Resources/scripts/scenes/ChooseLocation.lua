@@ -2,6 +2,7 @@ require "BaseScene"
 require "ScrollView"
 require "AlignmentHelper"
 require "GameConfigs"
+require "SoundConfigs"
 
 local LOADSCEENIMAGE = "choseLevel.png"
 
@@ -28,6 +29,13 @@ function ChooseLocation:createLocationImages()
 			lock:setScaleY(2);
 		end 
 	end
+end
+
+---------------------------------
+function ChooseLocation:destroy()
+	ChooseLocation:superClass().destroy(self);
+
+	SimpleAudioEngine:sharedEngine():stopBackgroundMusic(true);
 end
 
 --------------------------------
@@ -94,4 +102,6 @@ function ChooseLocation:init(sceneMan, params)
 
 	-- init gui
 	self:initGui();
+
+	SimpleAudioEngine:sharedEngine():playBackgroundMusic(gSounds.CHOOSE_LOCATION_MUSIC, true)
 end

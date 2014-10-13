@@ -432,7 +432,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
@@ -484,12 +484,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
-            timestampString = "434057719.41958"
+            timestampString = "434746705.688478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12533"
-            endingLineNumber = "12533"
-            landmarkName = "tolua_Cocos2d_CCUserDefault_setBoolForKey00(lua_State* tolua_S)"
+            startingLineNumber = "16011"
+            endingLineNumber = "16011"
+            landmarkName = "tolua_Cocos2d_CCNode_runAction00(lua_State* tolua_S)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp"
+            timestampString = "434746769.702098"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15987"
+            endingLineNumber = "15987"
+            landmarkName = "tolua_Cocos2d_CCNode_runAction00(lua_State* tolua_S)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../scripting/lua/cocos2dx_support/CCLuaStack.cpp"
+            timestampString = "434747220.494707"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
+            landmarkName = "CCLuaStack::handleAssert(const char *msg)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../cocos2dx/platform/ios/CCCommon.mm"
+            timestampString = "434869082.37586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "CCLog(const char * pszFormat, ...)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

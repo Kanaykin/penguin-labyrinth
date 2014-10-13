@@ -2,6 +2,7 @@ require "PlayerObject"
 require "PlistAnimation"
 require "RandomAnimation"
 require "DelayAnimation"
+require "SoundConfigs"
 
 FoxObject = inheritsFrom(PlayerObject)
 
@@ -63,6 +64,7 @@ function FoxObject:setFightActivated(activated)
 	if activated then
 		self.mEffectAnimations[1]:play();
 		self.mEffectAnimations[1]:setStopAfterDone(false);
+		SimpleAudioEngine:sharedEngine():playEffect(gSounds.PLAYER_ATTACK_SOUND)
 	else
 		--self.mEffectNode:stopAllActions();
 		--self.mEffectAnimations[1]:stop();
@@ -191,7 +193,7 @@ function FoxObject:initAnimation()
 	-- create empty animation
 	for i, info in ipairs(ANIMATION_MALE) do
 		if info.name then
-			self.mAnimations[i] = self:createRepeatAnimation(self.mAnimationNode, "FoxWalk1.plist");
+			self.mAnimations[i] = self:createRepeatAnimation(self.mAnimationNode, "FoxWalk.plist");
 		end
 	end
 

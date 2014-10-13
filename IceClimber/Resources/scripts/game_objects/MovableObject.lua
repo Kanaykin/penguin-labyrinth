@@ -71,12 +71,12 @@ function MovableObject:tick(dt)
 	MovableObject:superClass().tick(self, dt);
 	if self.mDelta then
 		local val = self.mDelta:normalized() * self.mVelocity * self.mMoveTime;
-		print("[MovableObject:moveTo] tick val ", val);
+		--print("[MovableObject:moveTo] tick val ", val);
 		local cur = self.mSrcPos + self.mDelta - val;
-		print("[MovableObject:moveTo] tick cur.x ", cur.x, " y ", cur.y);
+		--print("[MovableObject:moveTo] tick cur.x ", cur.x, " y ", cur.y);
 		self.mNode:setPosition(CCPointMake(cur.x, cur.y));
 		self.mMoveTime = self.mMoveTime - dt;
-		print("[MovableObject:moveTo] tick mMoveTime ", self.mMoveTime);
+		--print("[MovableObject:moveTo] tick mMoveTime ", self.mMoveTime);
 		self.mGridPosition = Vector.new(self.mField:getGridPosition(self.mNode));
 		self:updateOrder();
 		if self.mMoveTime <= 0 then
@@ -86,7 +86,7 @@ function MovableObject:tick(dt)
 			self.mNode:setPosition(CCPointMake(dest.x, dest.y));
 
 			self.mGridPosition = self.mDestGridPos;--Vector.new(self.mField:getGridPosition(self.mNode));
-			print("[MovableObject:moveTo] grid pos ", self.mGridPosition.x, " y ", self.mGridPosition.y);
+			--print("[MovableObject:moveTo] grid pos ", self.mGridPosition.x, " y ", self.mGridPosition.y);
 			self.mDelta = nil;
 			self:onMoveFinished();
 			--self:updateOrder();

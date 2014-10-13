@@ -290,6 +290,7 @@ end
 --------------------------------
 function Field:onEnemyEnterTrigger(enemy)
 	print("Field:onEnemyEnterTrigger ", enemy);
+	SimpleAudioEngine:sharedEngine():playEffect(gSounds.MOB_DEATH_SOUND)
 	
 	self:removeObject(enemy);
 	self:removeEnemy(enemy)

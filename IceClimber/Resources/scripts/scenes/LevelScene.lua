@@ -5,6 +5,7 @@ require "FightButton"
 require "MainUI"
 require "PlayerController"
 require "TutorialManager"
+require "SoundConfigs"
 
 LevelScene = inheritsFrom(BaseScene)
 LevelScene.mField = nil;
@@ -27,6 +28,7 @@ end
 function LevelScene:onStateLose()
 	print("LevelScene: LOSE !!!");
 	self.mMainUI:onStateLose();
+	SimpleAudioEngine:sharedEngine():playBackgroundMusic(gSounds.GAME_OVER_MUSIC, false)
 end
 
 ---------------------------------
@@ -38,6 +40,9 @@ function LevelScene:onStateWin()
 
 	self.mSceneManager.mGame:openLevel(locationId, self.mLevel:getIndex() + 1);
 	self.mMainUI:onStateWin();
+
+	SimpleAudioEngine:sharedEngine():playBackgroundMusic(gSounds.VICTORY_MUSIC, false)
+	--SimpleAudioEngine:sharedEngine():playEffect(gSounds.VICTORY_MUSIC)
 end
 
 ---------------------------------
@@ -55,6 +60,8 @@ function LevelScene:destroy()
 	self.mPlayerController:destroy();
 
 	LevelScene:superClass().destroy(self);
+
+	SimpleAudioEngine:sharedEngine():stopBackgroundMusic(true);
 end
 
 --------------------------------
@@ -84,6 +91,11 @@ function LevelScene:init(sceneMan, params)
 	if self.mLevel:getData().tutorial then
 		self.mTutorial = TutorialManager:create();
 		self.mTutorial:init(self.mSceneGame, self.mField, self.mMainUI);
+	end
+
+	-- play music
+	if self.mLevel:getData().backgroundMusic then
+		SimpleAudioEngine:sharedEngine():playBackgroundMusic(self.mLevel:getData().backgroundMusic, true)
 	end
 
 end

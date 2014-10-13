@@ -125,6 +125,8 @@
 		A5C6106B193667D200D16F4F /* DogObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5C6106A193667D100D16F4F /* DogObject.lua */; };
 		A5CA765719B97D5800C07B27 /* TutorialStep2.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5CA765519B97D5800C07B27 /* TutorialStep2.lua */; };
 		A5CA765819B97D5800C07B27 /* TutorialStepBase.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5CA765619B97D5800C07B27 /* TutorialStepBase.lua */; };
+		A5D3D58E19E872D5003E9F69 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = A5D3D58D19E872D5003E9F69 /* sounds */; };
+		A5D3D59119EACBB3003E9F69 /* SoundConfigs.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5D3D59019EACBB3003E9F69 /* SoundConfigs.lua */; };
 		A5DB5C0818AF6E86004A6FC4 /* Published-iOS in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0718AF6E86004A6FC4 /* Published-iOS */; };
 		A5DB5C0A18AFA128004A6FC4 /* Maps in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0918AFA128004A6FC4 /* Maps */; };
 		A5DB5C3418B13DF2004A6FC4 /* Inheritance.lua in Resources */ = {isa = PBXBuildFile; fileRef = A5DB5C0D18B13DF2004A6FC4 /* Inheritance.lua */; };
@@ -394,6 +396,8 @@
 		A5C6106A193667D100D16F4F /* DogObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DogObject.lua; sourceTree = "<group>"; };
 		A5CA765519B97D5800C07B27 /* TutorialStep2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStep2.lua; path = tutorial/TutorialStep2.lua; sourceTree = "<group>"; };
 		A5CA765619B97D5800C07B27 /* TutorialStepBase.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TutorialStepBase.lua; path = tutorial/TutorialStepBase.lua; sourceTree = "<group>"; };
+		A5D3D58D19E872D5003E9F69 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = iceClimber/Resources/sounds; sourceTree = "<group>"; };
+		A5D3D59019EACBB3003E9F69 /* SoundConfigs.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SoundConfigs.lua; sourceTree = "<group>"; };
 		A5DB5C0718AF6E86004A6FC4 /* Published-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Published-iOS"; path = "iceClimber/Published-iOS"; sourceTree = "<group>"; };
 		A5DB5C0918AFA128004A6FC4 /* Maps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Maps; path = iceClimber/Resources/Maps; sourceTree = "<group>"; };
 		A5DB5C0D18B13DF2004A6FC4 /* Inheritance.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inheritance.lua; sourceTree = "<group>"; };
@@ -917,6 +921,7 @@
 		A58924761818521F005765D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5D3D58D19E872D5003E9F69 /* sounds */,
 				A5DB5C0B18B13DF2004A6FC4 /* scripts */,
 				A5DB5C0918AFA128004A6FC4 /* Maps */,
 				A5DB5C0718AF6E86004A6FC4 /* Published-iOS */,
@@ -955,6 +960,7 @@
 		A5DB5C1018B13DF2004A6FC4 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A5D3D59019EACBB3003E9F69 /* SoundConfigs.lua */,
 				A5DB5C1118B13DF2004A6FC4 /* GameConfigs.lua */,
 				A5DB5C1218B13DF2004A6FC4 /* Level.lua */,
 				A5DB5C1318B13DF2004A6FC4 /* Location.lua */,
@@ -1149,6 +1155,7 @@
 				A5DB5C3618B13DF2004A6FC4 /* Callback.lua in Resources */,
 				A5EC7CB8199D37F800DD9A58 /* PlayerController.lua in Resources */,
 				A5DB5C4B18B13DF2004A6FC4 /* Trigger.lua in Resources */,
+				A5D3D59119EACBB3003E9F69 /* SoundConfigs.lua in Resources */,
 				A5404DE71816FCC9004A027E /* CCBReaderLoad.lua in Resources */,
 				A5DB5C3518B13DF2004A6FC4 /* AlignmentHelper.lua in Resources */,
 				A5DB5C4318B13DF2004A6FC4 /* ScrollView.lua in Resources */,
@@ -1164,6 +1171,7 @@
 				A5591CA119BEC4FD00B7791B /* TutorialStep6.lua in Resources */,
 				A5DB5C5918B268F3004A6FC4 /* FoxObject.lua in Resources */,
 				A549EFA0190410610072353C /* CCBBaseDlg.lua in Resources */,
+				A5D3D58E19E872D5003E9F69 /* sounds in Resources */,
 				A5591CA719CA115B00B7791B /* TutorialTrigger.lua in Resources */,
 				A5CA765719B97D5800C07B27 /* TutorialStep2.lua in Resources */,
 				A50B0BC219B1FADF000774F7 /* TutorialManager.lua in Resources */,

@@ -1,4 +1,5 @@
 require "BaseScene"
+require "SoundConfigs"
 
 ChooseLevel = inheritsFrom(BaseScene)
 ChooseLevel.mCurLocation = nil;
@@ -18,6 +19,15 @@ function ChooseLevel:init(sceneMan, params)
 	self:initScene();
 
 	self:initGui();
+
+	SimpleAudioEngine:sharedEngine():playBackgroundMusic(gSounds.CHOOSE_LEVEL_MUSIC, true)
+end
+
+---------------------------------
+function ChooseLevel:destroy()
+	ChooseLevel:superClass().destroy(self);
+
+	SimpleAudioEngine:sharedEngine():stopBackgroundMusic(true);
 end
 
 --------------------------------
